@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<title>Home | Tredence Studio</title>
+  </head>
+  <body class="body-bg-typ-1">
+    <div class="bg-img-1"></div>
+    <!-- navigation top -->
+	<nav id="navbar" class="navbar  fixed-top navbar-expand-lg  top-nav">
+	  <a class="navbar-brand" href="/">			
+		<img src="assets/img/logo.png" class="img-fluid"> 
+		<img src="assets/img/studio.png" class="img-fluid studio">
+	  </a>       
+	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	    </button>   
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">	  
+		<ul class="navbar-nav ml-auto">				
+			<li class="nav-item">
+			  <a class="nav-link" href="app-dashboard.html">Home</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="#"> Help</a>
+			</li>	
+	    </ul>
+	  </div>
+	   <div class=" navbar-collapse-custom">	  
+		<ul class="navbar-nav mr-auto">							
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  <span class="profile-img">CK</span>
+				</a>
+				<div class="dropdown-menu align-right-auto" aria-labelledby="navbarDropdown">
+				  <a class="dropdown-item" href="#"><i class="far fa-comment-alt"></i> Feedback</a>
+				  <a class="dropdown-item" href="#"><i class="fas fa-check-square"></i> Manage Subscriptions</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+				</div>
+			 </li>
+	    </ul>
+	  </div>
+	</nav>
+	<div class="container-fluid dasboard-sub-header">
+		<div class="row width-90">
+			<div class="col-12 hero-section-1">	
+				<h4>Tredence Studio</h4>	
+				<h5>The home for all your Data analytical Solutios</h5>
+				<p><small>Here you’ll find all your Data Analytical Solutions — from sales and service to operations and financials.</small></p>
+			</div>	
+        </div>
+		
+ 		
+		<div class="row  width-90">		 
+			<div class="col-12 flex">	
+				<div class="page-tile">
+					<div class="title">
+						<i class="fas fa-poll item-icon"></i> Trade Promotion Effectiveness
+					</div>
+					<div class="status">1</div>
+					<div class="desc">Align marketing efforts to company strategy using Tredence’s integrated marketing-analytics solutions across traditional and digital platforms</div>	
+					 
+				</div>
+				<div class="page-tile">
+					<div class="title"> <i class="fas fa-compass item-icon"></i> eCompass</div>
+					<div class="status">2</div>
+					<div class="desc">
+					 A solution to leverage data for E-Commerce sales, 
+					inventory, orders, shipments etc. 
+					from many sources and proovides a single view for advanced analytics to takes better and informed business decisions
+					</div>	
+					 
+				</div>	
+				<div class="page-tile">
+					<div class="title"> <i class="fas fa-globe item-icon"></i> Sales and Operations Planning</div>
+					<div class="status">3</div>
+					<div class="desc">Analytics solutions designed to maximize sales and amplify market share by estimating market potential, optimizing territories and sales force, allocating incentives, prioritizing leads and measuring performance</div>	
+					 
+				</div>	
+
+
+					
+			</div>
+		</div>
+		
+		<div class="row width-90" style="display:none;">
+			<div class="col-12 hero-section-1">	
+				<p><small>Our toolbox of services and scalable analytical solutions enable last mile adoption of insights
+                  And resolve complex business problems across the decision value chain using data analytics.
+				<br>We empower decisions to help our clients WIN.
+				</small></p>
+			</div>	
+        </div>
+	</div>
+	
+	<!-- navigation Ends -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<script src="assets/js/custom.js"></script>
+<script>
+    $(document).ready(function(){
+			$(document).on('click', '#inactive', function(e){
+				$('.page-tile').hide();
+				$('.page-tile.inactive-title').show();
+			})
+			$(document).on('click', '#active', function(e){
+				$('.page-tile').show(); 
+				$('.page-tile.inactive-title').hide();
+			})
+			$(document).on('click', '.page-tile', function(e){
+				window.location.replace("capabilities.html");
+			}); 
+
+})
+	
+
+</script>
+  </body>
+</html>

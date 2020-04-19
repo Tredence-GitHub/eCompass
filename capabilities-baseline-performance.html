@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/cr-1.5.2/fc-3.3.0/fh-3.1.6/kt-2.5.1/r-2.2.3/rg-1.1.1/rr-1.2.6/sc-2.0.1/sp-1.0.1/sl-1.3.1/datatables.min.css"/>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<title>Capabilities | Trade Promotion Effectiveness</title>
+  </head>
+  <body class="body-bg-typ-1">
+    <div class="bg-img-1"></div>
+    <!-- navigation top -->
+	<nav id="navbar" class="navbar  fixed-top navbar-expand-lg  top-nav">
+	  <a class="navbar-brand" href="/">			
+		<img src="assets/img/logo.png" class="img-fluid"> 
+		<img src="assets/img/studio.png" class="img-fluid studio">
+	  </a>       
+	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	    </button>   
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">	  
+		<ul class="navbar-nav ml-auto">				
+			<li class="nav-item">
+			  <a class="nav-link" href="app-dashboard.html">Home</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="#"> Help</a>
+			</li>	
+	    </ul>
+	  </div>
+	   <div class=" navbar-collapse-custom">	  
+		<ul class="navbar-nav mr-auto">							
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  <span class="profile-img">CK</span>
+				</a>
+				<div class="dropdown-menu align-right-auto" aria-labelledby="navbarDropdown">
+				  <a class="dropdown-item" href="#"><i class="far fa-comment-alt"></i> Feedback</a>
+				  <a class="dropdown-item" href="#"><i class="fas fa-check-square"></i> Manage Subscriptions</a>
+				  <div class="dropdown-divider"></div>
+				  <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+				</div>
+			 </li>
+	    </ul>
+	  </div>
+	</nav>
+	<div class="container-fluid dasboard-sub-header">
+		<div class="row width-90">
+			<div class="col-12 hero-section-1">	
+				<h4>Trade Promotion Effectiveness <br>Baselining Performance</h4>	
+				<p><small>Sample screen to showcase the high level overview of the page.</small></p>
+			</div>	
+        </div>
+		
+		<div class="row width-90"  >
+			<div class="col-12">
+				<section id="tabs">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12 nav-container px-0">
+								<nav>
+									<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+										<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fas fa-database"></i> Data Source</a>
+										<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fas fa-dharmachakra"></i> Algorithms</a>
+										<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false"><i class="fas fa-poll item-icon" aria-hidden="true"></i>  Visualization</a>										
+									</div>
+								</nav>
+						 	</div>
+                            <div class="col-12 ">							
+								<div class="tab-content py-3  " id="nav-tabContent">
+								     
+									<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+									    <div class="add-new-box" id="newDashboard" data-toggle="modal" data-target="#modalForNewDataSource">
+									      <i class="fas fa-plus-circle" aria-hidden="true"></i> <span> New Data Source</span>
+								        </div>
+										<table id="example" class="table table-striped table-bordered" style="width:100%">
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Collection & Deployment</th>
+													<th>Applied Aggregations</th>
+													<th class="center">Created</th>
+													<th class="center">Last Modified</th>
+													<th class="center">Configurations</th>
+												</tr>
+											</thead>
+											<tbody class="capabilities-tbody">
+												<tr>
+													<td>Sample_mflix_movies</td>
+													<td>mflix_movies<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">45 Minutes Ago</td>
+													<td class="center">02 Minutes Ago</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_geospatial_data</td>
+													<td>Google Maps<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">54 Minutes Ago</td>
+													<td class="center">09 Minutes Ago</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												 <tr>
+													<td>sample_dataset_1</td>
+													<td>sample_dataset<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">04/04/2020</td>
+													<td class="center">11/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>Sample_mflix_movies_2</td>
+													<td>mflix_movies_2<small class="small-txt">Cluster 0</small><small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">15 Minutes Ago</td>
+													<td class="center">09 Minutes Ago</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_geospatial_data_2</td>
+													<td>Google Maps<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">54 Minutes Ago</td>
+													<td class="center">19 Minutes Ago</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												 <tr>
+													<td>sample_dataset_2</td>
+													<td>sample_dataset_2<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">04/04/2020</td>
+													<td class="center">11/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_dataset_3</td>
+													<td>sample_dataset_2<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">04/04/2020</td>
+													<td class="center">11/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_dataset_4</td>
+													<td>sample_dataset_2<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">03/04/2020</td>
+													<td class="center">14/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_dataset_5</td>
+													<td>sample_dataset_2<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">09/04/2020</td>
+													<td class="center">12/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_dataset_6</td>
+													<td>sample_dataset_6<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">05/04/2020</td>
+													<td class="center">10/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_dataset_7</td>
+													<td>sample_dataset_7<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">04/04/2020</td>
+													<td class="center">11/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_dataset_9</td>
+													<td>sample_dataset_9<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">01/04/2020</td>
+													<td class="center">16/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_dataset_0</td>
+													<td>sample_dataset_0<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">02/04/2020</td>
+													<td class="center">15/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_dataset_11</td>
+													<td>sample_dataset_11<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">06/04/2020</td>
+													<td class="center">10/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_dataset_12</td>
+													<td>sample_dataset_12<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">07/04/2020</td>
+													<td class="center">19/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_dataset_13</td>
+													<td>sample_dataset_13<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">09/04/2020</td>
+													<td class="center">15/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_dataset_14</td>
+													<td>sample_dataset_14<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">09/04/2020</td>
+													<td class="center">15/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_dataset_15</td>
+													<td>sample_dataset_15<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">09/04/2020</td>
+													<td class="center">15/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_dataset_16</td>
+													<td>sample_dataset_16<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">09/04/2020</td>
+													<td class="center">15/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												<tr>
+													<td>sample_dataset_17</td>
+													<td>sample_dataset_17<small class="small-txt">Cluster 0</small></td>
+													<td><i class="fas fa-pen-square"></i> <span class="aggregation-types">lookup</span> </td>
+													<td class="center">09/04/2020</td>
+													<td class="center">15/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+												</tr>
+												
+												
+											</tfoot>
+										</table>
+									</div>
+									<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+										<div class="add-new-box" id="newDashboard">
+									      <i class="fas fa-plus-circle" aria-hidden="true"></i> <span> Add New Algorithm</span>
+								        </div>
+										<table id="example2" class="table table-striped table-bordered" style="width:100%">
+											<thead>
+												<tr>
+													<th>Alog Name</th>
+													<th>Algo Type</th>
+													<th class="center">Created</th>
+													<th class="center">Last Modified</th>
+													<th class="center">Configurations</th>
+													<th class="center">Remove</th>
+												</tr>
+											</thead>
+											<tbody class="capabilities-tbody">
+												<tr>
+													<td>Dummy_Algo_1</td>
+													<td>Regression</td>
+													<td class="center">03/04/2020</td>
+													<td class="center">14/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+													<td class='center'><i class="fas fa-trash"></i></td>
+												</tr>
+												<tr>
+													<td>Dummy_Algo_2</td>
+													<td>Regression</td>
+													<td class="center">03/04/2020</td>
+													<td class="center">14/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+													<td class='center'><i class="fas fa-trash"></i></td>
+												</tr>
+												<tr>
+													<td>Dummy_Algo_3</td>
+													<td>Classification</td>
+													<td class="center">03/04/2020</td>
+													<td class="center">14/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+													<td class='center'><i class="fas fa-trash"></i></td>
+												</tr>
+												<tr style="background: #4caf5082;">
+													<td>Dummy_Algo_4 <small class="winnerAlgo">Winner Algorithm</small></td>
+													<td>Regression</td>
+													<td class="center">03/04/2020</td>
+													<td class="center">14/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+													<td class='center'><i class="fas fa-trash"></i></td>
+												</tr>
+												<tr>
+													<td>Dummy_Algo_5</td>
+													<td>Classification</td>
+													<td class="center">03/04/2020</td>
+													<td class="center">14/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+													<td class='center'><i class="fas fa-trash"></i></td>
+												</tr>
+												 <tr>
+													<td>Dummy_Algo_6</td>
+													<td>Classification</td>
+													<td class="center">03/04/2020</td>
+													<td class="center">14/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+													<td class='center'><i class="fas fa-trash"></i></td>
+												</tr>
+												 <tr>
+													<td>Dummy_Algo_7</td>
+													<td>Classification</td>
+													<td class="center">03/04/2020</td>
+													<td class="center">14/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+													<td class='center'><i class="fas fa-trash"></i></td>
+												</tr>
+												 <tr>
+													<td>Dummy_Algo_7</td>
+													<td>Clustering</td>
+													<td class="center">03/04/2020</td>
+													<td class="center">14/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+													<td class='center'><i class="fas fa-trash"></i></td>
+												</tr>
+												 <tr>
+													<td>Dummy_Algo_8</td>
+													<td>Clustering</td>
+													<td class="center">03/04/2020</td>
+													<td class="center">14/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+													<td class='center'><i class="fas fa-trash"></i></td>
+												</tr>
+												 <tr>
+													<td>Dummy_Algo_9</td>
+													<td>Clustering</td>
+													<td class="center">03/04/2020</td>
+													<td class="center">14/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+													<td class='center'><i class="fas fa-trash"></i></td>
+												</tr>
+												
+												
+												 <tr>
+													<td>Dummy_Algo_10</td>
+													<td>Clustering</td>
+													<td class="center">13/04/2020</td>
+													<td class="center">16/04/2020</td>
+													<td class='center'><i class="fas fa-cogs"></i></td>
+													<td class='center'><i class="fas fa-trash"></i></td>
+												</tr>
+												
+												
+												
+												 
+												
+											</tfoot>
+										</table>
+									</div>
+									<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" style="text-align:center;">
+										<div class="add-new-box run-btn" id="newDashboard">
+									      Run Studio Engine To Generate Latest Report</span>
+								        </div>
+										<img src="assets/img/s-5.jpg" class="img-fluid">
+										<div class="placeholder-txt">Placeholder For Visualization Data</div>
+									</div>
+									 
+								</div>
+							
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>	
+        </div>
+	</div> 
+	 <div class="modal fade" id="modalForNewDataSource" tabindex="-1" role="dialog" aria-labelledby="modalForWidgetLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="modalForWidgetLabel"><i class="fas fa-pen mr-2"></i>New Data Source</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+				<form id="modal_widget" class="form form_active">
+					<div class="row">
+						<div class="col-12  col-xl-12 form-group custom_group">
+						  <label class="custom_label">							  
+							   Database Name								
+						  </label>
+						  <input type="text" class="form-control custom_input" placeholder="">						 
+						</div>
+						 
+						
+					  <div class="col-12  col-xl-12 form-group custom_group">
+						  <label class="custom_label">							  
+							   Collection 							
+						  </label>
+						  <input list="collection" class="form-control custom_input" placeholder="">						 
+							<datalist id="collection">
+							  <option value="Dummy Collection 1">
+							  <option value="Dummy Collection 2">
+							  <option value="Dummy Collection 3">
+							  <option value="Dummy Collection 4">
+							  <option value="Dummy Collection 5">
+							  <option value="Dummy Collection 6">
+							</datalist>						 
+						</div>
+						<div class="col-12  col-xl-12 form-group custom_group">
+							<label class="custom_label">
+								
+								 Deployment						
+							</label>
+							<input list="cluster" class="form-control custom_input" placeholder="">						 
+							<datalist id="cluster">
+							  <option value="Dummy Cluster 1">
+							  <option value="Dummy Cluster 2">
+							  <option value="Dummy Cluster 3">
+							  <option value="Dummy Cluster 4">
+							  <option value="Dummy Cluster 5">
+							  <option value="Dummy Cluster 6">
+							</datalist>	
+						  </div>
+						  <div class="col-12  col-xl-12 form-group custom_group">
+							<label class="custom_label">
+								Aggregations							
+							</label>
+							<input list="aggregations" class="form-control custom_input" placeholder="">
+							<datalist id="aggregations">
+							  <option value="Dummy Aggregation Type 1">
+							  <option value="Dummy Aggregation Type 2">
+							  <option value="Dummy Aggregation Type 3">
+							  <option value="Dummy Aggregation Type 4">
+							  <option value="Dummy Aggregation Type 5">
+							  <option value="Dummy Aggregation Type 6">
+							</datalist>		
+						  </div>
+						
+						 <!-- <div class="col-12  col-xl-12 form-group custom_group">
+						  <label class="custom_label">
+							  
+							  Enable Navigation				
+						  </label>
+						  <select class="form-control custom_input enable-navigation">
+							<option disabled="" selected="">Select</option>
+							<option value="yes">Yes</option>
+							<option value="no">No</option>							  					   
+						  </select>													 
+						</div>	 -->
+
+						 
+					 </div>
+				  </form>		
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			  <button type="button" class="btn btn-primary" data-dismiss="modal">Continue</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <!-- modal ends here -->
+	
+	<!-- navigation Ends -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<script src="assets/js/custom.js"></script>
+<script>
+    $(document).ready(function(){
+			$(document).on('click', '#inactive', function(e){
+				$('.page-tile').hide();
+				$('.page-tile.inactive-title').show();
+			})
+			$(document).on('click', '#active', function(e){
+				$('.page-tile').show(); 
+				$('.page-tile.inactive-title').hide();
+			})
+			$(document).on('click', '.page-tile', function(e){
+				window.location.replace("capabilities-baseline-performance.html");
+			}); 
+			 $('#example').DataTable();
+			 $('#example2').DataTable();
+
+})
+	
+
+</script>
+  </body>
+</html>
