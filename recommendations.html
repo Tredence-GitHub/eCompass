@@ -384,7 +384,7 @@
                                             <td> <a class="btn btn-outline-info btn-sm swb" data-toggle="modal"
                                                     data-target="#myModal">Add more Images
                                                 </a> </td>
-                                            <td> <a class="btn btn-outline-danger btn-sm pr" data-toggle="modal"
+                                            <td> <a class="btn btn-outline-danger btn-sm bapgr" data-toggle="modal"
                                                     data-target="#myModal">Below Product Group Rating
                                                 </a> </td>
                                         </tr>
@@ -489,9 +489,9 @@
                 "src": "",
                 "title": "SKU with WoW Drop in Gross Retailer Margin"
             },
-            "li": {
-                "src": "",
-                "title": "Low Inventory Analysis"
+            "bapgr": {
+                "src": "https://app.powerbi.com/reportEmbed?reportId=c19766cc-12ac-458f-a26c-73470ec8be93&autoAuth=true&ctid=927e65b8-7ad7-48db-a3c6-c42a67c100d6&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false",
+                "title": "The ratings are below average product group ratings"
 
             },
             "hi": {
@@ -522,9 +522,9 @@
             $('#myModal').appendTo('body').modal('show');
 
         })
-        $('.li').click(function () {
-            $('#myModalLabel').text(myRef.li.title);
-            $('.ifr').attr('src', myRef.li.src);
+        $('.bapgr').click(function () {
+            $('#myModalLabel').text(myRef.bapgr.title);
+            $('.ifr').attr('src', myRef.bapgr.src);
             $('#myModal').appendTo('body').modal('show');
 
         })
