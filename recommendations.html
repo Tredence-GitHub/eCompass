@@ -309,6 +309,8 @@
                                                 </a> </td>
                                             <td> <a class="btn btn-outline-danger btn-sm bapgr" data-toggle="modal"
                                                     data-target="#myModal">Below Product Group Rating
+                                                </a> <a class="btn btn-outline-warning btn-sm dr" data-toggle="modal"
+                                                    data-target="#myModal">Decline in rating
                                                 </a> </td>
                                         </tr>
                                         <tr>
@@ -501,6 +503,10 @@
             "ami":{
                 "src": "https://app.powerbi.com/reportEmbed?reportId=5b6e9cf2-117a-4a8a-9f43-9ec240f1266b&autoAuth=true&ctid=927e65b8-7ad7-48db-a3c6-c42a67c100d6&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false",
                 "title": "We recommend you to add more images"
+            },
+            "dr":{
+                "src": "",
+                "title": "Decline in ratings"
             }
         }
 
@@ -543,6 +549,12 @@
         $('.hgs').click(function () {
             $('#myModalLabel').text(myRef.hgs.title);
             $('.ifr').attr('src', myRef.hgs.src);
+            $('#myModal').appendTo('body').modal('show');
+
+        })
+        $('.dr').click(function () {
+            $('#myModalLabel').text(myRef.dr.title);
+            $('.ifr').attr('src', myRef.dr.src);
             $('#myModal').appendTo('body').modal('show');
 
         })
