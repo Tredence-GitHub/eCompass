@@ -12,6 +12,65 @@
     <meta name="msapplication-tap-highlight" content="no">
      
 <link href="./main.css" rel="stylesheet"></head>
+<style>
+    .here {
+    position: absolute;
+    border: none;
+    background-color: whitesmoke;
+    box-shadow: 0px 1px 7px 3px lightgray;
+    border-radius: 10%;
+    width: 100px;
+    height: 100px;
+    margin-top: 150px;
+    justify-content: center;
+    text-indent: 1vh;
+    text-align: justify;
+}
+
+.circle {
+    position: absolute;
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+    height: 100px;
+    width: 100px;
+    background-color: #3f6ad8;
+    box-shadow: 0px 1px 7px 3px lightgray;
+    border-radius: 10%;
+    justify-content: center;
+}
+
+.circle:nth-child(1) {
+    transform: rotate(357deg) translateX(150px);
+    text-transform: none;
+}
+
+.circle:nth-child(2) {
+    transform: rotate(50deg) translateY(0px) translateX(150px) rotate(-90deg);
+    text-align: center;
+    text-orientation: upright;
+}
+
+.circle:nth-child(3) {
+    transform: rotate(102deg) translateX(150px) rotate(-90deg);
+    text-align: center;
+    text-orientation: unset;
+    
+}
+
+.circle:nth-child(4) {
+    transform: rotate(153deg) translateX(150px) rotate(-180deg);
+}
+
+.circle:nth-child(5) {
+    transform: rotate(203deg) translateX(150px) rotate(180deg);
+}
+.circle:nth-child(6) {
+    transform: rotate(254deg) translateX(150px) rotate(90deg);
+}
+.circle:nth-child(7) {
+    transform: rotate(305deg) translateX(150px);
+}
+</style>
 <body>
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -267,88 +326,195 @@
 									
                                 </div>
                                </div>
-                        </div>  
-                       
-						<div class="row">
+                        </div> 
+
+                        
+                    <div class="row">
                             
-							<div class="col-12 col-md-12">
-                                <div class="main-card mb-3 card">
-                                    <div class="card-header">
-                                        <i class="header-icon lnr-license icon-gradient bg-plum-plate"> </i>
-                                        <div class="btn-actions-pane-left">
-                                            <div role="group" class="btn-group-sm nav btn-group">
-                                                <a data-toggle=""  class="border-0 btn-transition btn btn-outline-primary">All Product Groups</a>
-                                                <a data-toggle="" class="mr-1 ml-1 border-0 btn-transition btn btn-outline-primary">Default Merchant</a>										
-                                            </div>
-                                        </div>
-                                        <div class="btn-actions-pane-right">
-                                            <span class="add-filter" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-filter"></i>Add Filter</span> 											
+                        <div class="col-12 col-md-12">
+                            <div class="main-card mb-3 card">
+                                <div class="card-header">
+                                    <i class="header-icon lnr-license icon-gradient bg-plum-plate"> </i>
+                                    <div class="btn-actions-pane-left">
+                                        <div role="group" class="btn-group-sm nav btn-group">
+                                            <a data-toggle=""  class="border-0 btn-transition btn btn-outline-primary">All Product Groups</a>
+                                            <a data-toggle="" class="mr-1 ml-1 border-0 btn-transition btn btn-outline-primary">Default Merchant</a>										
                                         </div>
                                     </div>
+                                    <div class="btn-actions-pane-right">
+                                        <span class="add-filter" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-filter"></i>Add Filter</span> 											
+                                    </div>
                                 </div>
-							    
-							    <div class="main-card mb-12 card">
-									<div class="card-header">
-										<i class="header-icon lnr-license icon-gradient bg-plum-plate"> </i>
-										Sales Overview	
-										<div class="btn-actions-pane-right">
-											<div role="group" class="btn-group-sm nav btn-group">
-											    
-												<a href="sales.html" class="btn-shadow btn btn-primary">View All</a>  
-												
-											</div>
+                            </div>
+                            <div class="col-12 col-md-12" style="margin-top: 24px; ">
+                            <div class="main-card mb-3 card" >
+                                <div class="card-body" style="margin-left: 150px;">
+                                    <div class="row ">
+                                        <div class="card col-3 mb-3 mr-2 text-center h-10" style="background: rgb(224, 222, 222);" >
+                                            <div class="card-body" style=" text-overflow: ellipsis;
+                                            white-space: no-wrap;
+                                            overflow: hidden;
+                                            ">
+                                                <div class="card-title" >
+                                                    OOS in last 7 days
+                                                </div>
+                                                <br>
+                                              
 
-											 
-										</div>	
-									</div>
-									<div class="card-body">
-										<div class="embed-responsive embed-responsive-16by9" style="height:340px">
-											<iframe class="embed-responsive-item" src="https://app.powerbi.com/reportEmbed?reportId=f19e57c8-344e-4607-bfaf-febba0492f92&autoAuth=true&ctid=927e65b8-7ad7-48db-a3c6-c42a67c100d6&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D&autoAuth=true&navContentPaneEnabled=false" frameborder="0" allowFullScreen="true"></iframe>
-										</div> 
-									</div>									 
-								</div>								
-							</div>
-							
-							<div class="col-12 col-md-12" style="margin-top: 24px;">
-							    <div class="main-card mb-12 card">
-									<div class="card-header">
-										<i class="header-icon lnr-license icon-gradient bg-plum-plate"> </i>
-										Content Health Score	
-											<div class="btn-actions-pane-right">
-											<div role="group" class="btn-group-sm nav btn-group">
-												<a   href="content-health.html" class="btn-shadow btn btn-primary">View All</a>                                                        
-											</div>
-										</div>											
-									</div>
-									<div class="card-body">
-										<div class="embed-responsive embed-responsive-16by9" style="height:340px">
-											<iframe class="embed-responsive-item" src="https://app.powerbi.com/reportEmbed?reportId=160738fb-d751-4c6a-867d-a10d8bded384&autoAuth=true&ctid=927e65b8-7ad7-48db-a3c6-c42a67c100d6&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D&autoAuth=true&navContentPaneEnabled=false" frameborder="0" allowFullScreen="true"></iframe>
-										</div> 
-										
-									</div>									 
-								</div>								
-							</div>
-							<div class="col-12 col-md-12" style="margin-top: 24px;">
-							    <div class="main-card mb-12 card">
-									<div class="card-header">
-										<i class="header-icon lnr-license icon-gradient bg-plum-plate"> </i>
-										Ratings & Reviews	
-											<div class="btn-actions-pane-right">
-											<div role="group" class="btn-group-sm nav btn-group">
-												<a href="ratings-and-reviews.html" class="btn-shadow btn btn-primary">View All</a>                                                        
-											</div>
-										</div>											
-									</div>
-									<div class="card-body" >
-										<div class="embed-responsive embed-responsive-16by9" style="height:340px">
-											<iframe class="embed-responsive-item" src="https://app.powerbi.com/reportEmbed?reportId=09757a06-68cb-4b67-b1fa-2a5e3ef2db06&autoAuth=true&ctid=927e65b8-7ad7-48db-a3c6-c42a67c100d6&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D&autoAuth=true&navContentPaneEnabled=false" frameborder="0" allowFullScreen="true"></iframe>
-										
-										</div> 
-									</div>									 
-								</div>								
-							</div>
-							
-						</div>
+                                                <p class="card-text"  > <b><h5>87 SKUs <i class="fas fa-sort-up" style="color: green;" ></i></h5></b> </p>
+                                            </div>
+                                        </div>
+                                        <div class="card col-3 mb-3 mr-2 text-center h-10" style="background: rgb(224, 222, 222);" >
+                                            <div class="card-body" style=" text-overflow: ellipsis;
+                                            white-space: no-wrap;
+                                            overflow: hidden; ">
+                                                <div class="card-title">
+                                                    Sales 
+                                                </div>
+                                                <p class="card-text"> Dropped for <br>
+                                                    <h5 style="color: navy;"><b>11% SKUs</b></h5> <br> Weekly Velocity<br>
+                                                <h5><b>467 Units <i class="fas fa-sort-down" style="color: red;" ></i></b></h5>
+                                                    </p>
+                                            </div>
+                                        </div>
+                                        <div class="card col-3 mb-3 text-center h-10" style="background: rgb(224, 222, 222);">
+                                            <div class="card-body" style=" text-overflow: ellipsis;
+                                            white-space: no-wrap;
+                                            overflow: hidden;">
+                                                <div class="card-title">
+                                                    Content Health Score
+                                                </div>
+                                                <p class="card-text"> Dropped for <br>
+                                                    <h5 style="color: navy;"><b> 7 SKUs </b></h5><br> Content Health Score <br>
+                                                     <h5><b>4.1 <i class="fas fa-sort-up" style="color: green;" ></i></b></h5> </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="card col-3 mb-3 mr-2 text-center h-10" style="background: rgb(224, 222, 222);" >
+                                            <div class="card-body" style=" text-overflow: ellipsis;
+                                            white-space: no-wrap;
+                                            overflow: hidden; ">
+                                                <div class="card-title">
+                                                    price index
+                                                </div>
+                                                <p class="card-text"> Reseller Price Index <br>
+                                                    <h5><b> 1.04 <i class="fas fa-sort-up" style="color: green;" ></i></b></h5>
+                                                    <br> Competitor Price index <br>
+                                                    <h5><b> 0.97</b> <i class="fas fa-sort-down" style="color: red;" ></i></h5> </p>
+                                            </div>
+                                        </div>
+                                        <div class="card col-3 mb-3 mr-2 text-center h-10" style="border-radius: 50%; background: rgb(224, 222, 222);" >
+                                            <div class="card-body" style=" text-overflow: ellipsis;
+                                            white-space: no-wrap;
+                                            overflow: hidden;">
+                                                <div class="card-title">
+                                                    <br>
+                                                    sales/target
+                                                </div>
+                                                <p class="card-text"> 
+                                                    <b><h3 style="color: yellowgreen;">$13M/$15M </h3> </b><br>
+                                                    <h5><b> +4% WoW <i class="fas fa-sort-up" style="color: green;" ></i></b></h5>  </p>
+                                            </div>
+                                        </div>
+                                        <div class="card col-3 mb-3 text-center h-10" style="background: rgb(224, 222, 222);" >
+                                            <div class="card-body" style=" text-overflow: ellipsis;
+                                            white-space: no-wrap;
+                                            overflow: hidden;">
+                                                <div class="card-title">
+                                                   Buy box in
+                                                </div>
+                                                <p class="card-text"> <br>
+                                                    <b><h5>85% SKUs <i class="fas fa-sort-up" style="color: green;" ></i></h5>  </b><br> </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="card col-3 mr-2 mb-4 text-center h-10" style="background: rgb(224, 222, 222);" >
+                                            <div class="card-body" style=" text-overflow: ellipsis;
+                                            white-space: no-wrap;
+                                            overflow: hidden;  ">
+                                                <div class="card-title">
+                                                    Average Search Rank
+                                                </div>
+                                                <p class="card-text"> Dropped for <br>
+                                                    <b> <h5 style="color: navy;">6% SKUs</h5></b> <br>Avg. Search Rank
+                                                    <h5><b>3.8 <i class="fas fa-sort-down" style="color: red;" ></i></b></h5>
+                                                    </p>
+                                            </div>
+                                        </div>
+                                        <div class="card col-3 mr-2 mb-4 text-center h-10" style="background: rgb(224, 222, 222);" >
+                                            
+                                                <div class="card-body" style=" text-overflow: ellipsis;
+                                                white-space: no-wrap;
+                                                overflow: hidden;  ">
+                                                    <div class="card-title">
+                                                        Average Ratings
+                                                    </div>
+                                                    <p class="card-text">
+                                                        <br>
+                                                        
+                                                       <h4><b>3.96 <i class="fas fa-sort-down" style="color: red;" ></i></b></h4> 
+                                                        </p>
+                                                </div>
+
+                                        </div>
+                                        <div class="card col-3 mb-4 text-center h-10 " style="background: rgb(224, 222, 222);">
+                                            
+                                                <div class="card-body" style=" text-overflow: ellipsis;
+                                                white-space: no-wrap;
+                                                overflow: hidden;  ">
+                                                    <div class="card-title">
+                                                       Conversion Rate
+                                                    </div>
+                                                    <br>
+
+                                                    <p class="card-text">
+                                                        <h4><b>11.2% <i class="fas fa-sort-down" style="color: red;" ></i> </b></h4> <br><br>
+                                                        <b></b>
+                                                        </p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                   
+                                    <br>
+                                
+                                    <div class="row">
+
+                                        <div class="card col-3 mr-auto ml-2" style="height: 150px; border-radius: 50%; 
+                                        background: linear-gradient(rgb(243, 205, 205),#d87ec2);">
+                                        <div class="card-body text-center">
+                                            <div class="card-title">
+                                                <br>
+                                                Predicted sales
+                                                <p>
+                                                   <b><h4>$10.5M</h4></b> 
+                                                </p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="card col-3 mr-auto" style="height: 150px; border-radius: 50%;
+                                         background: linear-gradient(rgb(236, 185, 185),#7ecad8);">
+                                            <div class="card-body text-center">
+                                                <div class="card-title">
+                                                    <br>
+                                                    Target sales
+                                                    <p>
+                                                        <b><h4>$10.3M</h4></b> 
+                                                     </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                            
+                        							
+                        
+                        
+                    </div>
                     </div>
                         
 					</div>
