@@ -3,10 +3,32 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import  reducers  from './store/reducer';
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore } from 'redux-persist';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ['regular']
+}
+
+const pReducer = persistReducer(persistConfig, reducers);
+
+const store = createStore(pReducer);
+// const persistor = persistStore(store);
+
 ReactDOM.render(
-  <React.StrictMode>
+    <Provider store = {store}>
+    
     <App />
-  </React.StrictMode>,
+   
+    </Provider>,
   document.getElementById('root')
 );
 

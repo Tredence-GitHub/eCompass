@@ -5,6 +5,7 @@ import Iframe from 'react-iframe';
 
 export default function Contenthealth() {
     return (
+        <div> {localStorage.getItem('var')}
         <Tabs defaultActiveKey="home" transition={false} id="noanim-tab-example">
             <Tab eventKey="home" title="Product Level">
             <div className="" style={{
@@ -35,6 +36,6 @@ export default function Contenthealth() {
     </div>
             </Tab>
       </Tabs>   
-    
+      </div>
     )
 }

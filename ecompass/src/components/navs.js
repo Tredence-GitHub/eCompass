@@ -6,23 +6,23 @@ import { Link } from 'react-router-dom';
 import { FaHamburger, FaList, FaUser, FaHeartbeat, FaSignOutAlt, FaHome, FaChartBar, FaStar, FaBoxOpen, FaPrescription, FaGlobe } from 'react-icons/fa';
 import Salesview from './salesview';
 import Contenthealth from './contenthealth';
+import Inventory from './inventory';
 import { Navbar, Nav, Form, FormControl, Button, Container, Dropdown, Row, Card } from 'react-bootstrap';
 import Ratings from './ratings';
-
+import GlobalDropDown from './globalDropDown';
+import LocalDropDown from './localDropDown';
 
 export default function Navs(props) {
-    const [hover, setHovered] = useState(false);
-    const [viewname, setViewName] = useState('')
 
-    function setHoverStyle(id) {
-        if (hover) {
-
-
-        }
+    function onSubmit (value) {
+        props.onDropDownSubmit(value);
     }
 
+    if(localStorage.getItem('loggedIn'))
+    {
     return (
         <div>
+            
             <Navbar bg="light" variant="light" style={{
                 boxShadow: "0px 1px 7px 3px lightgrey"
             }}>
@@ -37,25 +37,23 @@ export default function Navs(props) {
 
                 <Form inline>
                     <FormControl type="text" placeholder="Search" className="ml-sm-4" />
-                    <Button variant="outline-primary">Search</Button>
+                    <Button variant="outline-primary"> {props.logged} Search</Button>
                 </Form>
 
                 <Button className="drop-down" style={{
                     marginLeft: "970px"
                 }} variant="light" onClick={(e) => {
-
+                    e.preventDefault();
+                    localStorage.clear();
+                    window.location.href = "/"
                 }
 
                 } ><FaUser /><FaSignOutAlt style={{
                     color: "dark-grey"
                 }} />
 
-
                 </Button>
-
-
             </Navbar>
-
 
             <Container className="row" style={{
                 marginRight: "0px",
@@ -71,7 +69,7 @@ export default function Navs(props) {
                 }}>
                     <Nav className="sidebar bg-light" style={{
                         width: "30vh",
-                        minHeight: "100vh",
+                        minHeight: "105vh",
                         marginLeft: "0px",
                         boxShadow: "0px 0px 7px 3px lightgrey"
                     }}>
@@ -117,7 +115,17 @@ export default function Navs(props) {
                     <Container className="container-fluid mt-4  bg-light" style={{
                         marginLeft: "30px",
                         maxWidth: "1500px",
-                        maxHeight: "85vh",
+                        maxHeight: "15vh",
+                        marginRight: "0px",
+                        padding: "10px"
+                    }}>
+                        {props.viewname === 'home'? <GlobalDropDown onsubmitprop = {onSubmit} />:<></> }
+                        {props.viewname !== 'home' && props.viewname !== 'recommendations'? <LocalDropDown passview={props.viewname}/>: <></>}
+                    </Container>
+                    <Container className="container-fluid mt-4  bg-light" style={{
+                        marginLeft: "30px",
+                        maxWidth: "1500px",
+                        maxHeight: "90vh",
                         marginRight: "0px",
                         padding: "10px"
                     }}>
@@ -125,14 +133,10 @@ export default function Navs(props) {
                         <div style={{
                             maxWidth: "1400px",
                             marginTop: "5px",
-
+                            
                         }}>
-
-                            {props.viewname === 'salesview' ? <Salesview /> : <></>}
-                            {props.viewname === 'contentview' ? <Contenthealth /> : <></>}
-                            {props.viewname === 'ratingsview' ? <Ratings /> : <></>}
-                            {props.viewname === 'inventoryview' ? <Contenthealth /> : <></>}
-
+                            {props.content}
+                            
                         </div>
                     </Container>
                 </div>
@@ -140,4 +144,10 @@ export default function Navs(props) {
 
         </div>
     )
+    }
+
+    else{
+        window.location.href="/login";
+    }
+            
 }

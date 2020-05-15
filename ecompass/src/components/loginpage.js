@@ -1,0 +1,131 @@
+import React from 'react'
+import { useState } from 'react';
+import { FaLock, FaUnlock, FaSignInAlt } from 'react-icons/fa'
+import { Form, Button } from 'react-bootstrap';
+import studio from '../studio.PNG';
+
+
+export default function Loginpage(props) {
+    const [username, setusername] = useState('')
+    const [userflag, setuserflag] = useState(null)
+    const [password, setpassword] = useState('')
+    const [passwordflag, setpasswordflag] = useState(null)
+
+    localStorage.clear()
+
+    function validateuser(e){
+        if(e.target.value === 'tredence')
+        {
+            setusername(e.target.value);
+            setuserflag(false);
+        }
+        else{
+            setuserflag(true)
+        }
+    }
+
+    function validatepassword(e){
+        if(e.target.value === 'tredence')
+        {
+            setpassword(e.target.value);
+            setpasswordflag(false);
+        }
+        else{
+            setpasswordflag(true)
+        }
+    }
+
+    function setlocal(){
+        if(passwordflag === false && userflag === false){
+            console.log("HERE")
+            localStorage.setItem('loggedIn', true)
+            window.history.pushState('', '', "/")
+        }
+        else{
+            localStorage.setItem('loggedIn', false)
+        }
+        
+    }
+    return (
+        <div className="row col-6 col-md-8 ml-auto mr-auto" style={{
+            marginTop: "200px",
+            padding: "5px",
+            boxShadow:"1px 1px 7px 3px lightgray"
+           
+        }}>
+            <div className="col-md-8 bg-light" style={{
+                // alignItems: "center",
+                margin:"auto",
+                padding: "50px"
+
+            }}>
+                { userflag === true || passwordflag === true ?
+                 <FaLock style={{
+                    color: "orange",
+                    alignItems: "center",
+                    margin:"auto",
+                    width: "200px",
+                    height: "200px"
+                }}></FaLock> :
+                <FaLock style={{
+                    color: "grey",
+                    alignItems: "center",
+                    margin:"auto",
+                    width: "200px",
+                    height: "200px"
+                }}></FaLock> }
+
+
+                { passwordflag === false && userflag === false ? 
+                <FaUnlock style={{
+                    alignItems: "center",
+                    color: "lightgreen",
+                    marginLeft:"150px",
+                    width: "200px",
+                    height: "200px"
+                }}></FaUnlock> :
+                <FaUnlock style={{
+                    alignItems: "center",
+                    color: "grey",
+                    marginLeft:"150px",
+                    width: "200px",
+                    height: "200px"
+                }}></FaUnlock> }
+            </div>
+
+            <Form className="col-6 col-md-3 ml-auto mr-auto mb-4" style={{
+                marginTop: "30px",               
+            }}>
+                
+                <div>
+                    <img src={studio}></img>
+                </div>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email username</Form.Label>
+                    <Form.Control type="text" placeholder="Enter username" onKeyUp={validateuser} />
+                    { userflag === true? <Form.Text className="text" style ={{
+                        color: "red"
+                    }}>
+                       username is incorrect
+        </Form.Text>: <></> }
+                </Form.Group>
+
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" onKeyUp={validatepassword}/>
+                    { passwordflag === true? <Form.Text className="text" style ={{
+                        color: "red"
+                    }}>
+                       password is incorrect
+                    </Form.Text>: <></>}
+                </Form.Group>
+                {/* <Form.Group controlId="formBasicCheckbox">
+                    <Form.Check type="checkbox" label="Check me out" />
+                </Form.Group> */}
+                <Button variant="primary" type="submit" onClick={setlocal}>
+                    Login <FaSignInAlt></FaSignInAlt>
+                </Button>
+            </Form>
+        </div>
+    )
+}
