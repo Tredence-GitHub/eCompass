@@ -15,9 +15,9 @@ export default function LocalDropDown(props){
     const [productCategory,  setProductCategory] = useState('')
     const [product, setProduct] = useState('')
 
-    const content1 = useSelector(state => state.regular.filter1)
-    const dispatch = useDispatch()
-    const store = useStore()
+    // const content1 = useSelector(state => state.regular.filter1)
+    // const dispatch = useDispatch()
+    // const store = useStore()
     
     useEffect(() => {
         setProductCategory(localStorage.getItem('localfilter1'))
@@ -45,10 +45,10 @@ export default function LocalDropDown(props){
                     marginLeft: "auto",
                 }}>
                     <option>{ productCategory !== null ? productCategory : 'Select a Product Category'} </option>
-                    <option value="PNG" >PNG </option>
-                    <option value="JPEG">JPEG </option>
-                    <option value="PDF">PDF </option>
-                    <option value="SVG">SVG  </option>
+                    <option value="category1">category1</option>
+                    <option value="category2">category2</option>
+                    <option value="category3">category3</option>
+                    <option value="category4">category4</option>
                 </select>
                 
 
@@ -59,10 +59,10 @@ export default function LocalDropDown(props){
                     marginRight: "5px"
                 }}>
                     <option>{ product !== null ? product :  'Select a Product'}</option>
-                    <option value="Action">Action</option>
-                    <option value="One">One</option>
-                    <option value="Two">Two</option>
-                    <option value="Three">Three</option>
+                    <option value="product1">product1</option>
+                    <option value="product2">product2</option>
+                    <option value="product3">product3</option>
+                    <option value="product4">product4</option>
                 </select>
 
                 <Button type="submit" variant="outline-primary" style={{

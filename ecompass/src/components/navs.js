@@ -3,7 +3,7 @@ import logo from '../logo.png';
 import studio from '../studio.PNG';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaHamburger, FaList, FaUser, FaHeartbeat, FaSignOutAlt, FaHome, FaChartBar, FaStar, FaBoxOpen, FaPrescription, FaGlobe } from 'react-icons/fa';
+import { FaHamburger, FaList, FaUser, FaHeartbeat, FaSignOutAlt, FaHome, FaChartBar, FaStar, FaBoxOpen, FaPrescription, FaGlobe, FaSadTear, FaRegSadCry, FaEnvelopeOpenText, FaRegBell, FaBellSlash, FaBan, FaUserAltSlash, FaUserSlash } from 'react-icons/fa';
 import Salesview from './salesview';
 import Contenthealth from './contenthealth';
 import Inventory from './inventory';
@@ -18,15 +18,16 @@ export default function Navs(props) {
         props.onDropDownSubmit(value);
     }
 
-    if(localStorage.getItem('loggedIn'))
-    {
+   if(localStorage.getItem('loggedIn') === 'true')
+   {
+    console.log(props.logged)
     return (
         <div>
             
             <Navbar bg="light" variant="light" style={{
                 boxShadow: "0px 1px 7px 3px lightgrey"
             }}>
-                <Navbar.Brand href="#home" ><img src={logo} style={{
+                <Navbar.Brand href="/home" ><img src={logo} style={{
                     width: "100px",
                     height: "50px",
                     marginRight: "50px"
@@ -40,19 +41,14 @@ export default function Navs(props) {
                     <Button variant="outline-primary"> {props.logged} Search</Button>
                 </Form>
 
-                <Button className="drop-down" style={{
+                <Link to="/"><Button className="drop-down" style={{
                     marginLeft: "970px"
-                }} variant="light" onClick={(e) => {
-                    e.preventDefault();
-                    localStorage.clear();
-                    window.location.href = "/"
-                }
-
-                } ><FaUser /><FaSignOutAlt style={{
-                    color: "dark-grey"
-                }} />
+                }} variant="light" ><FaUser /><FaSignOutAlt style={{
+                color: "dark-grey"
+            }}  />
 
                 </Button>
+            </Link>
             </Navbar>
 
             <Container className="row" style={{
@@ -77,12 +73,30 @@ export default function Navs(props) {
 
                             <ul>
                                 <img className="mb-4" src={studio} style={{ width: "100px", height: "40px" }} />
-                                <li style={{ listStyle: "none" }} id="l1" ><Nav.Link href="/" ><span><FaHome></FaHome></span> Home</Nav.Link></li>
-                                <li style={{ listStyle: "none" }}><Nav.Link href="/salesview"><span><FaChartBar></FaChartBar></span> Sales View</Nav.Link></li>
-                                <li style={{ listStyle: "none" }}> <Nav.Link href="/contentview"><span><FaHeartbeat></FaHeartbeat></span> Content Health View</Nav.Link></li>
-                                <li style={{ listStyle: "none" }}> <Nav.Link href="/ratingsview"><span><FaStar></FaStar></span> Ratings & Reviews View</Nav.Link></li>
-                                <li style={{ listStyle: "none" }}> <Nav.Link href="/inventoryview"><span><FaBoxOpen></FaBoxOpen></span> Inventory Management View</Nav.Link></li>
-                                <li style={{ listStyle: "none" }}> <Nav.Link href="/recommendations"><span><FaPrescription></FaPrescription></span> Recommendations</Nav.Link></li>
+                                <li style={{ listStyle: "none" }} id="l1" ><Link to="/home" style={{
+                                    textDecorationLine: "none",
+                                    padding: "auto"
+                                }}><span><FaHome></FaHome></span> Home</Link></li>
+                                <li style={{ listStyle: "none", marginTop:"10px" }}><Link to="/salesview" style={{
+                                    textDecorationLine: "none",
+                                    
+                                }}><span><FaChartBar></FaChartBar></span> Sales View</Link></li>
+                                <li style={{ listStyle: "none", marginTop:"10px"  }}> <Link to="/contentview" style={{
+                                    textDecorationLine: "none",
+                                    
+                                }}><span><FaHeartbeat></FaHeartbeat></span> Content Health View</Link></li>
+                                <li style={{ listStyle: "none", marginTop:"10px"  }}> <Link to="/ratingsview" style={{
+                                    textDecorationLine: "none",
+                                    
+                                }}><span><FaStar></FaStar></span> Ratings & Reviews View</Link></li>
+                                <li style={{ listStyle: "none", marginTop:"10px"  }}> <Link to="/inventoryview" style={{
+                                    textDecorationLine: "none",
+                                    
+                                }}><span><FaBoxOpen></FaBoxOpen></span> Inventory Management View</Link></li>
+                                <li style={{ listStyle: "none", marginTop:"10px"  }}> <Link to="/home" style={{
+                                    textDecorationLine: "none",
+                                    
+                                }}><span><FaPrescription></FaPrescription></span> Recommendations</Link></li>
 
                             </ul>
                         </Container>
@@ -145,9 +159,39 @@ export default function Navs(props) {
         </div>
     )
     }
-
     else{
-        window.location.href="/login";
+        return(
+           
+        <div className="row col-6 col-md-8 ml-auto mr-auto" style={{
+            marginTop: "200px",
+            padding: "5px",
+            boxShadow:"1px 1px 1px 1px lightgray"
+           
+        }}>
+        <div className="row">
+            <div><FaUserSlash style={{
+                width: "300px",
+                height: "300px",
+                color: "silver",
+                marginLeft: "50px"
+            }}>
+                
+            </FaUserSlash> </div>
+            <div style={{
+                fontFamily: "serif",
+                fontSize: "30pt",
+                marginTop: "100px"
+            }}>
+            Unuthorized Access <FaBan></FaBan> Please <Link to="/"> Login</Link>
+            </div>
+        </div>
+            
+          
+        
+        </div>
+            
+        )
     }
+
             
 }

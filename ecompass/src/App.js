@@ -17,13 +17,13 @@ function App(props) {
 
   let viewname = "";
   const [value, setValue] = useState('');
-  const [loggedIn, setL] = useState(false);
+  const [loggedIn, setL] = useState('');
 
 
   function setlogin(){
     console.log("CAME HERE BROOO")
-    setL(localStorage.getItem('loggedIn'))
-    console.log(loggedIn)
+    setL('micKeyMouz!e');
+    // window.history.pushState('', '', "/");
   }
 
   function onDropDownSubmit(value){
@@ -35,15 +35,15 @@ function App(props) {
   return (
     <div className="App">
        <Router>
-         <Route exact path="/login" onlogin = {setlogin}  render={()=> (
+         <Route exact path="/" onlogin = {setlogin} render={()=> (
            <Loginpage/>
          )}>
 
          </Route>
 
         
-         <Route exact path = "/" render={ ()=> (
-              <Navs  viewname = "home" logged = {loggedIn} onDropDownSubmit = {onDropDownSubmit} content={ <Landing /> }/>
+         <Route exact path = "/home" render={ ()=> (
+              <Navs  viewname = "home" logged = {loggedIn}  onDropDownSubmit = {onDropDownSubmit} content={ <Landing /> }/>
             ) 
                } > 
          </Route> 

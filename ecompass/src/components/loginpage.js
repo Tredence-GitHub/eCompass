@@ -35,11 +35,11 @@ export default function Loginpage(props) {
         }
     }
 
-    function setlocal(){
+    function setlocal(e){
         if(passwordflag === false && userflag === false){
             console.log("HERE")
             localStorage.setItem('loggedIn', true)
-            window.history.pushState('', '', "/")
+            window.history.pushState(Math.random(), 'dt', "/home");
         }
         else{
             localStorage.setItem('loggedIn', false)
