@@ -20,35 +20,45 @@ export default function Navs(props) {
 
    if(localStorage.getItem('loggedIn') === 'true')
    {
-    console.log(props.logged)
+    // console.log(props.logged)
     return (
         <div>
             
             <Navbar bg="light" variant="light" style={{
                 boxShadow: "0px 1px 7px 3px lightgrey"
             }}>
+                <Row className="col-md-12 ">
+                    <div>
                 <Navbar.Brand href="/home" ><img src={logo} style={{
                     width: "100px",
                     height: "50px",
                     marginRight: "50px"
                 }} /></Navbar.Brand>
+
+                </div>
+                <div className="mr-3 mt-3">
                 <Button variant="light"  ><FaList style={{
                     color: "dark-grey"
                 }} /></Button>
-
-                <Form inline>
-                    <FormControl type="text" placeholder="Search" className="ml-sm-4" />
+                </div>
+                <div>
+                <Form inline className="mr-auto mt-3">
+                    <FormControl type="text" placeholder="Search" className="ml-md-4 mr-auto" />
                     <Button variant="outline-primary"> {props.logged} Search</Button>
                 </Form>
-
+                </div>
+                <div className="ml-auto mt-3">
                 <Link to="/"><Button className="drop-down" style={{
-                    marginLeft: "970px"
+                    marginLeft: "auto",
+                    marginRight: "5px"
                 }} variant="light" ><FaUser /><FaSignOutAlt style={{
                 color: "dark-grey"
             }}  />
 
                 </Button>
             </Link>
+            </div>
+            </Row>
             </Navbar>
 
             <Container className="row" style={{
@@ -61,7 +71,7 @@ export default function Navs(props) {
             }}>
 
                 <div style={{
-                    overflow: "auto",
+                    overflow: "",
                 }}>
                     <Nav className="sidebar bg-light" style={{
                         width: "30vh",
