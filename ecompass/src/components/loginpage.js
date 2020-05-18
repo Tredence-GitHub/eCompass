@@ -80,25 +80,27 @@ export default function Loginpage(props) {
                 <FaUnlock style={{
                     alignItems: "center",
                     color: "lightgreen",
-                    marginLeft:"150px",
+                    marginLeft:"50px",
                     width: "200px",
                     height: "200px"
                 }}></FaUnlock> :
                 <FaUnlock style={{
                     alignItems: "center",
                     color: "grey",
-                    marginLeft:"150px",
+                    marginLeft:"50px",
                     width: "200px",
                     height: "200px"
                 }}></FaUnlock> }
             </div>
 
-            <Form className="col-6 col-md-3 ml-auto mr-auto mb-4" style={{
+            <Form className="col-md-3 ml-2 mr-auto mb-4" style={{
                 marginTop: "30px",               
             }}>
                 
                 <div>
-                    <img src={studio}></img>
+                    <img src={studio} style={{
+                        width: "200px"
+                    }}></img>
                 </div>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email username</Form.Label>

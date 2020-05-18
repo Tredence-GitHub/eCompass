@@ -1,19 +1,9 @@
 import React from 'react';
-import { Container, Button, Tabs, Tab } from 'react-bootstrap';
-import { FaFilter } from 'react-icons/fa';
-import {useEffect, useState} from 'react';
-import { connect, useDispatch, useStore } from 'react-redux';
+import { useState, useEffect } from 'react';
+import {  Tabs, Tab } from 'react-bootstrap';
+import { Spinner } from 'react-bootstrap';
 import Iframe from 'react-iframe';
-import { useSelector } from 'react-redux';
 
-const mapStateToProps = (state) => {
-    return{
-        content1: state.content1,
-        content2: state.content2
-    }
-}
-
-connect(mapStateToProps)(Salesview);
 
 export default function Salesview(props) {    
 
@@ -30,15 +20,16 @@ export default function Salesview(props) {
     useEffect(() => {
        setfilter1(localStorage.getItem('filter1'))
        setfilter2(localStorage.getItem('filter2'))
-       setvarValue(localStorage.getItem('var'))
     //    setvarValue(props.filters);
        setLoading(false);
     }, []);
 
     if(loading){
         return(
-            <div>
-                Loading ....
+            <div className="mr-auto ml-auto d-flex justify-content-center">
+                <Spinner className="spinner-grow spinner-grow-sm text-primary" role="status"></Spinner>
+                <Spinner className="spinner-grow spinner-grow-sm text-success" role="status"></Spinner>
+                <Spinner className="spinner-grow spinner-grow-sm text-warning" role="status"></Spinner>
             </div>
         )
     }
@@ -49,29 +40,35 @@ else{
         <Tabs defaultActiveKey="home" transition={false} id="noanim-tab-example">
             
             <Tab eventKey="home" title="Product Level">
-            <div className="" style={{
-                marginTop: "10px"
+            <div className="container-fluid" style={{
+                marginTop: "10px",
+                padding: "0px",
+                height: "100vh",
+                marginRight: "0px",
+                
             }}>
         <Iframe 
             url="https://app.powerbi.com/reportEmbed?reportId=786263b8-b02b-4c87-8130-6917e0f65743&autoAuth=true&ctid=927e65b8-7ad7-48db-a3c6-c42a67c100d6&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D&filterPaneEnabled=false&navContentPaneEnabled=false"
             frameBorder="0" 
-            width="1250px"
-            height="500px"
-            allowFullScreen="false"
+            width= "100%"
+            height= "98%"
+            allowFullScreen="true"
         ></Iframe>
 
     </div>
             </Tab>
             <Tab eventKey="profile" title="SKU Level">
             <div className="" style={{
-                marginTop: "10px"
+                marginTop: "10px",
+                height: "100vh",
+                paddingBottom: "10px"
             }}>
         <Iframe className=""
             url="https://app.powerbi.com/reportEmbed?reportId=d6b347b6-841e-4be6-a18e-2a554d3f42ea&autoAuth=true&ctid=927e65b8-7ad7-48db-a3c6-c42a67c100d6&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D&filterPaneEnabled=false&navContentPaneEnabled=false"
             frameBorder="0" 
-            width="1250px"
-            height="500px"
-            allowFullScreen="false"
+            width="100%"
+            height = "98%"
+            allowFullScreen="true"
         ></Iframe>
 
     </div>

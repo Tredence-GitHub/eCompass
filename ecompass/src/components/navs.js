@@ -3,7 +3,7 @@ import logo from '../logo.png';
 import studio from '../studio.PNG';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaHamburger, FaList, FaUser, FaHeartbeat, FaSignOutAlt, FaHome, FaChartBar, FaStar, FaBoxOpen, FaPrescription, FaGlobe, FaSadTear, FaRegSadCry, FaEnvelopeOpenText, FaRegBell, FaBellSlash, FaBan, FaUserAltSlash, FaUserSlash } from 'react-icons/fa';
+import { FaHamburger, FaList, FaUser, FaHeartbeat, FaSignOutAlt, FaHome, FaChartBar, FaStar, FaBoxOpen, FaPrescription, FaGlobe, FaSadTear, FaRegSadCry, FaEnvelopeOpenText, FaRegBell, FaBellSlash, FaBan, FaUserAltSlash, FaUserSlash, FaSearch } from 'react-icons/fa';
 import Salesview from './salesview';
 import Contenthealth from './contenthealth';
 import Inventory from './inventory';
@@ -25,12 +25,13 @@ export default function Navs(props) {
         <div>
             
             <Navbar bg="light" variant="light" style={{
-                boxShadow: "0px 1px 7px 3px lightgrey"
+                boxShadow: "0px 1px 7px 3px lightgrey",
+                width:"100%"
             }}>
                 <Row className="col-md-12 ">
                     <div>
                 <Navbar.Brand href="/home" ><img src={logo} style={{
-                    width: "100px",
+                    width: "110px",
                     height: "50px",
                     marginRight: "50px"
                 }} /></Navbar.Brand>
@@ -42,15 +43,15 @@ export default function Navs(props) {
                 }} /></Button>
                 </div>
                 <div>
-                <Form inline className="mr-auto mt-3">
-                    <FormControl type="text" placeholder="Search" className="ml-md-4 mr-auto" />
-                    <Button variant="outline-primary"> {props.logged} Search</Button>
+                <Form inline className="mr-auto xs-4 mt-3">
+                    <FormControl type="text" size="sm" placeholder="Search" className="ml-xs-4 mr-auto" />
+                    <Button variant="outline-primary" size="sm" ><FaSearch > Search</FaSearch></Button>
                 </Form>
                 </div>
                 <div className="ml-auto mt-3">
                 <Link to="/"><Button className="drop-down" style={{
                     marginLeft: "auto",
-                    marginRight: "5px"
+                    marginRight: "0px"
                 }} variant="light" ><FaUser /><FaSignOutAlt style={{
                 color: "dark-grey"
             }}  />
@@ -61,70 +62,67 @@ export default function Navs(props) {
             </Row>
             </Navbar>
 
-            <Container className="row" style={{
-                marginRight: "0px",
+            <div className="row " style={{
+                height: "100vh",
                 marginLeft: "0px",
                 marginTop: "0px",
-                padding: "0px 0px 0px",
-                minWidth: "1550px",
+                width: "100%",
+                // backgroundColor: "blue"
 
             }}>
 
-                <div style={{
+                <div className="col-2" id="bar" style={{
                     overflow: "",
-                }}>
-                    <Nav className="sidebar bg-light" style={{
-                        width: "30vh",
-                        minHeight: "105vh",
-                        marginLeft: "0px",
-                        boxShadow: "0px 0px 7px 3px lightgrey"
+                    height: "150vh",
+                    padding: "0px"
+                }}> 
+                    <div className="sidebar container-fluid bg-light" style={{
+                        overflow: "",
+                        height: "150vh",
                     }}>
-                        <Container className=" ml-0 mt-4 mb-4 ">
+                        <Container className=" ml-0  ">
 
                             <ul>
-                                <img className="mb-4" src={studio} style={{ width: "100px", height: "40px" }} />
+                                <img className="mb-4" src={studio} style={{ width: "100px", marginTop: "30px", height: "40px" }} />
                                 <li style={{ listStyle: "none" }} id="l1" ><Link to="/home" style={{
                                     textDecorationLine: "none",
                                     padding: "auto"
                                 }}><span><FaHome></FaHome></span> Home</Link></li>
-                                <li style={{ listStyle: "none", marginTop:"10px" }}><Link to="/salesview" style={{
+                                <li style={{ listStyle: "none", marginTop:"20px" }}><Link to="/salesview" style={{
                                     textDecorationLine: "none",
                                     
                                 }}><span><FaChartBar></FaChartBar></span> Sales View</Link></li>
-                                <li style={{ listStyle: "none", marginTop:"10px"  }}> <Link to="/contentview" style={{
+                                <li style={{ listStyle: "none", marginTop:"20px"  }}> <Link to="/contentview" style={{
                                     textDecorationLine: "none",
                                     
                                 }}><span><FaHeartbeat></FaHeartbeat></span> Content Health View</Link></li>
-                                <li style={{ listStyle: "none", marginTop:"10px"  }}> <Link to="/ratingsview" style={{
+                                <li style={{ listStyle: "none", marginTop:"20px"  }}> <Link to="/ratingsview" style={{
                                     textDecorationLine: "none",
                                     
                                 }}><span><FaStar></FaStar></span> Ratings & Reviews View</Link></li>
-                                <li style={{ listStyle: "none", marginTop:"10px"  }}> <Link to="/inventoryview" style={{
+                                <li style={{ listStyle: "none", marginTop:"20px"  }}> <Link to="/inventoryview" style={{
                                     textDecorationLine: "none",
                                     
                                 }}><span><FaBoxOpen></FaBoxOpen></span> Inventory Management View</Link></li>
-                                <li style={{ listStyle: "none", marginTop:"10px"  }}> <Link to="/home" style={{
+                                <li style={{ listStyle: "none", marginTop:"20px"  }}> <Link to="/home" style={{
                                     textDecorationLine: "none",
                                     
                                 }}><span><FaPrescription></FaPrescription></span> Recommendations</Link></li>
 
                             </ul>
                         </Container>
-                    </Nav>
+                    </div>
                 </div>
 
-
-
-                <div style={{
-                    minWidth: "1300px",
-                    marginRight: "0px"
+                <div className="container-fluid col-8 col-xl-10" style={{
+                     marginLeft: "0px",
+                     marginTop: "0px",
+                    //  backgroundColor: "pink"
                 }}>
-
-                    <Container className="container mt-4 mb-1 bg-light" style={{
-                        marginLeft: "30px",
-                        maxWidth: "1500px",
+                    <Container className="container-fluid col-xl-12 mt-4 mb-1 bg-light" style={{
+                        marginLeft: "0px",
+                        width: "100%",
                         marginRight: "0px",
-                        height: "50px",
                         padding: "2px",
 
                     }} >
@@ -136,35 +134,31 @@ export default function Navs(props) {
 
 
                     </Container >
-                    <Container className="container-fluid mt-4  bg-light" style={{
-                        marginLeft: "30px",
-                        maxWidth: "1500px",
+                    <Container className="container-fluid mt-4 col-xl-12  bg-light" style={{
+                        marginLeft: "0px",
+                        width: "100%",
                         maxHeight: "15vh",
                         marginRight: "0px",
-                        padding: "10px"
+                        paddingRight: "20px"
                     }}>
                         {props.viewname === 'home'? <GlobalDropDown onsubmitprop = {onSubmit} />:<></> }
                         {props.viewname !== 'home' && props.viewname !== 'recommendations'? <LocalDropDown passview={props.viewname}/>: <></>}
                     </Container>
-                    <Container className="container-fluid mt-4  bg-light" style={{
-                        marginLeft: "30px",
-                        maxWidth: "1500px",
-                        maxHeight: "90vh",
+                    <Container className="container-fluid col-xl-12 mt-4  bg-light" style={{
+                        marginLeft: "0px",
+                        width: "100%",
+                        // maxHeight: "90vh",
                         marginRight: "0px",
-                        padding: "10px"
                     }}>
 
-                        <div style={{
-                            maxWidth: "1400px",
-                            marginTop: "5px",
-                            
-                        }}>
+                        
                             {props.content}
                             
-                        </div>
+                        
                     </Container>
-                </div>
-            </Container>
+                    </div>
+
+            </div>
 
         </div>
     )
@@ -172,7 +166,7 @@ export default function Navs(props) {
     else{
         return(
            
-        <div className="row col-6 col-md-8 ml-auto mr-auto" style={{
+        <div className="row col-6 col-md-6 ml-auto mr-auto" style={{
             marginTop: "200px",
             padding: "5px",
             boxShadow:"1px 1px 1px 1px lightgray"
@@ -180,8 +174,8 @@ export default function Navs(props) {
         }}>
         <div className="row">
             <div><FaUserSlash style={{
-                width: "300px",
-                height: "300px",
+                width: "200px",
+                height: "200px",
                 color: "silver",
                 marginLeft: "50px"
             }}>
@@ -189,7 +183,7 @@ export default function Navs(props) {
             </FaUserSlash> </div>
             <div style={{
                 fontFamily: "serif",
-                fontSize: "30pt",
+                fontSize: "20pt",
                 marginTop: "100px"
             }}>
             Unuthorized Access <FaBan></FaBan> Please <Link to="/"> Login</Link>

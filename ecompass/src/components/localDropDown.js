@@ -38,6 +38,8 @@ export default function LocalDropDown(props){
          <Row>
          {/* <label>{content1}  {console.log('gob pg ----  ', store.getState())}  </label> */}
                 <select onChange={handleDropdown} style={{
+                    padding:"3px",
+                    height:"30px",
                     width: "200px",
                     border: "none",
                     boxShadow: "0px 1px 7px 2px lightgray",
@@ -53,6 +55,8 @@ export default function LocalDropDown(props){
                 
 
                 <select onChange={handleDropdown2} style={{
+                    padding:"3px",
+                    height:"30px",
                     width: "200px",
                     border: "none",
                     boxShadow: "0px 1px 7px 2px lightgray",
@@ -65,8 +69,8 @@ export default function LocalDropDown(props){
                     <option value="product4">product4</option>
                 </select>
 
-                <Button type="submit" variant="outline-primary" style={{
-                    marginRight: "5px"
+                <Button type="submit" variant="outline-primary" size="sm" style={{
+                    marginRight: "10px"
                 }} onClick={
                     (e) => {
                         e.preventDefault();
@@ -76,7 +80,7 @@ export default function LocalDropDown(props){
                         // dispatch({type:'UPDATE_FILTERS', info: merchant, info2: product})
                     }
                 }><FaFilter></FaFilter></Button>
-                <Button type="submit" variant="outline-primary" onClick={
+                <Button type="submit" variant="outline-primary" size="sm" onClick={
                     (e) => {
                         e.preventDefault();
                         // {props.onsubmitprop( [merchant, product] );}
