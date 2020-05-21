@@ -13,29 +13,32 @@
     <meta name="msapplication-tap-highlight" content="no">
 
     <link href="./main.css" rel="stylesheet">
+    <style>
+        
+    </style>
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
-<body>
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+<body style="background: rgb(31, 30, 30);">
+    <div class="modal fade bd-example-modal-lg bg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
+        <div class="modal-dialog modal-lg bg-dark text-white">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header bg-dark text-white">
                     <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-filter"></i> Add Filters</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body bg-dark text-white">
 
                     <form class="">
                         <div class="row">
                             <div class="col-6">
-                                <div class="position-relative form-group">
+                                <div class="position-relative form-group ">
                                     <label for="exampleSelect" class="">Select Product Category</label>
-                                    <select name="select" id="exampleSelect" class="form-control">
+                                    <select name="select" id="exampleSelect" class="form-control bg-dark text-white">
                                         <option>Product Category 1</option>
                                         <option>Product Category 2</option>
                                         <option>Product Category 3</option>
@@ -47,7 +50,7 @@
                             <div class="col-6">
                                 <div class="position-relative form-group">
                                     <label for="exampleSelectMulti" class="">Select Product</label>
-                                    <select name="select" id="exampleSelect" class="form-control">
+                                    <select name="select" id="exampleSelect" class="form-control bg-dark text-white">
                                         <option>Product 1</option>
                                         <option>Product 2</option>
                                         <option>Product 3</option>
@@ -67,7 +70,7 @@
             </div>
         </div>
     </div>
-    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+    <div class="app-container app-theme-dark body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
                 <a href="index.html">
@@ -128,7 +131,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="app-header-right">
+                <div class="app-header-right bg-dark text-white">
                     <div class="header-btn-lg pr-0">
                         <div class="widget-content p-0">
                             <div class="widget-content-wrapper">
@@ -165,8 +168,8 @@
                 </div>
             </div>
         </div>
-        <div class="app-main">
-            <div class="app-sidebar sidebar-shadow">
+        <div class="app-main bg-dark text-white">
+            <div class="app-sidebar sidebar-shadow bg-dark">
                 <div class="app-header__logo">
                     <div class="logo-src"></div>
                     <div class="header__pane ml-auto">
@@ -199,55 +202,55 @@
                         </button>
                     </span>
                 </div>
-                <div class="scrollbar-sidebar">
-                    <div class="app-sidebar__inner">
-                        <ul class="vertical-nav-menu">
+                <div class="scrollbar-sidebar text-white">
+                    <div class="app-sidebar__inner text-white">
+                        <ul class="vertical-nav-menu text-white">
                             <img src="assets/images/studio.PNG" class="brandlogo">
                             <li class=" ">
-                                <a href="index.html">
+                                <a href="index.html" class="text-white">
                                     <i class="metismenu-icon pe-7s-diamond"></i>
                                     360° View
                                 </a>
                             </li>
                             <li>
-                                <a href="sales.html">
+                                <a href="sales.html" class="text-white">
                                     <i class="metismenu-icon pe-7s-graph2"></i>
                                     Sales
                                 </a>
                             </li>
                             <li>
-                                <a href="content-health.html">
+                                <a href="content-health.html" class="text-white">
                                     <i class="metismenu-icon pe-7s-graph2"></i>
                                     Content Health
                                 </a>
                             </li>
                             <li>
-                                <a href="ratings-and-reviews.html">
+                                <a href="ratings-and-reviews.html" class="text-white">
                                     <i class="metismenu-icon pe-7s-graph2"></i>
                                     Rating & Reviews
                                 </a>
                             </li><li>
-                                <a href="inventory.html">
+                                <a href="inventory.html" class="text-white">
                                     <i class="metismenu-icon pe-7s-graph2"></i>
                                     Inventory Management
                                 </a>
                             </li>	
                             <li class="mm-active">
-                                <a href="recommendations.html">
+                                <a href="recommendations.html" class="text-white">
                                     <i class="metismenu-icon pe-7s-ticket"></i>
                                     Recommendations
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="metismenu-icon pe-7s-config"></i>
+                                    <i class="metismenu-icon pe-7s-config" class="text-white"></i>
                                     Settings
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul>
                                     <li>
                                         <a href="#">
-                                            <i class="metismenu-icon"></i>
+                                            <i class="metismenu-icon" class="text-white"></i>
                                             Data Sources
                                         </a>
                                     </li>
@@ -267,7 +270,7 @@
                     </div>
                 </div>
             </div>
-            <div class="app-main__outer" id="bi-dashboards">
+            <div class="app-main__outer text-white id="bi-dashboards">
                 <div class="app-main__inner">
                     <div class="app-page-title">
                         <div class="page-title-wrapper">
@@ -276,7 +279,7 @@
                                     <i class="pe-7s-ticket icon-gradient bg-mean-fruit">
                                     </i>
                                 </div>
-                                <div>Recommendations
+                                <div class="text-white">Recommendations
                                     <div class="page-title-subheading">Recommendations to increase your sales.
                                     </div>
                                 </div>
@@ -284,140 +287,141 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-lg-12 bg-white">
+                        <div class="col-12 col-lg-12 bg-dark">
 
-                            <div class="app-container mt-4">
+                            <div class="app-container bg-dark mt-4">
                                 <div class="btn-actions-pane-right">
                                 <span class="add-filter" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-filter"></i>Add Filter</span> 											
                             </div>
 
-                                <table id="example" class="table table-striped table-bordered display mt-4"
-                                    style="width: 100%; ">
-                                    <thead>
-                                        <tr>
+                                <table id="example" class="table table-bordered bg-dark text-white display"
+                                    style="width: 100%; border: 0.5px;">
+                                    <thead style="margin-bottom: 0px;">
+                                       
                                             <th>Product Group</th>
                                             <th>SKU</th>
                                             <th>Sales Recommendations</th>
                                             <th>Content Health Recommendations</th>
                                             <th>Ratings & Reviews Recommendations</th>
+                                        
 
                                     </thead>
-                                    <tbody>
+                                    <tbody class="bg-dark text-white">
                                         <tr>
-                                            <td>Product Group1</td>
-                                            <td>SKU 1</td>
-                                            <td> <a class="btn btn-outline-danger btn-sm dir" data-toggle="modal"
+                                            <td class="bg-dark text-white">Product Group1</td>
+                                            <td class="bg-dark text-white">SKU 1</td>
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-danger btn-sm dir" data-toggle="modal"
                                                     data-target="#myModal">Drop In Revenue
                                                 </a> </td>
-                                            <td> <a class="btn btn-outline-info btn-sm ami" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-info btn-sm ami" data-toggle="modal"
                                                     data-target="#myModal">Add more Images
                                                 </a> </td>
-                                            <td> <a class="btn btn-outline-danger btn-sm bapgr" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-danger btn-sm bapgr" data-toggle="modal"
                                                     data-target="#myModal">Below Product Group Rating
                                                 </a> <a class="btn btn-outline-warning btn-sm dr" data-toggle="modal"
                                                     data-target="#myModal">Decline in rating
                                                 </a> </td>
                                         </tr>
                                         <tr>
-                                            <td>Product Group1</td>
-                                            <td>SKU 2</td>
-                                            <td> <a class="btn btn-outline-success btn-sm hi" data-toggle="modal"
+                                            <td class="bg-dark text-white">Product Group1</td>
+                                            <td class="bg-dark text-white">SKU 2</td>
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-success btn-sm hi" data-toggle="modal"
                                                     data-target="#myModal">High Inventory</a>
                                             </td>
-                                            <td> <a class="btn btn-outline-danger btn-sm swb" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-danger btn-sm swb" data-toggle="modal"
                                                     data-target="#myModal">SKU without Buybox
                                                 </a> </td>
-                                            <td> <a class="btn btn-outline-success btn-sm pr" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-success btn-sm pr" data-toggle="modal"
                                                     data-target="#myModal">Positive Reviews
                                                 </a> </td>
                                         </tr>
                                         <tr>
-                                            <td>Product Group1</td>
-                                            <td>SKU 3</td>
-                                            <td> <a class="btn btn-outline-success btn-sm hgs" data-toggle="modal"
+                                            <td class="bg-dark text-white">Product Group1</td>
+                                            <td class="bg-dark text-white">SKU 3</td>
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-success btn-sm hgs" data-toggle="modal"
                                                     data-target="#myModal">High Growth SKU </a>
                                             </td>
-                                            <td> <a class="btn btn-outline-info btn-sm adkd" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-info btn-sm adkd" data-toggle="modal"
                                                     data-target="#myModal">Add more keywords in description
                                                 </a> </td>
-                                            <td> <a class="btn btn-outline-warning btn-sm dr" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-warning btn-sm pr" data-toggle="modal"
                                                     data-target="#myModal">Decline in rating
                                                 </a> </td>
                                         </tr>
                                         <tr>
-                                            <td>Product Group2</td>
-                                            <td>SKU 4</td>
-                                            <td><a class="btn btn-outline-danger btn-sm li" data-toggle="modal"
+                                            <td class="bg-dark text-white">Product Group2</td>
+                                            <td class="bg-dark text-white">SKU 4</td>
+                                            <td class="bg-dark text-white"><a class="btn btn-outline-danger btn-sm li" data-toggle="modal"
                                                     data-target="#myModal">Low Inventory </a></td>
-                                            <td> <a class="btn btn-outline-info btn-sm swb" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-info btn-sm swb" data-toggle="modal"
                                                     data-target="#myModal">Add Brand Name in Title
                                                 </a> </td>
-                                            <td> <a class="btn btn-outline-info btn-sm pr" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-info btn-sm pr" data-toggle="modal"
                                                     data-target="#myModal">Not enough ratings
                                                 </a> </td>
                                         </tr>
                                         <tr>
-                                            <td>Product Group2</td>
-                                            <td>SKU 5</td>
-                                            <td><a class="btn btn-outline-info btn-sm oos" data-toggle="modal"
+                                            <td class="bg-dark text-white">Product Group2</td>
+                                            <td class="bg-dark text-white">SKU 5</td>
+                                            <td class="bg-dark text-white"><a class="btn btn-outline-info btn-sm oos" data-toggle="modal"
                                                     data-target="#myModal">OOS with Inventory in
                                                     Network </a></td>
-                                            <td> <a class="btn btn-outline-info btn-sm swb" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-info btn-sm swb" data-toggle="modal"
                                                     data-target="#myModal">Good Content
                                                 </a> </td>
-                                            <td> <a class="btn btn-outline-danger btn-sm pr" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-danger btn-sm pr" data-toggle="modal"
                                                     data-target="#myModal">Negative Reviews
                                                 </a> </td>
                                         </tr>
                                         <tr>
-                                            <td>Product Group3</td>
-                                            <td>SKU 6</td>
-                                            <td><a class="btn btn-outline-danger btn-sm wow" data-toggle="modal"
+                                            <td class="bg-dark text-white">Product Group3</td>
+                                            <td class="bg-dark text-white">SKU 6</td>
+                                            <td class="bg-dark text-white"><a class="btn btn-outline-danger btn-sm wow" data-toggle="modal"
                                                     data-target="#myModal"> Drop in 
                                                     Gross Retailer Margin </a></td>
-                                            <td> <a class="btn btn-outline-info btn-sm swb" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-info btn-sm swb" data-toggle="modal"
                                                     data-target="#myModal">Add Specs in Title
                                                 </a> </td>
-                                            <td> <a class="btn btn-outline-success btn-sm pr" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-success btn-sm pr" data-toggle="modal"
                                                     data-target="#myModal">Net Rating 4 and above
                                                 </a> </td>
                                         </tr>
                                         <tr>
-                                            <td>Product Group3</td>
-                                            <td>SKU 7</td>
-                                            <td><a class="btn btn-outline-success btn-sm ir" data-toggle="modal"
+                                            <td class="bg-dark text-white">Product Group3</td>
+                                            <td class="bg-dark text-white">SKU 7</td>
+                                            <td class="bg-dark text-white"><a class="btn btn-outline-success btn-sm ir" data-toggle="modal"
                                                     data-target="#myModal">Increase in revenue
                                                 </a></td>
-                                            <td> <a class="btn btn-outline-info btn-sm swb" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-info btn-sm swb" data-toggle="modal"
                                                     data-target="#myModal">Add more Images
                                                 </a> </td>
-                                            <td> <a class="btn btn-outline-danger btn-sm bapgr" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-danger btn-sm bapgr" data-toggle="modal"
                                                     data-target="#myModal">Below Product Group Rating
                                                 </a> </td>
                                         </tr>
                                         <tr>
-                                            <td>Product Group3</td>
-                                            <td>SKU 8</td>
-                                            <td><a class="btn btn-outline-success btn-sm hgs" data-toggle="modal"
+                                            <td class="bg-dark text-white">Product Group3</td>
+                                            <td class="bg-dark text-white">SKU 8</td>
+                                            <td class="bg-dark text-white"><a class="btn btn-outline-success btn-sm hgs" data-toggle="modal"
                                                     data-target="#myModal">High growth SKU </a>
                                             </td>
-                                            <td> <a class="btn btn-outline-danger btn-sm swb" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-danger btn-sm swb" data-toggle="modal"
                                                     data-target="#myModal">SKU without Buybox
                                                 </a> </td>
-                                            <td> <a class="btn btn-outline-info btn-sm pr" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-info btn-sm pr" data-toggle="modal"
                                                     data-target="#myModal">Not Enough Reviews
                                                 </a> </td>
                                         </tr>
                                         <tr>
-                                            <td>Product Group3</td>
-                                            <td>SKU 9</td>
-                                            <td><a class="btn btn-outline-info btn-sm oos" data-toggle="modal"
+                                            <td class="bg-dark text-white">Product Group3</td>
+                                            <td class="bg-dark text-white">SKU 9</td>
+                                            <td class="bg-dark text-white"><a class="btn btn-outline-info btn-sm oos" data-toggle="modal"
                                                     data-target="#myModal">OOS with Inventory in
                                                     Network </a></td>
-                                            <td> <a class="btn btn-outline-info btn-sm swb" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-info btn-sm swb" data-toggle="modal"
                                                     data-target="#myModal">Add more Keywords in Title
                                                 </a> </td>
-                                            <td> <a class="btn btn-outline-danger btn-sm pr" data-toggle="modal"
+                                            <td class="bg-dark text-white"> <a class="btn btn-outline-danger btn-sm pr" data-toggle="modal"
                                                     data-target="#myModal">Net Rating Below 4
                                                 </a> </td>
                                         </tr>
@@ -471,8 +475,15 @@
     <script>
         $(document).ready(function () {
             $('#example').DataTable({
-                "scrollX": true
+                "scrollX": true,
             });
+            $('#example').css('margin-top','1px')
+            $('#example_filter').css('color','white');
+            $('#example_filter').css('margin-botton','1px');
+            $('#example_length').css('color','white');
+            $('#example_length').css('margin-botton','1px');
+            $('#example_info').css('color','white');
+            $('#example_info').css('margin-botton','1px');
              $(".dataTables_length").css('white-space', 'pre-wrap');
         });
         var myRef = {
@@ -510,7 +521,7 @@
                 "title": "We recommend you to add more images"
             },
             "dr":{
-                "src": "https://app.powerbi.com/reportEmbed?reportId=c19766cc-12ac-458f-a26c-73470ec8be93&autoAuth=true&ctid=927e65b8-7ad7-48db-a3c6-c42a67c100d6&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D&autoAuth=true&navContentPaneEnabled=false&filterPaneEnabled=false",
+                "src": "",
                 "title": "Decline in ratings"
             }
         }
