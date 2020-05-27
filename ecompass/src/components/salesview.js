@@ -8,7 +8,7 @@ import Iframe from 'react-iframe';
 export default function Salesview(props) {    
 
     const [varValue, setvarValue] = useState('');
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     // const content1 = useSelector(state => state.regular.filter1);
     // const store = useStore()
@@ -37,13 +37,13 @@ else{
     return (
         <div>
         {/* //  {This is {varValue} --- localStorage -- {filter1} From Global Props --- {content1} ... {props.content1} !! {console.log(store.getState())}} */}
-        <Tabs defaultActiveKey="home" transition={false} id="noanim-tab-example">
+        <Tabs defaultActiveKey="home" variant="dark"  transition={false} id="noanim-tab-example">
             
-            <Tab eventKey="home" title="Product Level">
+            <Tab eventKey="home"  title="Product Group Level">
             <div className="container-fluid" style={{
                 marginTop: "10px",
                 padding: "0px",
-                height: "100vh",
+                height: "90vh",
                 marginRight: "0px",
                 
             }}>
@@ -52,6 +52,9 @@ else{
             frameBorder="0" 
             width= "100%"
             height= "98%"
+            variant = "light"
+            
+            style= {{ "background":"white"}}
             allowFullScreen="true"
         ></Iframe>
 
@@ -60,14 +63,15 @@ else{
             <Tab eventKey="profile" title="SKU Level">
             <div className="" style={{
                 marginTop: "10px",
-                height: "100vh",
+                padding: "0px",
+                height: "90vh",
                 paddingBottom: "10px"
             }}>
         <Iframe className=""
             url="https://app.powerbi.com/reportEmbed?reportId=d6b347b6-841e-4be6-a18e-2a554d3f42ea&autoAuth=true&ctid=927e65b8-7ad7-48db-a3c6-c42a67c100d6&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D&filterPaneEnabled=false&navContentPaneEnabled=false"
             frameBorder="0" 
             width="100%"
-            height = "98%"
+            height = "100%"
             allowFullScreen="true"
         ></Iframe>
 

@@ -3,11 +3,12 @@ import logo from '../logo.png';
 import studio from '../studio.PNG';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaHamburger, FaList, FaUser, FaHeartbeat, FaSignOutAlt, FaHome, FaChartBar, FaStar, FaBoxOpen, FaPrescription, FaGlobe, FaSadTear, FaRegSadCry, FaEnvelopeOpenText, FaRegBell, FaBellSlash, FaBan, FaUserAltSlash, FaUserSlash, FaSearch } from 'react-icons/fa';
+import { FaHamburger, FaList, FaUser, FaHeartbeat, FaSignOutAlt, FaHome, FaChartBar, FaStar, FaBoxOpen, FaPrescription, FaGlobe, FaSadTear, FaRegSadCry, FaEnvelopeOpenText, FaRegBell, FaBellSlash, FaBan, FaUserAltSlash, FaUserSlash, FaSearch, FaFlask } from 'react-icons/fa';
 import Salesview from './salesview';
 import Contenthealth from './contenthealth';
 import Inventory from './inventory';
-import { Navbar, Nav, Form, FormControl, Button, Container, Dropdown, Row, Card } from 'react-bootstrap';
+import { Navbar,  Form, FormControl, Button, Container, Dropdown, Row, Card } from 'react-bootstrap';
+import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import Ratings from './ratings';
 import GlobalDropDown from './globalDropDown';
 import LocalDropDown from './localDropDown';
@@ -23,37 +24,158 @@ export default function Navs(props) {
     // console.log(props.logged)
     return (
         <div>
+            <SideNav className="" style={{
+                backgroundColor: "#191d38",
+                height: "auto",
+                minHeight: "150vh"
+            }}
+    onSelect={(selected) => {
+        // Add your code here
+    }}
+>
+    <SideNav.Toggle />
+    <SideNav.Nav defaultSelected="home">
+        <NavItem eventKey="home">
+            <NavIcon>
+            <Link to="/home"><FaHome style={{
+                                    fontSize: "20pt"
+                                }}>
+                                </FaHome> </Link>
+            </NavIcon>
+            <NavText>
+                Dashboard
+            </NavText>
+        </NavItem>
+        <NavItem eventKey="sales">
+            <NavIcon>
             
-            <Navbar bg="light" variant="light" style={{
-                boxShadow: "0px 1px 7px 3px lightgrey",
+            <Link to="/salesview"> <FaChartBar style={{
+                                    fontSize: "20pt"
+                                }}>  </FaChartBar></Link>
+                                
+            
+            </NavIcon>
+            <NavText>Sales View</NavText>
+        </NavItem>
+        <NavItem eventKey="">
+            <NavIcon>
+            
+            <Link to="/contentview"> <FaHeartbeat style={{
+                                    fontSize: "20pt"
+                                }}>  </FaHeartbeat></Link>
+                                
+            
+            </NavIcon>
+            <NavText>Content Health View</NavText>
+        </NavItem>
+        <NavItem eventKey="">
+            <NavIcon>
+            
+            <Link to="/ratingsview"> <FaStar style={{
+                                    fontSize: "20pt"
+                                }}>  </FaStar></Link>
+                                
+            
+            </NavIcon>
+            <NavText>Ratings & Reviews View</NavText>
+        </NavItem>
+        <NavItem eventKey="inventoryview">
+            <NavIcon>
+            
+            <Link to="/inventoryview"> <FaBoxOpen style={{
+                                    fontSize: "20pt"
+                                }}>  </FaBoxOpen></Link>
+                                
+            
+            </NavIcon>
+            <NavText>Inventory View</NavText>
+        </NavItem>
+        <NavItem eventKey="recommendationsview">
+            <NavIcon>
+            
+             {/* <FaPrescription onClick={(e)=>{
+                 window.location.href="https://tredence-github.github.io/eCompass/recommendations.html"
+             }} style={{
+                                    fontSize: "20pt"
+                                }}>  </FaPrescription> */}
+                <Link to="/recommendations"><FaPrescription  style={{
+                                    fontSize: "20pt"
+                                }}>  </FaPrescription>
+                                </Link>
+            
+            </NavIcon>
+            <NavText>Recommendations View</NavText>
+        </NavItem>
+        <NavItem eventKey="simulator">
+            <NavIcon>
+            
+            <Link to="/simulator" > <FaFlask style={{
+                                    fontSize: "20pt"
+                                }}>  </FaFlask></Link>
+                                
+            
+            </NavIcon>
+            <NavText>Simulator</NavText>
+        </NavItem>
+        {/* <NavItem eventKey="charts">
+            <NavIcon>
+                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
+            </NavIcon>
+            <NavText>
+            {/* <Link to="/home2" style={{
+                                    textDecorationLine: "none",
+                                    padding: "auto"
+                                }}><span></span> Home2</Link> */}
+            {/* </NavText>
+            <NavItem eventKey="charts/linechart">
+                <NavText>
+                    Line Chart
+                </NavText>
+            </NavItem>
+            <NavItem eventKey="charts/barchart">
+                <NavText>
+                    Bar Chart
+                </NavText>
+            </NavItem>
+        </NavItem> */}
+    </SideNav.Nav>
+</SideNav>
+            <Navbar bg="ml-10 col-sm-12" variant="" style={{
+                boxShadow: "0px 1px 7px 0.25px navy",
+                backgroundColor: "#191d30",
+                height: "50px",
                 width:"100%"
             }}>
-                <Row className="col-md-12 ">
+                <Row className="col-sm-12 ">
                     <div>
                 <Navbar.Brand href="/home" ><img src={logo} style={{
-                    width: "110px",
-                    height: "50px",
-                    marginRight: "50px"
+                    width: "90px",
+                    height: "40px",
+                    marginLeft: "50px"
                 }} /></Navbar.Brand>
 
                 </div>
-                <div className="mr-3 mt-3">
-                <Button variant="light"  ><FaList style={{
-                    color: "dark-grey"
-                }} /></Button>
-                </div>
-                <div>
-                <Form inline className="mr-auto xs-4 mt-3">
-                    <FormControl type="text" size="sm" placeholder="Search" className="ml-xs-4 mr-auto" />
-                    <Button variant="outline-primary" size="sm" ><FaSearch > Search</FaSearch></Button>
+                
+                <div className=" col-6 d-flex mr-0 ml-auto mt-1"  style={{
+                    padding: "0px"
+                }}>
+                <Form inline className="flex-right ml-auto mr-2 xs-4 mt-0">
+                    <FormControl type="text" size="sm" placeholder="Search" className="ml-xs-6 " style={{
+                        backgroundColor: "lightgray",
+                        borderRadius: "12px"
+                    }} />
+                    <Button variant="outline-primary" size="sm" style={{
+                        border: "none"
+                    }} ><FaSearch > </FaSearch></Button>
                 </Form>
-                </div>
-                <div className="ml-auto mt-3">
-                <Link to="/"><Button className="drop-down" style={{
-                    marginLeft: "auto",
-                    marginRight: "0px"
-                }} variant="light" ><FaUser /><FaSignOutAlt style={{
-                color: "dark-grey"
+                
+                <Link to="/"><Button className="mt-2 mr-0" variant="none" size="sm" style={{
+                    marginRight: "0px",
+                    border: "none",
+                    // backgroundColor:"none",
+                    color:"aqua",
+                }}><FaUser /><FaSignOutAlt style={{
+                
             }}  />
 
                 </Button>
@@ -62,103 +184,58 @@ export default function Navs(props) {
             </Row>
             </Navbar>
 
-            <div className="row " style={{
-                height: "100vh",
-                marginLeft: "0px",
-                marginTop: "0px",
-                width: "100%",
-                // backgroundColor: "blue"
 
-            }}>
-
-                <div className="col-2" id="bar" style={{
-                    overflow: "",
-                    height: "150vh",
-                    padding: "0px"
-                }}> 
-                    <div className="sidebar container-fluid bg-light" style={{
-                        overflow: "",
-                        height: "150vh",
-                    }}>
-                        <Container className=" ml-0  ">
-
-                            <ul>
-                                <img className="mb-4" src={studio} style={{ width: "100px", marginTop: "30px", height: "40px" }} />
-                                <li style={{ listStyle: "none" }} id="l1" ><Link to="/home" style={{
-                                    textDecorationLine: "none",
-                                    padding: "auto"
-                                }}><span><FaHome></FaHome></span> Home</Link></li>
-                                <li style={{ listStyle: "none", marginTop:"20px" }}><Link to="/salesview" style={{
-                                    textDecorationLine: "none",
-                                    
-                                }}><span><FaChartBar></FaChartBar></span> Sales View</Link></li>
-                                <li style={{ listStyle: "none", marginTop:"20px"  }}> <Link to="/contentview" style={{
-                                    textDecorationLine: "none",
-                                    
-                                }}><span><FaHeartbeat></FaHeartbeat></span> Content Health View</Link></li>
-                                <li style={{ listStyle: "none", marginTop:"20px"  }}> <Link to="/ratingsview" style={{
-                                    textDecorationLine: "none",
-                                    
-                                }}><span><FaStar></FaStar></span> Ratings & Reviews View</Link></li>
-                                <li style={{ listStyle: "none", marginTop:"20px"  }}> <Link to="/inventoryview" style={{
-                                    textDecorationLine: "none",
-                                    
-                                }}><span><FaBoxOpen></FaBoxOpen></span> Inventory Management View</Link></li>
-                                <li style={{ listStyle: "none", marginTop:"20px"  }}> <Link to="/home" style={{
-                                    textDecorationLine: "none",
-                                    
-                                }}><span><FaPrescription></FaPrescription></span> Recommendations</Link></li>
-
-                            </ul>
-                        </Container>
-                    </div>
-                </div>
-
-                <div className="container-fluid col-8 col-xl-10" style={{
-                     marginLeft: "0px",
+                <div className=" col-xl-11 " style={{
+                    padding: "0px",
+                    paddingRight: "0px",
+                     marginLeft: "70px",
                      marginTop: "0px",
-                    //  backgroundColor: "pink"
+                     position: "relative",
                 }}>
-                    <Container className="container-fluid col-xl-12 mt-4 mb-1 bg-light" style={{
+                    <Container fluid className="  mt-4 mb-1 bg" style={{
                         marginLeft: "0px",
                         width: "100%",
                         marginRight: "0px",
-                        padding: "2px",
-
+                        padding: "0px",
+                        paddingRight: "0px",
+                        color: "silver",
+                        fontWeight: "lighter"
                     }} >
-                        {props.viewname === 'home'? <h4><span className="mr-3"><FaGlobe></FaGlobe></span>  360&deg; View</h4> : <h4></h4> }
-                        {props.viewname === 'salesview' ? <h4><span className="mr-3"><FaChartBar></FaChartBar></span>  Sales View</h4> : <h4></h4>}
-                        {props.viewname === 'contentview' ? <h4><span className="mr-3"><FaHeartbeat></FaHeartbeat></span>  Content Health View</h4> : <h4></h4>}
-                        {props.viewname === 'ratingsview' ? <h4><span className="mr-3"><FaStar></FaStar></span>  Review & Ratings View</h4> : <h4></h4>}
-                        {props.viewname === 'inventoryview' ? <h4><span className="mr-3"><FaBoxOpen></FaBoxOpen></span>  Inventory Management View</h4> : <h4></h4>}
-
+                        {/* {props.viewname === 'home'? <h4 style={{ fontWeight: "lighter" }}><span className="mr-3"><FaGlobe></FaGlobe></span> 360&deg; View</h4> : <h4></h4> }
+                        {props.viewname === 'salesview' ? <h4 style={{ fontWeight: "lighter" }}><span className="mr-3"><FaChartBar></FaChartBar></span> Sales View</h4> : <h4></h4>}
+                        {props.viewname === 'contentview' ? <h4 style={{ fontWeight: "lighter" }}><span className="mr-3"><FaHeartbeat></FaHeartbeat></span> Content Health View</h4> : <h4></h4>}
+                        {props.viewname === 'ratingsview' ? <h4 style={{ fontWeight: "lighter" }}><span className="mr-3"><FaStar></FaStar></span> Reviews & Ratings View</h4> : <h4></h4>}
+                        {props.viewname === 'inventoryview' ? <h4 style={{ fontWeight: "lighter" }}><span className="mr-3"><FaBoxOpen></FaBoxOpen></span> Inventory Management View</h4> : <h4></h4>}
+                        {props.viewname === 'recommendations' ? <h4 style={{ fontWeight: "lighter" }}><span className="mr-3"><FaPrescription></FaPrescription></span> Recommendations </h4> : <h4></h4>} */}
 
                     </Container >
-                    <Container className="container-fluid mt-4 col-xl-12  bg-light" style={{
+                    
+                    <Container fluid className=" mt-2  bg" style={{
+                        marginLeft: "0px",
+                        width: "100%",
+                        minHeight: "90vh",
+                        marginRight: "0px",
+                        backgroundColor: "",
+                        // border: "0.25px solid navy"
+                    }}>
+
+<Container fluid className=" mt-3" style={{
                         marginLeft: "0px",
                         width: "100%",
                         maxHeight: "15vh",
                         marginRight: "0px",
-                        paddingRight: "20px"
+                        // paddingRight: "20px"
                     }}>
                         {props.viewname === 'home'? <GlobalDropDown onsubmitprop = {onSubmit} />:<></> }
                         {props.viewname !== 'home' && props.viewname !== 'recommendations'? <LocalDropDown passview={props.viewname}/>: <></>}
-                    </Container>
-                    <Container className="container-fluid col-xl-12 mt-4  bg-light" style={{
-                        marginLeft: "0px",
-                        width: "100%",
-                        // maxHeight: "90vh",
-                        marginRight: "0px",
-                    }}>
-
-                        
+                    </Container >
                             {props.content}
                             
                         
                     </Container>
                     </div>
 
-            </div>
+            {/* </div> */}
 
         </div>
     )

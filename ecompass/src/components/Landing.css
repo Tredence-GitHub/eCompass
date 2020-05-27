@@ -1,0 +1,243 @@
+.card-title {
+    color: ghostwhite;
+}
+
+.h5 {
+    color: whitesmoke;
+}
+
+.h6 {
+    color: whitesmoke;
+}
+
+.target {
+    /* background-color: rgb(10, 10, 58); */
+    /* background: url('https://www.timberlake.co.uk/wp/wp-content/uploads/2018/04/7-preattentive3.png'); */
+    background-size: cover;
+    border: 3px solid orchid;
+    /* border-right: 5px solid orchid; */
+    border-radius: 50%;
+    z-index: -3;
+    box-shadow: 0px 1px 10px 2px rgb(75, 74, 74);
+    margin: 20px;
+    margin-left: 0px;
+    padding: 0px;
+    text-align: center;
+    font-size: larger;
+}
+
+.sales {
+    border: 1px solid lightgreen;
+
+}
+
+.sales:hover, .chs:hover, .inventory:hover, .rating:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 1px 10px 4px rgb(75, 74, 74);
+}
+
+#forecast {
+    margin: 30px;
+    
+}
+
+.chs {
+    border: 1px solid yellow;
+    
+}
+
+.inventory {
+    border: 1px solid cyan;
+    
+}
+
+.rating {
+    border: 1px solid mediumaquamarine;
+    
+}   
+
+.targ  {
+    margin-left: auto;
+    /* background-color: rgb(4, 4, 27); */
+    border-radius: 50%;
+    box-shadow: 0px 1px 10px 2px rgb(75, 74, 74);
+    border-left: 2px solid limegreen;
+    border-top: 1px solid limegreen;
+}
+
+.pred {
+    margin-left: auto;
+    /* background-color: rgb(4, 4, 27); */
+    box-shadow: 0px 1px 10px 2px rgb(75, 74, 74);
+    border-left: 2px solid blueviolet;
+    border-top: 1px solid blueviolet ;
+}
+
+.active {
+   border: 1px solid navy ;
+   border-bottom: none ;
+   box-shadow: 0px 1px 10px 0.25px navy;
+}
+
+.first  {
+    
+    height: 500px;
+}
+
+.middle {
+    /* border: 1px solid blue; */
+    height: 600px;
+}
+
+#sub1 {
+    /* border: 1px solid yellow; */
+    height: 150px;
+    /* margin: auto; */
+    padding: 0px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.second, .third{
+    
+    height: 250px;
+    align-content: center;
+    margin-top: 10px;
+    border-radius: 50%;
+    
+}
+.second {
+    border: 5px solid gold;
+    color: gold;
+}
+.sc {
+    border: gold;
+    margin-top: 200px;
+    color: gold;
+}
+
+.sc1 {
+    margin-top: 30%;
+}
+
+.tc1 {
+    margin-top: 40%;
+}
+
+.f1 {
+    margin-top: 10%;
+    font-size: smaller;
+}
+.n1 {
+    margin: 10%;
+}
+
+
+.third {
+    border: 5px solid aquamarine;
+    color: aquamarine;
+}
+
+.tc {
+    margin-top: 200px;
+    color: aquamarine;
+}
+
+.dc-1 {
+    border-top: 3px solid orange;
+    color: orange;
+}
+.ic-1 {
+    border: 1px solid orange;
+}
+.tc-1 {
+    color: orange;
+}
+
+.dc-2 {
+    border-top: 3px solid aqua;
+    color: aqua;
+}
+.ic-2 {
+    border: 1px solid aqua;
+}
+.tc-2 {
+    color: aqua;
+}
+
+.dc-3 {
+    border-top: 3px solid magenta;
+    color: magenta;
+}
+.ic-3 {
+    border: 1px solid magenta;
+}
+.tc-3 {
+    color: magenta;
+}
+
+.dc-4 {
+    border-top: 3px solid blueviolet;
+    color: blueviolet;
+}
+.ic-4 {
+    border: 1px solid blueviolet;
+}
+.tc-4 {
+    color: blueviolet;
+}
+
+.dc-5 {
+    border-top: 3px solid lightpink;
+    color: lightpink;
+}
+.ic-5 {
+    border: 1px solid lightpink;
+}
+.tc-5 {
+    color: lightpink;
+}
+
+.dc-6 {
+    border-top: 3px solid springgreen;
+    color: springgreen;
+}
+.ic-6 {
+    border: 1px solid springgreen;
+}
+.tc-6 {
+    color: springgreen;
+}
+
+.dc-7 {
+    border-top: 3px solid plum;
+    color: plum;
+}
+.ic-7 {
+    border: 1px solid plum;
+}
+.tc-7 {
+    color: plum;
+}
+
+.dc-8 {
+    border-top: 3px solid paleturquoise;
+    color: paleturquoise;
+}
+.ic-8 {
+    border: 1px solid paleturquoise;
+}
+.tc-8 {
+    color: paleturquoise;
+}
+
+.ic {
+    height:150px;
+    margin-top: 5px;
+    border-radius: 50%;
+}
+
+.ic:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 1px 10px 4px rgb(75, 74, 74);
+}

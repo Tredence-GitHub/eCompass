@@ -11,7 +11,7 @@ import { FaFilter, FaRedo } from 'react-icons/fa';
 
 export default function GlobalDropDown(props){
     
-    const [state, setState] = useState({})
+    const [state, setState] = useState()
     const [merchant,  setMerchant] = useState('')
     const [product, setProduct] = useState('')
 
@@ -24,12 +24,12 @@ export default function GlobalDropDown(props){
         setProduct(localStorage.getItem('filter2'))
     }, [])
 
-     function handleDropdown (event){
+     function handleDropdown(event){
        setMerchant(event.target.value)
        
     }
 
-    function handleDropdown2 (event){
+    function handleDropdown2(event){
         setProduct(event.target.value)
        
     }
@@ -42,7 +42,9 @@ export default function GlobalDropDown(props){
                     height:"30px",
                     width: "200px",
                     border: "none",
-                    boxShadow: "0px 1px 7px 2px lightgray",
+                    color: "silver",
+                    backgroundColor:"#162447",
+                    boxShadow: "0px 1px 7px 0.25px navy",
                     marginRight: "5px",
                     marginLeft: "auto",
                 }}>
@@ -59,7 +61,9 @@ export default function GlobalDropDown(props){
                     height:"30px",
                     width: "200px",
                     border: "none",
-                    boxShadow: "0px 1px 7px 2px lightgray",
+                    color: "silver",
+                    backgroundColor:"#162447",
+                    boxShadow: "0px 1px 7px 0.25px navy",
                     marginRight: "5px"
                 }}>
                     <option>{ product !== null ? product :  'Select a Product Category'}</option>
@@ -70,7 +74,8 @@ export default function GlobalDropDown(props){
                 </select>
 
                 <Button type="submit" variant="outline-primary" size="sm" style={{
-                    marginRight: "5px",
+                    marginRight: "0px",
+                    border: "none",
                     height:"30px",
                 }} onClick={
                     (e) => {
@@ -81,7 +86,9 @@ export default function GlobalDropDown(props){
                         // dispatch({type:'UPDATE_FILTERS', info: merchant, info2: product})
                     }
                 }><FaFilter></FaFilter></Button>
-                <Button type="submit" variant="outline-primary" size="sm" onClick={
+                <Button type="submit" variant="outline-primary" size="sm" style={{
+                    border: "none",
+                }} onClick={
                     (e) => {
                         e.preventDefault();
                         // {props.onsubmitprop( [merchant, product] );}

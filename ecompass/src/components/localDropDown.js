@@ -14,7 +14,7 @@ export default function LocalDropDown(props){
     const [state, setState] = useState({})
     const [productCategory,  setProductCategory] = useState('')
     const [product, setProduct] = useState('')
-
+    const [loading, setloading] = useState(true)
     // const content1 = useSelector(state => state.regular.filter1)
     // const dispatch = useDispatch()
     // const store = useStore()
@@ -22,17 +22,26 @@ export default function LocalDropDown(props){
     useEffect(() => {
         setProductCategory(localStorage.getItem('localfilter1'))
         setProduct(localStorage.getItem('localfilter2'))
+        setloading(false)
     }, [])
 
-     function handleDropdown (event){
+     function handleDropdown(event){
        setProductCategory(event.target.value)
        
     }
 
-    function handleDropdown2 (event){
+    function handleDropdown2(event){
         setProduct(event.target.value)
        
     }
+    if(loading){
+        return (
+        <div>
+            loading ...
+        </div>
+        )
+    }
+    else{
      return (
            
          <Row>
@@ -42,7 +51,9 @@ export default function LocalDropDown(props){
                     height:"30px",
                     width: "200px",
                     border: "none",
-                    boxShadow: "0px 1px 7px 2px lightgray",
+                    color: "silver",
+                    backgroundColor:"#162447",
+                    boxShadow: "0px 1px 7px 0.25px navy",
                     marginRight: "5px",
                     marginLeft: "auto",
                 }}>
@@ -59,7 +70,9 @@ export default function LocalDropDown(props){
                     height:"30px",
                     width: "200px",
                     border: "none",
-                    boxShadow: "0px 1px 7px 2px lightgray",
+                    color: "silver",
+                    backgroundColor:"#162447",
+                    boxShadow: "0px 1px 7px 0.25px navy",
                     marginRight: "5px"
                 }}>
                     <option>{ product !== null ? product :  'Select a Product'}</option>
@@ -70,7 +83,8 @@ export default function LocalDropDown(props){
                 </select>
 
                 <Button type="submit" variant="outline-primary" size="sm" style={{
-                    marginRight: "10px"
+                    marginRight: "0px",
+                    border: "none",
                 }} onClick={
                     (e) => {
                         e.preventDefault();
@@ -80,7 +94,9 @@ export default function LocalDropDown(props){
                         // dispatch({type:'UPDATE_FILTERS', info: merchant, info2: product})
                     }
                 }><FaFilter></FaFilter></Button>
-                <Button type="submit" variant="outline-primary" size="sm" onClick={
+                <Button type="submit" variant="outline-primary" size="sm" style={{
+                     border: "none",
+                }} onClick={
                     (e) => {
                         e.preventDefault();
                         // {props.onsubmitprop( [merchant, product] );}
@@ -93,6 +109,7 @@ export default function LocalDropDown(props){
                 </Row>
                 
         )
+     }
 
 }
 

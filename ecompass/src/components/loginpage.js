@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { FaLock, FaUnlock, FaSignInAlt } from 'react-icons/fa'
 import { Form, Button } from 'react-bootstrap';
-import studio from '../studio.PNG';
+import studio from '../logo.png';
 
 
 export default function Loginpage(props) {
@@ -50,10 +50,10 @@ export default function Loginpage(props) {
         <div className="row col-6 col-md-8 ml-auto mr-auto" style={{
             marginTop: "200px",
             padding: "5px",
-            boxShadow:"1px 1px 7px 3px lightgray"
+            boxShadow:"0px 0px 15px 1px gray"
            
         }}>
-            <div className="col-md-8 bg-light" style={{
+            <div className="col-md-8 bg" style={{
                 // alignItems: "center",
                 margin:"auto",
                 padding: "50px"
@@ -94,12 +94,13 @@ export default function Loginpage(props) {
             </div>
 
             <Form className="col-md-3 ml-2 mr-auto mb-4" style={{
-                marginTop: "30px",               
+                marginTop: "30px",
+                color: "white"               
             }}>
                 
-                <div>
+                <div className="mb-2">
                     <img src={studio} style={{
-                        width: "200px"
+                        width: "200px",
                     }}></img>
                 </div>
                 <Form.Group controlId="formBasicEmail">

@@ -11,7 +11,10 @@ import Inventory from './components/inventory';
 import { connect } from 'react-redux';
 import { useSelector } from 'react-redux';
 import Landing from './components/landing';
+import Landing2 from './components/landing2';
 import Loginpage from './components/loginpage';
+import Recommendations from './components/recommendations';
+import Simulator from './components/simulator';
 
 function App(props) {
 
@@ -20,11 +23,6 @@ function App(props) {
   const [loggedIn, setL] = useState('');
 
 
-  function setlogin(){
-    console.log("CAME HERE BROOO")
-    setL('micKeyMouz!e');
-    // window.history.pushState('', '', "/");
-  }
 
   function onDropDownSubmit(value){
     localStorage.setItem('var', value);
@@ -35,7 +33,7 @@ function App(props) {
   return (
     <div className="App">
        <Router>
-         <Route exact path="/" onlogin = {setlogin} render={()=> (
+         <Route exact path="/"  render={()=> (
            <Loginpage/>
          )}>
 
@@ -44,6 +42,11 @@ function App(props) {
         
          <Route exact path = "/home" render={ ()=> (
               <Navs  viewname = "home" logged = {loggedIn}  onDropDownSubmit = {onDropDownSubmit} content={ <Landing /> }/>
+            ) 
+               } > 
+         </Route> 
+         <Route exact path = "/home2" render={ ()=> (
+              <Navs  viewname = "home" logged = {loggedIn}  onDropDownSubmit = {onDropDownSubmit} content={ <Landing2 /> }/>
             ) 
                } > 
          </Route> 
@@ -64,6 +67,16 @@ function App(props) {
          </Route>
          <Route path = "/inventoryview" render={ ()=> (
              <Navs  viewname = "inventoryview" content = {<Inventory />} />
+               ) 
+               }>
+         </Route>
+         <Route path = "/recommendations" render={ ()=> (
+             <Navs  viewname = "recommendations" content = {<Recommendations />} />
+               ) 
+               }>
+         </Route>
+         <Route path = "/simulator" render={ ()=> (
+             <Navs  viewname = "simulator" content = {<Simulator />} />
                ) 
                }>
          </Route>
