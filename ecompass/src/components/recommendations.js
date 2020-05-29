@@ -5,11 +5,19 @@ import { Spinner, Button } from 'react-bootstrap';
 import BootstrapTable, {TableHeaderColumn} from 'react-bootstrap-table-next';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-
-
+import Popup from "reactjs-popup";
+import { render } from '@testing-library/react';
+import Iframe from 'react-iframe';
+import './Landing.css';
+import styled from 'styled-components';
 
 export default function Recommendations() {
     const { SearchBar, ClearSearchButton  }= Search;
+
+    const StyledPopup = styled(Popup)`
+    &-content{
+        width: "300px"
+    } `;
 
     function salesFormatter(cell, row, rowIndex, formatExtraData){
         return (
@@ -19,24 +27,46 @@ export default function Recommendations() {
                 // return <li style={{ textDecoration:"none", listStyle:"none", color: "green" }} key={index}>{item}</li>
                 if(item.includes('Drop') | item.includes('without') | item.includes
                 ('OOS') | item.includes('Negative')){
-                    return <Button variant="outline-danger" value={item} size="sm" onClick={(e)=>{
+                    return <Popup className="bg-dark" trigger={ <Button variant="outline-danger" value={item} size="sm" onClick={(e)=>{
                         console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
+                        
+                        }} >{item}</Button> } modal >
+                            <div className="bg-dark text-white">
+                                <Iframe className=""
+                                url="https://app.powerbi.com/reportEmbed?reportId=6edd203c-2a69-4613-95b4-c6f983f01e0b&autoAuth=true&ctid=927e65b8-7ad7-48db-a3c6-c42a67c100d6&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D&filterPaneEnabled=false&navContentPaneEnabled=false"
+                                frameBorder="0" 
+                                width="100%"
+                                height="98%"
+                                allowFullScreen="false">
+
+                                </Iframe>
+                            </div>
+                        </Popup>
+                     
 
                 }
                 else if(item.includes('Decline') | item.includes('Not') | item.includes('Below')){
-                    return <Button variant="outline-warning" value={item} size="sm" onClick={(e)=>{
-                        // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
+                    return <Popup className="bg-dark" trigger={ <Button variant="outline-warning" value={item} size="sm"  >
+                        {item}</Button> } modal >
+                            <div>
+                                <Iframe>
+
+                                </Iframe>
+                            </div>
+                        </Popup>
                 }
                 else if(item.includes('High') | item.includes('Positive') ){
-                    return <Button variant="outline-success" value={item} size="sm" onClick={(e)=>{
+                    return <Popup className="bg-dark" trigger= {<Button variant="outline-success" value={item} size="sm" onClick={(e)=>{
                         // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
+                    }} >{item}</Button>} modal>
+
+                    </Popup>
                 }
-                return <Button variant="outline-info" value={item} size="sm" onClick={(e)=>{
+                return <Popup className="bg-dark" trigger= {<Button variant="outline-info" value={item} size="sm" onClick={(e)=>{
                     // console.log(e.target.value,cell, " --- ", row)
-                }} >{item}</Button>
+                }} >{item}</Button>} modal>
+
+                </Popup>
             })}
         </div>
         );
@@ -47,27 +77,34 @@ export default function Recommendations() {
             
             <div className="">
             {cell.map((item, index) => {
-                // return <li style={{ textDecoration:"none", listStyle:"none", color: "green" }} key={index}>{item}</li>
                 if(item.includes('Drop') | item.includes('without') | item.includes
                 ('OOS') | item.includes('Negative')){
-                    return <Button variant="outline-danger" value={item} size="sm" onClick={(e)=>{
+                    return <Popup className="bg-dark" trigger= {<Button variant="outline-danger" value={item} size="sm" onClick={(e)=>{
                         console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
+                    }} >{item}</Button>} modal>
+
+                    </Popup>
 
                 }
                 else if(item.includes('Decline') | item.includes('Not') | item.includes('Below')){
-                    return <Button variant="outline-warning" value={item} size="sm" onClick={(e)=>{
+                    return <Popup className="bg-dark" trigger= {<Button variant="outline-warning" value={item} size="sm" onClick={(e)=>{
                         // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
+                    }} >{item}</Button>} modal>
+
+                    </Popup>
                 }
                 else if(item.includes('High') | item.includes('Positive') ){
-                    return <Button variant="outline-success" value={item} size="sm" onClick={(e)=>{
+                    return <Popup className="bg-dark" trigger= {<Button variant="outline-success" value={item} size="sm" onClick={(e)=>{
                         // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
+                    }} >{item}</Button>} modal>
+
+                    </Popup>
                 }
-                return <Button variant="outline-info" value={item} size="sm" onClick={(e)=>{
+                return <Popup className="bg-dark" trigger= {<Button variant="outline-info" value={item} size="sm" onClick={(e)=>{
                     // console.log(e.target.value,cell, " --- ", row)
-                }} >{item}</Button>
+                }} >{item}</Button>} modal>
+
+                </Popup>
             })}
         </div>
         );
@@ -81,24 +118,32 @@ export default function Recommendations() {
                 // return <li style={{ textDecoration:"none", listStyle:"none", color: "green" }} key={index}>{item}</li>
                 if(item.includes('Drop') | item.includes('without') | item.includes
                 ('OOS') | item.includes('Negative')){
-                    return <Button variant="outline-danger" value={item} size="sm" onClick={(e)=>{
+                    return <Popup className="bg-dark" trigger= {<Button variant="outline-danger" value={item} size="sm" onClick={(e)=>{
                         console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
+                    }} >{item}</Button>} modal>
+
+                    </Popup>
 
                 }
                 else if(item.includes('Decline') | item.includes('Not') | item.includes('Below')){
-                    return <Button variant="outline-warning" value={item} size="sm" onClick={(e)=>{
+                    return <Popup className="bg-dark" trigger= {<Button variant="outline-warning" value={item} size="sm" onClick={(e)=>{
                         // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
+                    }} >{item}</Button>} modal>
+
+                    </Popup>
                 }
                 else if(item.includes('High') | item.includes('Positive') ){
-                    return <Button variant="outline-success" value={item} size="sm" onClick={(e)=>{
+                    return <Popup className="bg-dark" trigger= {<Button variant="outline-success" value={item} size="sm" onClick={(e)=>{
                         // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
+                    }} >{item}</Button>} modal>
+
+                    </Popup>
                 }
-                return <Button variant="outline-info" value={item} size="sm" onClick={(e)=>{
+                return <Popup className="bg-dark" trigger= {<Button variant="outline-info" value={item} size="sm" onClick={(e)=>{
                     // console.log(e.target.value,cell, " --- ", row)
-                }} >{item}</Button>
+                }} >{item}</Button>} modal>
+
+                </Popup>
             })}
         </div>
         );
@@ -112,24 +157,32 @@ export default function Recommendations() {
                 // return <li style={{ textDecoration:"none", listStyle:"none", color: "green" }} key={index}>{item}</li>
                 if(item.includes('Drop') | item.includes('without') | item.includes
                 ('OOS') | item.includes('Negative')){
-                    return <Button variant="outline-danger" value={item} size="sm" onClick={(e)=>{
+                    return <Popup className="bg-dark" trigger= {<Button variant="outline-danger" value={item} size="sm" onClick={(e)=>{
                         console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
+                    }} >{item}</Button>} modal>
+
+                    </Popup>
 
                 }
                 else if(item.includes('Decline') | item.includes('Low') | item.includes('Not') | item.includes('Below')){
-                    return <Button variant="outline-warning" value={item} size="sm" onClick={(e)=>{
+                    return <Popup className="bg-dark" trigger= {<Button variant="outline-warning" value={item} size="sm" onClick={(e)=>{
                         // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
+                    }} >{item}</Button>} modal>
+
+                    </Popup>
                 }
                 else if(item.includes('High') | item.includes('Positive') ){
-                    return <Button variant="outline-success" value={item} size="sm" onClick={(e)=>{
+                    return <Popup className="bg-dark" trigger= {<Button variant="outline-success" value={item} size="sm" onClick={(e)=>{
                         // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
+                    }} >{item}</Button>} modal>
+
+                    </Popup>
                 }
-                return <Button variant="outline-info" value={item} size="sm" onClick={(e)=>{
+                return <Popup className="bg-dark" trigger= {<Button variant="outline-info" value={item} size="sm" onClick={(e)=>{
                     // console.log(e.target.value,cell, " --- ", row)
-                }} >{item}</Button>
+                }} >{item}</Button>} modal>
+                    
+                </Popup>
             })}
         </div>
         );
@@ -202,10 +255,10 @@ export default function Recommendations() {
                 element.sales_recommendation = element.sales_recommendation.split(',');
                 element.content_health_recommendation = element.content_health_recommendation.split(',');
                 element.inventory_recommendation = element.inventory_recommendation.split(',');
-                element.ratings_and_reviews_recommendation = element.ratings_and_reviews_recommendation.split(',');
+                element.ratings_and_reviews_recommendation = element.ratings_and_reviews_recommendation.split(',')
                 
             });
-            // console.log(fetched);
+            console.log(fetched);
             settabledata(fetched);
             setloading(false);
         }
