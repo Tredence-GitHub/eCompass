@@ -239,7 +239,8 @@ export default function Recommendations() {
     }]
     const [loading, setloading] = useState(true);
     const [tabledata, settabledata] = useState(null);
-    
+    const local = 'http://localhost:4000';
+    const deploy = 'https://ecompass-app-development.azurewebsites.net'
     
     useEffect(() => {
         fetchData();
@@ -247,7 +248,7 @@ export default function Recommendations() {
     }, [])
 
     async function fetchData() {
-        let response = await Axios.get('http://localhost:4000/api/getRecommendations');
+        let response = await Axios.get(`${deploy}/api/getRecommendations`);
         if(response.status === 200){
             // console.log(response.data.data)
             let fetched = response.data.data;

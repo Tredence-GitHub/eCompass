@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaChevronCircleUp, FaChevronCircleDown, FaBars, FaRegChartBar, FaChartBar, FaBox, FaHeartbeat, FaArrowRight, FaStar, FaMagic, FaBullseye, FaChartArea, FaChartLine } from 'react-icons/fa'
+import { FaChevronCircleUp, FaChevronCircleDown, FaBars, FaRegChartBar, FaChartBar, FaBox, FaHeartbeat, FaArrowRight, FaStar, FaMagic, FaBullseye, FaChartArea, FaChartLine, FaArrowUp, FaArrowDown } from 'react-icons/fa'
 import axios from 'axios';
 import { useState , useEffect} from 'react';
 import { Spinner } from 'react-bootstrap';
@@ -10,6 +10,7 @@ import ReactSpeedometer from "react-d3-speedometer"
 import DonutChart from 'react-donut-chart';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import autoMergeLevel1 from 'redux-persist/es/stateReconciler/autoMergeLevel1';
 
 
 export default function Landing() {
@@ -30,7 +31,7 @@ const [data, setdata] = useState(null)
     
 // }, [])
 
-const val = "5";
+const val = 5;
 
 const chartStyle = {
     
@@ -38,12 +39,31 @@ const chartStyle = {
         height: 150
     
   }
+const [params, setParams] = useState({});
 
+const leads = {
+    'avg': 'aquamarine',
+    'chs': 'aquamarine',
+    'cr': 'aquamarine',
+    'asr': 'aquamarine'
+}
+
+const lags = {
+    'sales': 'palegoldenrod',
+    'oos': 'palegoldenrod',
+    'chs': 'palegoldenrod',
+    'cr': 'palegoldenrod',
+    'asr': 'palegoldenrod',
+    'pi': 'palegoldenrod',
+    'bb': 'palegoldenrod'
+}
 
 function CustomTextProgressBar(props) {
     const {  children, ...otherProps } = props;
     return(
-        <div className="ic col-xl-12 mt-0 ml-0" >
+        <div className="cc" style={{
+            // marginLeft: "-10px"
+        }} >
             <div style={{ position: 'absolute' }}>
             <CircularProgressbar {...otherProps} value={props.percentage} pathColor='gold' strokeWidth={4}
              styles={buildStyles({
@@ -53,33 +73,42 @@ function CustomTextProgressBar(props) {
                 
                 // Text size
                 // Colors
-                pathColor: props.pc,
-                textColor: props.pc,
+                // pathColor: props.pc,
+                textColor: 'white',
+                pathColor: 'white',
                 trailColor: 'black'
             })}>
 
         </CircularProgressbar></div>
         
          <center className="" style={{
-          position: 'absolute',
-          height: '99%',
+        //   position: 'absolute',
+          height: '100%',
           width: '100%',
           display: 'flex',
+          marginTop: '0px',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          verticalAlign: 'center',
-          marginLeft: '-2px'
+        //   marginLeft: '-9px'
         }}>
          { props.children }
         </center> 
-      
       </div>
     )
 }
 
+function leadingParameters(){
+    // alert('reached')
+    setParams({});
+    setParams(leads);
+}
 
-
+function laggingParameters(){
+    // alert('reached')
+    setParams({});
+    setParams(lags);
+}
 
 if(! loading)
 {
@@ -93,38 +122,43 @@ if(! loading)
 			<div className="first col-xl-4 mr-0 ml-0">
                 
 
-                <center className="tc ml-4">CURRENT SALES</center>
-                <div className = "third col-xl-12 mt-3" style={{
+                <center className="tc ml-4"> <strong>CURRENT SALES </strong></center>
+                <hr style={{
+                       border: "1px solid palegoldenrod"
+                   }}></hr>
+                <div className = "third col-xl-12 mt-3" onMouseOver={
+                laggingParameters
+            }  style={{
                     //    border: "1px solid blue"
                    }}>
                 
-                <div className="row col-xl-14 ml-0 " style={{
+                <div className="row col-xl-14 ml-0 "  style={{
                     padding: "0px"
                 }}>
                     <div className="col-6  ml-0">
-                    <center><strong>Weekly Sales</strong></center>
+                    <center className="mini-header">LW Sales</center>
                     <center><strong>$300K</strong></center>
                     </div>
                 <div className="col-6  ml-0" style={{
                     borderLeft: "0.5px solid aqua"
                 }}>
-                    <center><strong>WoW</strong></center>
-                   <center>+4% WoW<FaChevronCircleUp></FaChevronCircleUp></center>
+                    <center className="mini-header">WoW</center>
+                   <center><strong>+4% WoW</strong><FaChevronCircleUp></FaChevronCircleUp></center>
                 </div>
                
                 </div>
 
-                <center className="mt-2 ml-0">
+                <center className="mt-2 ml-0"  >
                <ReactSpeedometer 
                         textColor = "aquamarine"
                         maxValue={10}
                         value={4}
                         needleColor="silver"
-                        startColor="red"
+                        startColor="rgba(255, 0, 0, 0.562)"
                         // segments={10}
-                        currentValueText="Quarterly Sales in Million"
+                        currentValueText="QTD Sales in Million"
                         endColor="green"
-                        ringWidth= "40"
+                        ringWidth= {40}
                         /> 
                         
                         </center>
@@ -139,15 +173,19 @@ if(! loading)
                    <center className="tc-1">Sales</center>
                   
                     <Link to="/salesview" className="lnk">
-                        <CustomTextProgressBar className="ic col-xl-13 mt-0 ml-0 mr-0" pc="orange" percentage={66} >
+                        <div className="ic col-xl-13 " style={{
+                                boxShadow: `0px 1px 7px 4px ${params.sales}`
+                                }}>
+                        <CustomTextProgressBar className="cc col-xl-13  " pc="orange" percentage={66} >
                     
                     <h4 className="danger">195 SKUs</h4>
                     <small className="text-white">+24 SKUs WoW <FaChevronCircleUp></FaChevronCircleUp></small>
-                        
+                
+                    <small className="lnk mt-1">66%</small>
                     </CustomTextProgressBar>
+                    </div>
                     </Link>
                      </div>
-
                      {/*Content Health  */}
 
                     <div className="dc-2 col-xl-5 ">
@@ -155,12 +193,16 @@ if(! loading)
                     <center className="tc-2">Content Health Score</center>
                         
                     <Link to="/contentview" className="lnk">
-                        <CustomTextProgressBar className="ic col-xl-13 mt-0 ml-0 mr-0" pc="aqua" percentage={70} >
+                    <div className="ic col-xl-13 " style={{
+                                boxShadow: `0px 1px 7px 4px ${params.chs}`
+                                }}>
+                        <CustomTextProgressBar className="cc col-xl-13" pc="aqua" percentage={70} >
                     
                     <h4 className="danger">3.85 </h4>
                     <small className="text-white">-0.17 WoW <FaChevronCircleDown></FaChevronCircleDown></small>
-                        
+                    <small className="lnk mt-1">70%</small>
                     </CustomTextProgressBar>
+                    </div>
                     </Link>
                        
                         
@@ -174,26 +216,33 @@ if(! loading)
                         <center className="tc-3">OOS in last 7 days</center>
 
                         <Link to="/inventoryview" className="lnk">
-                            <CustomTextProgressBar className="ic col-xl-13 mt-0 ml-0 mr-0" pc="blanchedalmond" percentage={36} >
-                        
+                        <div className="ic col-xl-13 " style={{
+                                boxShadow: `0px 1px 7px 4px ${params.oos}`
+                                }}>
+                        <CustomTextProgressBar className="cc col-xl-13" pc="blanchedalmond" percentage={36} >
                         <h4 className="safe">85 SKUs </h4>
                         <small className="text-white">+15 SKUs WoW  <FaChevronCircleUp></FaChevronCircleUp></small>
-                            
+                        <small className="lnk mt-1">36%</small>
                         </CustomTextProgressBar>
+                        </div>
                         </Link>
                         
                     </div>
-                    <div className="dc-4 col-xl-5 mb-5">
+                    <div className="dc-4 col-xl-5 ">
                         <center className="tc-4">Conversion Rate</center>
                         {/* conversion rate */}
                         
                         <Link to="/salesview" className="lnk">
-                            <CustomTextProgressBar className="ic col-xl-13 mt-0 ml-0 mr-0" pc="lightpink" percentage={66} >
+                        <div className="ic col-xl-13 " style={{
+                                boxShadow: `0px 1px 7px 4px ${params.cr}`
+                                }}>
+                            <CustomTextProgressBar className="cc col-xl-13 " pc="lightpink" percentage={66} >
                         
                         <h4 className="safe">17.1% </h4>
                         <small className="text-white">+0.8 pp WoW <FaChevronCircleUp ></FaChevronCircleUp></small>
-                            
+                        <small className="lnk mt-1">66%</small>
                         </CustomTextProgressBar>
+                        </div>
                         </Link>
                        
                     </div>
@@ -205,25 +254,35 @@ if(! loading)
                         {/* Avg rating */}
 
                         <Link to="/ratingsview" className="lnk">
-                            <CustomTextProgressBar className="ic col-xl-13 mt-0 ml-0 mr-0" pc="skyblue" percentage={66} >
+                        <div className="ic col-xl-13 " style={{
+                                boxShadow: `0px 1px 7px 4px ${params.avg}`
+                                }}>
+                            <CustomTextProgressBar className="cc col-xl-13" pc="skyblue" percentage={66} >
                         
                         <h4 className="safe">3.98 </h4>
                         <small className="text-white">-0.16 WoW <FaChevronCircleDown></FaChevronCircleDown></small>
-                            
+                        <small className="lnk mt-1">66%</small>
                         </CustomTextProgressBar>
+                        </div>
                         </Link>
                         
                     </div>
-                    <div className="dc-6 col-xl-5 ">
+                    <div className="dc-6 col-xl-5 "  >
                         <center className="tc-6">Average Search Rank</center>
 
-                        <Link to="/salesview" className="lnk">
-                            <CustomTextProgressBar className="ic col-xl-13 mt-0 ml-0 mr-0" pc="springgreen" percentage={66} >
+                        <Link to="/salesview" className="lnk" >
+                        <div className="ic col-xl-13" style={{
+                                borderRadius: "50%",
+                                boxShadow: `0px 1px 7px 4px ${params.asr}`
+                                }} >
+                        <CustomTextProgressBar className="cc col-xl-13 " 
+                    
+                           pc="springgreen" percentage={66} >
                         
                         <h4 className="danger">4.2 </h4>
                         <small className="text-white">+0.7 WoW <FaChevronCircleUp ></FaChevronCircleUp></small>
-                            
-                        </CustomTextProgressBar>
+                        <small className="lnk mt-1">66%</small>
+                        </CustomTextProgressBar></div>
                         </Link>
                         
                     </div>
@@ -233,12 +292,16 @@ if(! loading)
                         <center className="tc-7">Price Index </center>
 
                         <Link to="/salesview" className="lnk">
-                            <CustomTextProgressBar className="ic col-xl-13 mt-0 ml-0 mr-0" pc="plum" percentage={66} >
+                        <div className="ic col-xl-13 " style={{
+                                boxShadow: `0px 1px 7px 4px ${params.pi}`
+                                }}>
+                            <CustomTextProgressBar className="cc col-xl-13 " pc="plum" percentage={66} >
                         
                         <h4 className="warning">0.97 </h4>
                         <small className="text-white">+0.07 WoW <FaChevronCircleUp ></FaChevronCircleUp></small>
-                            
+                        <small className="lnk mt-1">66%</small>
                         </CustomTextProgressBar>
+                        </div>
                         </Link>
                         
                     </div>
@@ -246,12 +309,16 @@ if(! loading)
                     <center className="tc-8">Buy Box</center>
 
                     <Link to="/inventoryview" className="lnk">
-                            <CustomTextProgressBar className="ic col-xl-13 mt-0 ml-0 mr-0" pc="paleturquoise" percentage={66} >
+                    <div className="ic col-xl-13 " style={{
+                                boxShadow: `0px 1px 7px 4px ${params.bb}`
+                                }}>
+                            <CustomTextProgressBar className="cc col-xl-13" pc="paleturquoise" percentage={66} >
                         
                         <h4 className="warning">46 SKUs </h4>
                         <small className="text-white">+5 SKUs WoW <FaChevronCircleUp ></FaChevronCircleUp></small>
-                            
+                        <small className="lnk mt-1">66%</small>   
                         </CustomTextProgressBar>
+                        </div>
                         </Link>
 
                     </div>
@@ -261,28 +328,46 @@ if(! loading)
             <div className="first col-xl-3 mr-0 ml-0" style={{
                 padding: "0px"
             }}>
-                <center className="sc ml-0">PREDICTED SALES</center>
-                <div className="col-xl-14 mt-5" style={{
-                //    border: "1px solid white",
-               }}>
-                   
-                    
+                <center className="sc ml-0"><strong>SALES FORECAST</strong> </center>
+                <div className="col-xl-14 mt-3"  onMouseOver={
+                leadingParameters
+            } >
+                <hr style={{
+                       border: "1px solid aquamarine"
+                   }}></hr>
+                <div className="row col-xl-14 ml-0 mb-1 "  style={{
+                    padding: "0px",
+                    color: "palegoldenrod"
+                }}>
+                    <div className="col-6  ml-0">
+                    <center className="mini-header">Target Remaining</center>
+                    <center><strong>$6M</strong></center>
+                    </div>
+                <div className="col-6  ml-0" style={{
+                    borderLeft: "0.5px solid palegoldenrod"
+                }}>
+                    <center className="mini-header">Predicted Sales</center>
+                   <center><strong>$5M</strong></center>
+                </div>
+               
+                </div>
                 {/* <div className = "second col-xl-12 "> */}
                 <ReactSpeedometer 
-                        textColor = "gold"
+                        textColor = "palegoldenrod"
                         maxValue={6}
                         value={val}
                         needleColor="silver"
-                        // startColor="red"
-                        maxSegmentLabels={4}
-                        customSegmentStops={[0, 4, val, 6]}
-                        segmentColors={["red", "orange", "limegreen"]}
-                        segments = {1000}
-                        currentValueText="Quarterly Predicted Sales in Million"
-                        // endColor="green"
-                        ringWidth={20}
+                        startColor="rgba(255, 0, 0, 0.562)"
+                        // maxSegmentLabels={4}
+                        // customSegmentStops={[0, 4, val, 6]}
+                        // segmentColors={["rgba(255, 0, 0, 0.562)", "orange", "limegreen"]}
+                        // segments = {1000}
+                        currentValueText="QTD Predicted Sales in Million"
+                        endColor="green"
+                        ringWidth={40}
                         /> 
-                    </div>             
+                    </div> 
+                    {/* </div>             */}
             </div>
         
             </div>

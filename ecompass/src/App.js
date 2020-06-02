@@ -11,7 +11,6 @@ import Inventory from './components/inventory';
 import { connect } from 'react-redux';
 import { useSelector } from 'react-redux';
 import Landing from './components/landing';
-import Landing2 from './components/landing2';
 import Loginpage from './components/loginpage';
 import Recommendations from './components/recommendations';
 import Simulator from './components/simulator';
@@ -45,11 +44,11 @@ function App(props) {
             ) 
                } > 
          </Route> 
-         <Route exact path = "/home2" render={ ()=> (
+         {/* <Route exact path = "/home2" render={ ()=> (
               <Navs  viewname = "home" logged = {loggedIn}  onDropDownSubmit = {onDropDownSubmit} content={ <Landing2 /> }/>
             ) 
                } > 
-         </Route> 
+         </Route>  */}
          <Route path = "/salesview" render={ ()=> (
              <Navs  viewname = "salesview" content = {<Salesview />}  />
                ) 

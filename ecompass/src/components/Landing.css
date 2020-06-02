@@ -32,7 +32,7 @@
 }
 
 .sales:hover, .chs:hover, .inventory:hover, .rating:hover {
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
     box-shadow: 0px 1px 10px 4px rgb(75, 74, 74);
 }
 
@@ -80,7 +80,7 @@
 }
 
 .first  {
-    /* border: 1px solid blue; */
+    /* border-top: 1px solid blue; */
     height: 500px;
 }
 
@@ -107,13 +107,13 @@
     
 }
 .second {
-    border: 5px solid gold;
-    color: gold;
+    border: 5px solid rgba(255, 217, 0, 0.747);
+    color:  palegoldenrod;
 }
 .sc {
     border: gold;
     margin-top: 200px;
-    color: gold;
+    color: palegoldenrod;
     margin-left: 0px;
     padding: 0px;
 }
@@ -200,7 +200,7 @@
     border: 1px solid skyblue;
 }
 .tc-5 {
-    color: lightpink;
+    color: skyblue;
 }
 
 .dc-6 {
@@ -241,24 +241,26 @@
     width: 150px;
     margin-top: 5px;
     padding: 0px;
-    /* margin-left:  auto; */
-    /* margin-right:  auto; */
+    margin-left: 10px;
+    /* position: absolute; */
     border-radius: 50%;
+    /* border: 1px solid yellow; */
+    /* box-shadow: 0px 0px 10px 4px red; */
 }
 
-/* .ic:hover {
-    transform: scale(1.06);
-    box-shadow: 0px 1px 10px 4px rgb(75, 74, 74);
-} */
+.cc {
+    height:150px;
+    width: 150px;
+    padding: 0px;
+}
 
 .ic:hover{
     margin-top: 5px;
     padding: 0px;
-    border-radius: 53%;
-    box-shadow: 0px 0px 10px 4px rgb(75, 74, 74);
+    box-shadow: 0px 0px 10px 5px rgb(75, 74, 74);
 }
 
-.lnk {
+.lnk, .lnk:hover {
     text-decoration: none;
     color: inherit;
 }
@@ -292,4 +294,8 @@
 
 .safe {
     color: lightgreen;
+}
+
+.mini-header {
+    font-size: 11pt;
 }
