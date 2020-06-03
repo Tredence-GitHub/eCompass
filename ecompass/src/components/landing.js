@@ -408,7 +408,7 @@ export default function Landing() {
                                     // customSegmentStops={[0, 4, val, 6]}
                                     // segmentColors={["rgba(255, 0, 0, 0.562)", "orange", "limegreen"]}
                                     // segments = {1000}
-                                    currentValueText="Predicted Sales for Remaining Quarter"
+                                    currentValueText="Sales for Remaining Quarter"
                                     endColor="green"
                                     ringWidth={40}
                                 />
