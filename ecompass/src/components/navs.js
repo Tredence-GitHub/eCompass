@@ -3,10 +3,8 @@ import logo from '../logo.png';
 import studio from '../studio.PNG';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaHamburger, FaList, FaUser, FaHeartbeat, FaSignOutAlt, FaHome, FaChartBar, FaStar, FaBoxOpen, FaPrescription, FaGlobe, FaSadTear, FaRegSadCry, FaEnvelopeOpenText, FaRegBell, FaBellSlash, FaBan, FaUserAltSlash, FaUserSlash, FaSearch, FaFlask } from 'react-icons/fa';
-import Salesview from './salesview';
-import Contenthealth from './contenthealth';
-import Inventory from './inventory';
+import { FaHeartbeat, FaSignOutAlt, FaHome, FaChartBar, FaStar, FaBoxOpen, FaPrescription, FaUser, FaBan, FaUserSlash, FaSearch, FaFlask } from 'react-icons/fa';
+
 import { Navbar,  Form, FormControl, Button, Container, Dropdown, Row, Card } from 'react-bootstrap';
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import Ratings from './ratings';

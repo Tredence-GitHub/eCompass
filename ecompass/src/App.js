@@ -25,7 +25,7 @@ function App(props) {
 
   function onDropDownSubmit(value){
     localStorage.setItem('var', value);
-    console.log("Got To App DropDown", value);
+    // console.log("Got To App DropDown", value);
     
   }
 

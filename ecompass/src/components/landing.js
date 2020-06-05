@@ -74,6 +74,19 @@ export default function Landing() {
         'ps': 'black'
     }
 
+    const percentages = {
+        sales: 65,
+        pred: 63,
+        oos: 71,
+        oosc: 75,
+        chs: 77,
+        cr: 58,
+        asr: 168,
+        ar: 111,
+        pi: 97,
+        bb: 58
+    }
+
     function CustomTextProgressBar(props) {
         const { children, ...otherProps } = props;
         return (
@@ -144,15 +157,15 @@ export default function Landing() {
                         <hr style={{
                             border: "1px solid palegoldenrod"
                         }}></hr>
-                        <div className="third col-xl-12 mt-3" onMouseOut={
+                        <div className="third col-xl-12 mt-3"  style={{
+                            //    border: "1px solid blue"
+                        }}>
+
+                        <div className="row col-xl-14 ml-0 " onMouseOut={
                             allParameters
                         } onMouseOver={
                             laggingParameters
                         } style={{
-                            //    border: "1px solid blue"
-                        }}>
-
-                            <div className="row col-xl-14 ml-0 " style={{
                                 padding: "0px"
                             }}>
                                 <div className="col-6  ml-0">
@@ -166,9 +179,9 @@ export default function Landing() {
                                     <center><strong>+4% WoW</strong><FaChevronCircleUp></FaChevronCircleUp></center>
                                 </div>
 
-                            </div>
+                            <div className="col-xl-12 mt-1">
 
-                            <center className="mt-2 ml-0 "  >
+                            <center>
                                 <ReactSpeedometer
                                     textColor="aquamarine"
                                     maxValue={10}
@@ -182,7 +195,9 @@ export default function Landing() {
                                 />
 
                             </center>
-                            <div className=" col-xl-13 mt-0 " id="sub1">
+                            </div>
+                            </div>
+                            <div className=" col-xl-13 mt-1 " id="sub1">
                                 <center>
                                     <div className="dc-6 col-xl-7 ml-0">
                                         <center className="tc-6">Average Search Rank</center>
@@ -191,12 +206,12 @@ export default function Landing() {
                                             <div className="ic col-xl-13" style={{
                                                 boxShadow: `0px 1px 7px 4px ${params.asr}`
                                             }}>
-                                                <CustomTextProgressBar className="cc col-xl-13" pc="orange" percentage={66} >
+                                                <CustomTextProgressBar className="cc col-xl-13" pc="orange" percentage={percentages.asr} >
 
                                                     <h4 className="danger">4.2</h4>
                                                     <small className="text-white">+0.7 WoW <FaChevronCircleUp></FaChevronCircleUp></small>
 
-                                                    <small className="lnk mt-1">66%</small>
+                                                    <small className="lnk mt-1">{percentages.asr}%</small>
                                                 </CustomTextProgressBar>
                                             </div>
                                         </Link>
@@ -210,18 +225,18 @@ export default function Landing() {
                     <div className="middle col-xl-5  mr-0">
                         <div className="row col-xl-12 mb-5" id="sub1">
                             <div className="dc-1 col-xl-5 mr-4 ml-4">
-                                <center className="tc-1">Sales</center>
+                                <center className="tc-1">Sales Drop</center>
                                 <center>
                                     <Link to="/salesview" className="lnk">
                                         <div className="ic col-xl-13 " style={{
                                             boxShadow: `0px 1px 7px 4px ${params.sales}`
                                         }}>
-                                            <CustomTextProgressBar className="cc col-xl-13 " pc="orange" percentage={66} >
+                                            <CustomTextProgressBar className="cc col-xl-13 " pc="orange" percentage={percentages.sales} >
 
                                                 <h4 className="danger">195 SKUs</h4>
                                                 <small className="text-white">+24 SKUs WoW <FaChevronCircleUp></FaChevronCircleUp></small>
 
-                                                <small className="lnk mt-1">66%</small>
+                                                <small className="lnk mt-1">{percentages.sales}%</small>
                                             </CustomTextProgressBar>
                                         </div>
                                     </Link>
@@ -231,17 +246,17 @@ export default function Landing() {
 
                             <div className="dc-2 col-xl-5 ">
 
-                                <center className="tc-2">Predicted Sales</center>
+                                <center className="tc-2">Predicted Sales Drop</center>
                                 <center>
                                     <Link to="/salesview" className="lnk">
                                         <div className="ic col-xl-13 " style={{
                                             boxShadow: `0px 1px 7px 4px ${params.ps}`
                                         }}>
-                                            <CustomTextProgressBar className="cc col-xl-13" pc="aqua" percentage={70} >
+                                            <CustomTextProgressBar className="cc col-xl-13" pc="aqua" percentage={percentages.pred} >
 
                                                 <h4 className="danger">190 SKUs </h4>
                                                 <small className="text-white">-5 SKUs WoW <FaChevronCircleDown></FaChevronCircleDown></small>
-                                                <small className="lnk mt-1">70%</small>
+                                                <small className="lnk mt-1">{percentages.pred}%</small>
                                             </CustomTextProgressBar>
                                         </div>
                                     </Link>
@@ -260,10 +275,10 @@ export default function Landing() {
                                         <div className="ic col-xl-13 " style={{
                                             boxShadow: `0px 1px 7px 4px ${params.oos}`
                                         }}>
-                                            <CustomTextProgressBar className="cc col-xl-13" pc="blanchedalmond" percentage={36} >
+                                            <CustomTextProgressBar className="cc col-xl-13" pc="blanchedalmond" percentage={percentages.oos} >
                                                 <h4 className="safe">85 SKUs </h4>
                                                 <small className="text-white">+15 SKUs WoW  <FaChevronCircleUp></FaChevronCircleUp></small>
-                                                <small className="lnk mt-1">36%</small>
+                                                <small className="lnk mt-1">{percentages.oos}%</small>
                                             </CustomTextProgressBar>
                                         </div>
                                     </Link>
@@ -277,11 +292,11 @@ export default function Landing() {
                                         <div className="ic col-xl-13 " style={{
                                             boxShadow: `0px 1px 7px 4px ${params.oosc}`
                                         }}>
-                                            <CustomTextProgressBar className="cc col-xl-13 " pc="lightpink" percentage={66} >
+                                            <CustomTextProgressBar className="cc col-xl-13 " pc="lightpink" percentage={percentages.oosc} >
 
                                                 <h4 className="safe">90 SKUs </h4>
                                                 <small className="text-white">+5 SKUs WoW <FaChevronCircleUp ></FaChevronCircleUp></small>
-                                                <small className="lnk mt-1">66%</small>
+                                                <small className="lnk mt-1">{percentages.oosc}%</small>
                                             </CustomTextProgressBar>
                                         </div>
                                     </Link>
@@ -298,11 +313,11 @@ export default function Landing() {
                                         <div className="ic col-xl-13 " style={{
                                             boxShadow: `0px 1px 7px 4px ${params.chs}`
                                         }}>
-                                            <CustomTextProgressBar className="cc col-xl-13" pc="skyblue" percentage={66} >
+                                            <CustomTextProgressBar className="cc col-xl-13" pc="skyblue" percentage={percentages.chs} >
 
                                                 <h4 className="safe">3.85 </h4>
                                                 <small className="text-white">-0.17 WoW <FaChevronCircleDown></FaChevronCircleDown></small>
-                                                <small className="lnk mt-1">66%</small>
+                                                <small className="lnk mt-1">{percentages.chs}%</small>
                                             </CustomTextProgressBar>
                                         </div>
                                     </Link>
@@ -318,11 +333,11 @@ export default function Landing() {
                                         }} >
                                             <CustomTextProgressBar className="cc col-xl-13 "
 
-                                                pc="springgreen" percentage={66} >
+                                                pc="springgreen" percentage={percentages.cr} >
 
                                                 <h4 className="safe">17.5% </h4>
                                                 <small className="text-white">+0.8 pp WoW <FaChevronCircleUp ></FaChevronCircleUp></small>
-                                                <small className="lnk mt-1">66%</small>
+                                                <small className="lnk mt-1">{percentages.cr}%</small>
                                             </CustomTextProgressBar></div>
                                     </Link>
                                 </center>
@@ -336,11 +351,11 @@ export default function Landing() {
                                         <div className="ic col-xl-13 " style={{
                                             boxShadow: `0px 1px 7px 4px ${params.ar}`
                                         }}>
-                                            <CustomTextProgressBar className="cc col-xl-13 " pc="plum" percentage={66} >
+                                            <CustomTextProgressBar className="cc col-xl-13 " pc="plum" percentage={percentages.ar} >
 
                                                 <h4 className="safe">3.98 </h4>
                                                 <small className="text-white">-0.16 WoW <FaChevronCircleDown ></FaChevronCircleDown></small>
-                                                <small className="lnk mt-1">66%</small>
+                                                <small className="lnk mt-1">{percentages.ar}%</small>
                                             </CustomTextProgressBar>
                                         </div>
                                     </Link>
@@ -355,11 +370,11 @@ export default function Landing() {
                                         <div className="ic col-xl-13 " style={{
                                             boxShadow: `0px 1px 7px 4px ${params.pi}`
                                         }}>
-                                            <CustomTextProgressBar className="cc col-xl-13" pc="paleturquoise" percentage={66} >
+                                            <CustomTextProgressBar className="cc col-xl-13" pc="paleturquoise" percentage={percentages.pi} >
 
                                                 <h4 className="warning">0.97 </h4>
                                                 <small className="text-white">+0.07 WoW <FaChevronCircleUp ></FaChevronCircleUp></small>
-                                                <small className="lnk mt-1">66%</small>
+                                                <small className="lnk mt-1">{percentages.pi}%</small>
                                             </CustomTextProgressBar>
                                         </div>
                                     </Link>
@@ -418,18 +433,18 @@ export default function Landing() {
                         <div className=" col-xl-13 mt-5 " id="sub1">
                             <center>
                                 <div className="dc-8 col-xl-8 ml-0">
-                                    <center className="tc-8">Buy Box</center>
+                                    <center className="tc-8">Buy Box Lost</center>
                                     {/* <center> */}
                                     <Link to="/contentview" className="lnk">
                                         <div className="ic col-xl-13" style={{
                                             boxShadow: `0px 1px 7px 4px ${params.bb}`
                                         }}>
-                                            <CustomTextProgressBar className="cc col-xl-13" pc="orange" percentage={66} >
+                                            <CustomTextProgressBar className="cc col-xl-13" pc="orange" percentage={percentages.bb} >
 
                                                 <h4 className="warning">46 SKUs</h4>
                                                 <small className="text-white">+5 SKUs WoW <FaChevronCircleUp></FaChevronCircleUp></small>
 
-                                                <small className="lnk mt-1">66%</small>
+                                                <small className="lnk mt-1">{percentages.bb}%</small>
                                             </CustomTextProgressBar>
                                         </div>
                                     </Link>

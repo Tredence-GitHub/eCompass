@@ -299,3 +299,17 @@
 .mini-header {
     font-size: 11pt;
 }
+
+.categoryDropDown {
+    
+        padding: 3px;
+        height: 30px;
+        width: 200px;
+        border: none;
+        color: silver;
+        background-color: #162447;
+        box-shadow: 0px 1px 7px 0.25px navy;
+        margin-right: 5px;
+        
+
+}
