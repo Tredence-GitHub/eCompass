@@ -54,7 +54,7 @@ function App(props) {
                ) 
                }>
          </Route>
-         <Route path = "/contentview" render={ ()=> (
+         <Route path = "/contentview" exact render={ ()=> (
              <Navs  viewname = "contentview" content = {<Contenthealth />} />
                ) 
                }>

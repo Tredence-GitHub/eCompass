@@ -38,8 +38,8 @@ class Recommendations extends Component {
                         if(item === 'No Recommendation'){
                             return <span className="text-muted"><i>{item}</i></span>
                         }
-                        else if (item.includes('Drop') | item.includes('drop') | item.includes('without') | item.includes
-                        ('OOS') | item.includes('Negative')) {
+                        else if (item.toLowerCase().includes('drop') | item.toLowerCase().includes('without') | 
+                        item.toLowerCase().includes('oos') | item.toLowerCase().includes('negative')) {
                         return <Popup className="bg-dark" trigger={<Button variant="outline-danger" value={item} size="sm" onClick={(e) => {
                             console.log(e.target.value, cell, " --- ", row)
 
@@ -58,7 +58,7 @@ class Recommendations extends Component {
 
 
                     }
-                    else if (item.includes('Decline') | item.includes('Not') | item.includes('Below')) {
+                    else if (item.toLowerCase().includes('decline') | item.toLowerCase().includes('not') | item.toLowerCase().includes('below')) {
                         return <Popup className="bg-dark" trigger={<Button variant="outline-warning" value={item} size="sm"  >
                             {item}</Button>} modal >
                             <div>
@@ -68,7 +68,7 @@ class Recommendations extends Component {
                             </div>
                         </Popup>
                     }
-                    else if (item.includes('High') | item.includes('Positive')) {
+                    else if (item.toLowerCase().includes('high') | item.toLowerCase().includes('positive')) {
                         return <Popup className="bg-dark" trigger={<Button variant="outline-success" value={item} size="sm" onClick={(e) => {
                             // console.log(e.target.value,cell, " --- ", row)
                         }} >{item}</Button>} modal>
@@ -94,8 +94,8 @@ class Recommendations extends Component {
                     if(item === 'No Recommendation'){
                             return <span className="text-muted"><i>{item}</i></span>
                         }
-                    else if (item.includes('Drop') | item.includes('drop') | item.includes('without') | item.includes
-                        ('OOS') | item.includes('Negative')) {
+                    else if (item.toLowerCase().includes('drop') | item.toLowerCase().includes('without') | 
+                    item.toLowerCase().includes('oos') | item.toLowerCase().includes('negative')) {
                         return <Popup className="bg-dark" trigger={<Button variant="outline-danger" value={item} size="sm" onClick={(e) => {
                             console.log(e.target.value, cell, " --- ", row)
                         }} >{item}</Button>} modal>
@@ -103,14 +103,14 @@ class Recommendations extends Component {
                         </Popup>
 
                     }
-                    else if (item.includes('Decline') | item.includes('Not') | item.includes('Below')) {
+                    else if (item.toLowerCase().includes('decline') | item.toLowerCase().includes('not') | item.toLowerCase().includes('below')) {
                         return <Popup className="bg-dark" trigger={<Button variant="outline-warning" value={item} size="sm" onClick={(e) => {
                             // console.log(e.target.value,cell, " --- ", row)
                         }} >{item}</Button>} modal>
 
                         </Popup>
                     }
-                    else if (item.includes('High') | item.includes('Positive')) {
+                    else if (item.toLowerCase().includes('high') | item.toLowerCase().includes('positive')) {
                         return <Popup className="bg-dark" trigger={<Button variant="outline-success" value={item} size="sm" onClick={(e) => {
                             // console.log(e.target.value,cell, " --- ", row)
                         }} >{item}</Button>} modal>
@@ -135,8 +135,8 @@ class Recommendations extends Component {
                     if(item === 'No Recommendation'){
                         return <span className="text-muted"><i>{item}</i></span>
                     }
-                    else if (item.includes('Drop') | item.includes('drop') | item.includes('without') | item.includes
-                        ('OOS') | item.includes('Negative')) {
+                    else if ( item.toLowerCase().includes('drop') | item.includes('without') | 
+                    item.toLowerCase().includes('oos') | item.toLowerCase().includes('negative')) {
                         return <Popup className="bg-dark" trigger={<Button variant="outline-danger" value={item} size="sm" onClick={(e) => {
                             console.log(e.target.value, cell, " --- ", row)
                         }} >{item}</Button>} modal>
@@ -144,14 +144,14 @@ class Recommendations extends Component {
                         </Popup>
 
                     }
-                    else if (item.includes('Decline') | item.includes('Not') | item.includes('Below')) {
+                    else if (item.toLowerCase().includes('decline') | item.toLowerCase().includes('not') | item.toLowerCase().includes('below')) {
                         return <Popup className="bg-dark" trigger={<Button variant="outline-warning" value={item} size="sm" onClick={(e) => {
                             // console.log(e.target.value,cell, " --- ", row)
                         }} >{item}</Button>} modal>
 
                         </Popup>
                     }
-                    else if (item.includes('High') | item.includes('Positive')) {
+                    else if (item.toLowerCase().includes('high') | item.toLowerCase().includes('positive')) {
                         return <Popup className="bg-dark" trigger={<Button variant="outline-success" value={item} size="sm" onClick={(e) => {
                             // console.log(e.target.value,cell, " --- ", row)
                         }} >{item}</Button>} modal>
@@ -210,7 +210,7 @@ class Recommendations extends Component {
     }
 
     componentDidMount() {
-        Axios.get(`${this.state.deploy}/api/getRecommendations`).then((response) => {
+        Axios.get(`${this.state.deploy}/api/getRecommendations/${localStorage.getItem('global_vendor')}`).then((response) => {
             let fetched = response.data.data;
 
             fetched.forEach(element => {

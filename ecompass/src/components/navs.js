@@ -199,13 +199,7 @@ export default function Navs(props) {
                         color: "silver",
                         fontWeight: "lighter"
                     }} >
-                        {/* {props.viewname === 'home'? <h4 style={{ fontWeight: "lighter" }}><span className="mr-3"><FaGlobe></FaGlobe></span> 360&deg; View</h4> : <h4></h4> }
-                        {props.viewname === 'salesview' ? <h4 style={{ fontWeight: "lighter" }}><span className="mr-3"><FaChartBar></FaChartBar></span> Sales View</h4> : <h4></h4>}
-                        {props.viewname === 'contentview' ? <h4 style={{ fontWeight: "lighter" }}><span className="mr-3"><FaHeartbeat></FaHeartbeat></span> Content Health View</h4> : <h4></h4>}
-                        {props.viewname === 'ratingsview' ? <h4 style={{ fontWeight: "lighter" }}><span className="mr-3"><FaStar></FaStar></span> Reviews & Ratings View</h4> : <h4></h4>}
-                        {props.viewname === 'inventoryview' ? <h4 style={{ fontWeight: "lighter" }}><span className="mr-3"><FaBoxOpen></FaBoxOpen></span> Inventory Management View</h4> : <h4></h4>}
-                        {props.viewname === 'recommendations' ? <h4 style={{ fontWeight: "lighter" }}><span className="mr-3"><FaPrescription></FaPrescription></span> Recommendations </h4> : <h4></h4>} */}
-
+                        
                     </Container >
                     
                     <Container fluid className=" mt-2  bg" style={{
@@ -224,8 +218,8 @@ export default function Navs(props) {
                         marginRight: "0px",
                         // paddingRight: "20px"
                     }}>
-                        {props.viewname === 'home'? <GlobalDropDown onsubmitprop = {onSubmit} />:<></> }
-                        {props.viewname !== 'home' && props.viewname !== 'recommendations'? <LocalDropDown passview={props.viewname}/>: <></>}
+                        {props.viewname !== ''? <GlobalDropDown onsubmitprop = {onSubmit} view = {props.viewname} />:<></> }
+                        {/* {props.viewname !== 'home' && props.viewname !== 'recommendations'? <LocalDropDown passview={props.viewname}/>: <></>} */}
                     </Container >
                             {props.content}
                             

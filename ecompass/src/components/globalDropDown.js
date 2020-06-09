@@ -7,7 +7,7 @@ import 'react-dropdown/style.css';
 import {useState, useEffect} from 'react';
 import { useSelector, useDispatch, useStore } from 'react-redux';
 import { FaFilter, FaRedo } from 'react-icons/fa';
-
+import wmt from '../wmt.PNG';
 
 export default function GlobalDropDown(props){
     
@@ -20,13 +20,12 @@ export default function GlobalDropDown(props){
     // const store = useStore()
     
     useEffect(() => {
-        setMerchant(localStorage.getItem('filter1'))
-        setProduct(localStorage.getItem('filter2'))
+        setMerchant(localStorage.getItem('global_vendor'))
     }, [])
 
      function handleDropdown(event){
+       localStorage.setItem('global_vendor', event.target.value);
        setMerchant(event.target.value)
-       
     }
 
     function handleDropdown2(event){
@@ -36,7 +35,6 @@ export default function GlobalDropDown(props){
      return (
            
          <Row>
-         {/* <label>{content1}  {console.log('gob pg ----  ', store.getState())}  </label> */}
                 <select onChange={handleDropdown} style={{
                     padding:"3px",
                     height:"30px",
@@ -48,15 +46,15 @@ export default function GlobalDropDown(props){
                     marginRight: "5px",
                     marginLeft: "auto",
                 }}>
-                    <option>{ merchant !== null ? merchant : 'Select a Merchant'} </option>
-                    <option value="merchant1" >merchant1 </option>
-                    <option value="merchant2">merchant2 </option>
-                    <option value="merchant3">merchant3 </option>
-                    <option value="merchant4">merchant4  </option>
+                    <option value="default" selected disabled>{ merchant !== null ? 'Selected '+ merchant : 'Select a Merchant'} </option>
+                    <option value="Walmart">Walmart </option>
+                    <option value="Amazon">Amazon </option>
+                    {/* <option value="merchant3">merchant3 </option> */}
+                    {/* <option value="">merchant4  </option> */}
                 </select>
                 
 
-                <select onChange={handleDropdown2} style={{
+                {/* <select onChange={handleDropdown2} style={{
                     padding:"3px",
                     height:"30px",
                     width: "200px",
@@ -71,7 +69,7 @@ export default function GlobalDropDown(props){
                     <option value="category2">category2</option>
                     <option value="category3">category3</option>
                     <option value="category4">category4</option>
-                </select>
+                </select> */}
 
                 <Button type="submit" variant="outline-primary" size="sm" style={{
                     marginRight: "0px",
@@ -81,23 +79,24 @@ export default function GlobalDropDown(props){
                     (e) => {
                         e.preventDefault();
                         // {props.onsubmitprop( [merchant, product] );}
-                        {localStorage.setItem('filter1', merchant);}
-                        {localStorage.setItem('filter2', product);}
+                        {localStorage.setItem('global_vendor', merchant);}
+                        window.location.href = "/"+ props.view
+                        // {localStorage.setItem('filter2', product);}
                         // dispatch({type:'UPDATE_FILTERS', info: merchant, info2: product})
                     }
                 }><FaFilter></FaFilter></Button>
-                <Button type="submit" variant="outline-primary" size="sm" style={{
+                {/* <Button type="submit" variant="outline-primary" size="sm" style={{
                     border: "none",
                 }} onClick={
                     (e) => {
                         e.preventDefault();
                         // {props.onsubmitprop( [merchant, product] );}
-                        {localStorage.setItem('filter1', 'default merchant');}
-                        {localStorage.setItem('filter2', 'default product');}
-                         window.location.href = "/home"
+                        {localStorage.setItem('global_vendor', 'Walmart');}
+                        // {localStorage.setItem('filter2', 'default product');}
+                         window.location.href = "/"+ props.view
                         // dispatch({type:'UPDATE_FILTERS', info: merchant, info2: product})
                     }
-                }><FaRedo></FaRedo></Button>
+                }><FaRedo></FaRedo></Button> */}
                 </Row>
                 
         )

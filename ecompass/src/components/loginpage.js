@@ -37,8 +37,9 @@ export default function Loginpage(props) {
 
     function setlocal(e){
         if(passwordflag === false && userflag === false){
-            console.log("HERE")
-            localStorage.setItem('loggedIn', true)
+            // console.log("HERE")
+            localStorage.setItem('loggedIn', true);
+            localStorage.setItem('global_vendor', 'Walmart');
             window.history.pushState(Math.random(), 'dt', "/home");
         }
         else{

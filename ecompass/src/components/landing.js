@@ -309,7 +309,12 @@ export default function Landing() {
                                 <center className="tc-5">Content Health Score</center>
                                 {/* Avg rating */}
                                 <center>
-                                    <Link to="/contentview" className="lnk">
+                                    <Link to={{
+                                        pathname: "/contentview",
+                                        state: {
+                                            name: "sku"
+                                        } 
+                                     }} className="lnk">
                                         <div className="ic col-xl-13 " style={{
                                             boxShadow: `0px 1px 7px 4px ${params.chs}`
                                         }}>

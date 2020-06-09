@@ -3,10 +3,10 @@ const Router = express.Router();
 
 const db = require('../config/db');
 
-Router.get('/getRecommendations', (req, res)=>{
+Router.get('/getRecommendations/:vendor', (req, res)=>{
     db.query(`SELECT product_group, sku_id, sales_recommendation,\
     inventory_recommendation, content_health_recommendation, \
-    ratings_and_reviews_recommendation, vendor FROM ecom.demo_recommendations_final;`).then((results) => {
+    ratings_and_reviews_recommendation, vendor FROM ecom.demo_recommendations_final where vendor = '${req.params.vendor}';`).then((results) => {
         console.log(results);
         let fetched = results[0];
         

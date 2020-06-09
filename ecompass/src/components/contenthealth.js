@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Button, Tabs, Tab } from 'react-bootstrap';
 import { FaFilter } from 'react-icons/fa';
 import Iframe from 'react-iframe';
 
-export default function Contenthealth() {
+export default function Contenthealth(props) {
+    const [loading, setloading] = useState(true)
+    useEffect(() => {
+        f()
+    }, [])
+    
+    function f(){
+        setloading(false)
+    }
+    if(!loading){
     return (
         <div> 
         <Tabs defaultActiveKey="home" variant="dark" transition={false} id="noanim-tab-example">
@@ -40,4 +49,10 @@ export default function Contenthealth() {
       </Tabs>   
       </div>
     )
+        }
+    else {
+        return(
+            <div>Loading...</div>
+        )
+    }
 }
