@@ -1,78 +1,28 @@
-.card-title {
-    color: ghostwhite;
+.side {
+    background-color: #191d38 !important;
+    height: auto ;
+    min-height: 150vh;
+   
 }
 
-.h5 {
-    color: whitesmoke;
+.icon-size {
+    font-size: 20pt;
 }
 
-.h6 {
-    color: whitesmoke;
+.nav-bar {
+    box-shadow: 0px 1px 7px 0.25px navy;
+    background-color: #191d30;
+    height: 50px;
+    width: 100%;
+   
 }
 
-.target {
-    /* background-color: rgb(10, 10, 58); */
-    /* background: url('https://www.timberlake.co.uk/wp/wp-content/uploads/2018/04/7-preattentive3.png'); */
-    background-size: cover;
-    border: 3px solid orchid;
-    /* border-right: 5px solid orchid; */
-    border-radius: 50%;
-    z-index: -3;
-    box-shadow: 0px 1px 10px 2px rgb(75, 74, 74);
-    margin: 20px;
-    margin-left: 0px;
-    padding: 0px;
-    text-align: center;
-    font-size: larger;
-}
-
-.sales {
-    border: 1px solid lightgreen;
-
-}
-
-.sales:hover, .chs:hover, .inventory:hover, .rating:hover {
-    /* transform: scale(1.05); */
-    box-shadow: 0px 1px 10px 4px rgb(75, 74, 74);
-}
-
-#forecast {
-    margin: 30px;
+#searchbar {
+    
+    background-color: lightgray ;
+    border-radius: 12px ;
     
 }
-
-.chs {
-    border: 1px solid yellow;
-    
-}
-
-.inventory {
-    border: 1px solid cyan;
-    
-}
-
-.rating {
-    border: 1px solid mediumaquamarine;
-    
-}   
-
-.targ  {
-    margin-left: auto;
-    /* background-color: rgb(4, 4, 27); */
-    border-radius: 50%;
-    box-shadow: 0px 1px 10px 2px rgb(75, 74, 74);
-    border-left: 2px solid limegreen;
-    border-top: 1px solid limegreen;
-}
-
-.pred {
-    margin-left: auto;
-    /* background-color: rgb(4, 4, 27); */
-    box-shadow: 0px 1px 10px 2px rgb(75, 74, 74);
-    border-left: 2px solid blueviolet;
-    border-top: 1px solid blueviolet ;
-}
-
 .active {
    border: 1px solid navy ;
    border-bottom: none ;

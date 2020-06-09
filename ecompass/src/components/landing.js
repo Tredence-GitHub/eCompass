@@ -201,7 +201,6 @@ export default function Landing() {
                                 <center>
                                     <div className="dc-6 col-xl-7 ml-0">
                                         <center className="tc-6">Average Search Rank</center>
-                                        {/* <center> */}
                                         <Link to="/contentview" className="lnk">
                                             <div className="ic col-xl-13" style={{
                                                 boxShadow: `0px 1px 7px 4px ${params.asr}`
@@ -215,7 +214,6 @@ export default function Landing() {
                                                 </CustomTextProgressBar>
                                             </div>
                                         </Link>
-                                        {/* </center> */}
                                     </div>
                                 </center>
                             </div>

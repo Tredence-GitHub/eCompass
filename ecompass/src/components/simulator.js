@@ -1,6 +1,6 @@
 import React from 'react';
 import Iframe from 'react-iframe';
-import { Container, Button, Tabs, Tab } from 'react-bootstrap';
+import { Tabs, Tab } from 'react-bootstrap';
 
 
 export default function Simulator() {

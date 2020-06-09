@@ -233,7 +233,6 @@ class Recommendations extends Component {
    
     handleSelected(e){
         const newtabledata = []
-        // this.setState({product: e.target.value})
         if(e.target.value == 'all'){
             this.setState({tabledata: this.state.originaldata})
         }
@@ -275,12 +274,10 @@ class Recommendations extends Component {
             dataField: 'sku_id',
             text: 'SKU ID',
             sort: true
-            // filter: textFilter(),
-            // headerFormatter: skuIDFormatter
+            
         }, {
             dataField: 'vendor',
             text: 'Vendor',
-            // sort: true
         }, {
             dataField: 'product_group',
             text: 'Product Group'
@@ -377,7 +374,6 @@ class Recommendations extends Component {
                                     <BootstrapTable classes="table-dark table-bordered table-hover table-striped thead-light"
                                         {...props.baseProps}
                                         pagination={paginationFactory(options)}
-                                        // filter={filterFactory()}
                                         defaultSorted={defaultSorted}
                                         noDataIndication={() => (<div>No Data available</div>)}
                                         remote={{ pagination: false, filter: true }}

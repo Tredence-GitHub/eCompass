@@ -8,8 +8,6 @@ import Salesview from './components/salesview';
 import Contenthealth from './components/contenthealth';
 import Ratings from './components/ratings';
 import Inventory from './components/inventory';
-import { connect } from 'react-redux';
-import { useSelector } from 'react-redux';
 import Landing from './components/landing';
 import Loginpage from './components/loginpage';
 import Recommendations from './components/recommendations';
@@ -17,17 +15,6 @@ import Simulator from './components/simulator';
 
 function App(props) {
 
-  let viewname = "";
-  const [value, setValue] = useState('');
-  const [loggedIn, setL] = useState('');
-
-
-
-  function onDropDownSubmit(value){
-    localStorage.setItem('var', value);
-    // console.log("Got To App DropDown", value);
-    
-  }
 
   return (
     <div className="App">
@@ -40,15 +27,10 @@ function App(props) {
 
         
          <Route exact path = "/home" render={ ()=> (
-              <Navs  viewname = "home" logged = {loggedIn}  onDropDownSubmit = {onDropDownSubmit} content={ <Landing /> }/>
+              <Navs  viewname = "home"  content={ <Landing /> }/>
             ) 
                } > 
          </Route> 
-         {/* <Route exact path = "/home2" render={ ()=> (
-              <Navs  viewname = "home" logged = {loggedIn}  onDropDownSubmit = {onDropDownSubmit} content={ <Landing2 /> }/>
-            ) 
-               } > 
-         </Route>  */}
          <Route path = "/salesview" render={ ()=> (
              <Navs  viewname = "salesview" content = {<Salesview />}  />
                ) 
@@ -84,10 +66,5 @@ function App(props) {
     </div>
   );
 }
-// const mapPropsToState = (state) => {
-//   return {
-//     content1: state.content1,
-//     content2: state.content2
-//   }
-// }
+
 export default App;

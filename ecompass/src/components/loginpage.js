@@ -6,9 +6,9 @@ import studio from '../logo.png';
 
 
 export default function Loginpage(props) {
-    const [username, setusername] = useState('')
+    // const [username, setusername] = useState('')
     const [userflag, setuserflag] = useState(null)
-    const [password, setpassword] = useState('')
+    // const [password, setpassword] = useState('')
     const [passwordflag, setpasswordflag] = useState(null)
 
     localStorage.clear()
@@ -16,7 +16,7 @@ export default function Loginpage(props) {
     function validateuser(e){
         if(e.target.value === 'tredence')
         {
-            setusername(e.target.value);
+            // setusername(e.target.value);
             setuserflag(false);
         }
         else{
@@ -27,7 +27,7 @@ export default function Loginpage(props) {
     function validatepassword(e){
         if(e.target.value === 'tredence')
         {
-            setpassword(e.target.value);
+            // setpassword(e.target.value);
             setpasswordflag(false);
         }
         else{
@@ -40,7 +40,7 @@ export default function Loginpage(props) {
             // console.log("HERE")
             localStorage.setItem('loggedIn', true);
             localStorage.setItem('global_vendor', 'Walmart');
-            window.history.pushState(Math.random(), 'dt', "/home");
+            window.history.pushState('', '', "/home");
         }
         else{
             localStorage.setItem('loggedIn', false)

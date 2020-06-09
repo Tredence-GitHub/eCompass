@@ -7,12 +7,7 @@ import Iframe from 'react-iframe';
 
 export default function Salesview(props) {    
 
-    const [varValue, setvarValue] = useState('');
     const [loading, setLoading] = useState(false);
-
-    // const content1 = useSelector(state => state.regular.filter1);
-    // const store = useStore()
-    // const dispatch = useDispatch()
     
     const [filter1, setfilter1] = useState('')
     const [filter2, setfilter2] = useState('')
@@ -20,7 +15,6 @@ export default function Salesview(props) {
     useEffect(() => {
        setfilter1(localStorage.getItem('filter1'))
        setfilter2(localStorage.getItem('filter2'))
-    //    setvarValue(props.filters);
        setLoading(false);
     }, []);
 
@@ -36,7 +30,6 @@ export default function Salesview(props) {
 else{
     return (
         <div>
-        {/* //  {This is {varValue} --- localStorage -- {filter1} From Global Props --- {content1} ... {props.content1} !! {console.log(store.getState())}} */}
         <Tabs defaultActiveKey="home" variant="dark"  transition={false} id="noanim-tab-example">
             
             <Tab eventKey="home"  title="Product Group Level">
