@@ -1,6 +1,7 @@
 import React from 'react';
 import Iframe from 'react-iframe';
-import { Tabs, Tab } from 'react-bootstrap';
+import { Container, Spinner, Button, Tabs, Tab } from 'react-bootstrap';
+import { FaFilter, FaExclamation, FaWifi, FaDatabase } from 'react-icons/fa';
 
 
 export default function Simulator() {

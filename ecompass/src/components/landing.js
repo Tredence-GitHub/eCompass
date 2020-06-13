@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaChevronCircleUp, FaChevronCircleDown, FaBars, FaRegChartBar, FaChartBar, FaBox, FaHeartbeat, FaArrowRight, FaStar, FaMagic, FaBullseye, FaChartArea, FaChartLine, FaArrowUp, FaArrowDown } from 'react-icons/fa'
+import { FaChevronCircleUp, FaChevronCircleDown, FaBars, FaRegChartBar, FaChartBar, FaBox, FaHeartbeat, FaArrowRight, FaStar, FaMagic, FaBullseye, FaChartArea, FaChartLine, FaArrowUp, FaArrowDown, FaNetworkWired, FaExclamation, FaWifi } from 'react-icons/fa'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
@@ -11,37 +11,45 @@ import DonutChart from 'react-donut-chart';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import autoMergeLevel1 from 'redux-persist/es/stateReconciler/autoMergeLevel1';
+import Axios from 'axios';
 
 
 export default function Landing() {
 
-    const [loading, setloading] = useState(false)
+    const [loading, setloading] = useState(true)
     const [data, setdata] = useState(null)
+    const [error, seterror] = useState(false)
+    const local = "http://localhost:4000"
+    const deploy = "https://ecompass-app-development.azurewebsites.net"
 
-    // useEffect(async () => {
 
-    //     let response = await axios.get('http://localhost:4000/api/')
-    //     if(response.status === 200){
-    //         console.log(response);
-    //         setloading(false);
-    //     }
-    //     else{
-    //         alert('Could not load')
-    //     }
+    useEffect(() => {
+        fetchData();
+        // animateShades();
+    }, [])
 
-    // }, [])
-
-    const val = 5;
-
-    const chartStyle = {
-
-        width: 150,
-        height: 150
-
+    async function fetchData() {
+        let response = await Axios.get(`${local}/api/get360/${localStorage.getItem('global_vendor')}`);
+        if(response.status === 200 && response.data.data.length > 0 ) {
+            console.log(response.data)
+            console.log(response.data.data);
+            setdata(response.data.data[0]);
+            setloading(false);
+            animateShades();
+        }
+        else{
+            
+            seterror(true)
+            
+        }
     }
+
+
+    
     const [params, setParams] = useState({});
 
     const leads = {
+        'lead': 'aqua',
         'ar': 'aqua',
         'chs': 'aqua',
         'cr': 'aqua',
@@ -51,6 +59,7 @@ export default function Landing() {
     }
 
     const lags = {
+        'lag': 'gold',
         'sales': 'gold',
         'oos': 'gold',
         'chs': 'gold',
@@ -62,16 +71,18 @@ export default function Landing() {
     }
 
     const all = {
-        'sales': 'black',
-        'oos': 'black',
-        'chs': 'black',
-        'cr': 'black',
-        'asr': 'black',
-        'pi': 'black',
-        'bb': 'black',
-        'oosc': 'black',
-        'ar': 'black',
-        'ps': 'black'
+        'lag': 'transparent',
+        'lead': 'transparent',
+        'sales': 'transparent',
+        'oos': 'transparent',
+        'chs': 'transparent',
+        'cr': 'transparent',
+        'asr': 'transparent',
+        'pi': 'transparent',
+        'bb': 'transparent',
+        'oosc': 'transparent',
+        'ar': 'transparent',
+        'ps': 'transparent'
     }
 
     const percentages = {
@@ -90,10 +101,13 @@ export default function Landing() {
     function CustomTextProgressBar(props) {
         const { children, ...otherProps } = props;
         return (
-            <div className="cc" style={{
-                // marginLeft: "-10px"
+            <div className="ic" style={{
+                position: "relative"
             }} >
-                <div style={{ position: 'absolute' }}>
+                <div style={{ position: 'relative' }}>
+                    <div className="progressCircle" style={{
+                        boxShadow: `1px 2px 7px 4px ${props.outercolor}`
+                    }}></div>
                     <CircularProgressbar {...otherProps} value={props.percentage} pathColor='gold' strokeWidth={4}
                         styles={buildStyles({
 
@@ -111,11 +125,11 @@ export default function Landing() {
                     </CircularProgressbar></div>
 
                 <center className="" style={{
-                    //   position: 'absolute',
+                    position: 'absolute',
                     height: '100%',
                     width: '100%',
                     display: 'flex',
-                    marginTop: '0px',
+                    top: '0px',
                     flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
@@ -132,179 +146,103 @@ export default function Landing() {
     }
 
     function leadingParameters() {
-        // alert('reached')
         setParams(leads);
     }
 
     function laggingParameters() {
-        // alert('reached')
         setParams({});
         setParams(lags);
     }
 
+    function animateShades(){
+        
+        setTimeout(laggingParameters, 2000);
+        setTimeout(leadingParameters, 5000)
+    }
+
     if (!loading) {
+        // animateShades()
         return (
-
-            <div>
-                <div className="row mt-4 col-border-xl" style={{
-                    // border: "1px solid white",
-                    padding: "0px"
+            <div class="landing-main">
+            <div className=" col-12">
+                <center>
+                <div className="top-box col-12 mb-1" style={{
+                   
+                    maxWidth: "546px",
+                    width: "100%"
+                    // boxShadow: "0px 1px 7px 3px navy"
                 }}>
-                    <div className="first col-xl-4 mr-0 ml-0">
-
-
-                        <center className="tc ml-4"> <strong>CURRENT SALES </strong></center>
-                        <hr style={{
-                            border: "1px solid palegoldenrod"
-                        }}></hr>
-                        <div className="third col-xl-12 mt-3"  style={{
-                            //    border: "1px solid blue"
-                        }}>
-
-                        <div className="row col-xl-14 ml-0 " onMouseOut={
-                            allParameters
-                        } onMouseOver={
-                            laggingParameters
-                        } style={{
-                                padding: "0px"
-                            }}>
-                                <div className="col-6  ml-0">
-                                    <center className="mini-header">LW Sales</center>
-                                    <center><strong>$300K</strong></center>
-                                </div>
-                                <div className="col-6  ml-0" style={{
-                                    borderLeft: "0.5px solid aqua"
-                                }}>
-                                    <center className="mini-header">WoW</center>
-                                    <center><strong>+4% WoW</strong><FaChevronCircleUp></FaChevronCircleUp></center>
-                                </div>
-
-                            <div className="col-xl-12 mt-1">
-
-                            <center>
-                                <ReactSpeedometer
-                                    textColor="aquamarine"
-                                    maxValue={10}
-                                    value={4}
-                                    needleColor="silver"
-                                    startColor="rgba(255, 0, 0, 0.562)"
-                                    // segments={10}
-                                    currentValueText="QTD Sales in Million"
-                                    endColor="green"
-                                    ringWidth={40}
-                                />
-
-                            </center>
-                            </div>
-                            </div>
-                            <div className=" col-xl-13 mt-1 " id="sub1">
+               <center className="tc-1 mid-heading">Sales Health</center>
+                <div className="row col-14  mt-1 mr-0 ml-3" id="sub1">
+                            <div className="  dc-1 col-6">
+                                <center className="tc-1" id="sub-header">Sales Drop</center>
+                                {/* Avg rating */}
                                 <center>
-                                    <div className="dc-6 col-xl-7 ml-0">
-                                        <center className="tc-6">Average Search Rank</center>
-                                        <Link to="/contentview" className="lnk">
-                                            <div className="ic col-xl-13" style={{
-                                                boxShadow: `0px 1px 7px 4px ${params.asr}`
-                                            }}>
-                                                <CustomTextProgressBar className="cc col-xl-13" pc="orange" percentage={percentages.asr} >
+                                    <Link to={{
+                                        pathname: "/salesview",
+                                        state: {
+                                            name: "sku"
+                                        } 
+                                     }} className="lnk">
+                                        <div >
+                                            <center className=" mt-1">
+                                            <CustomTextProgressBar className="" outercolor={params.sales}
+                                              pc="skyblue" percentage={data.perc_skus_sales_dropped_base} >
 
-                                                    <h4 className="danger">4.2</h4>
-                                                    <small className="text-white">+0.7 WoW <FaChevronCircleUp></FaChevronCircleUp></small>
+                                                <h6 className={data.perc_skus_sales_dropped_base_indicator}>{data.number_skus_sales_dropped} SKUs </h6>
+                                                <small className="text-white" style={{
+                                                    fontSize: '8pt',
+                                                    padding: "1px"
+                                                }}>{data.perc_change_wow_sales} SKUs WoW&nbsp;
+                                                { data.sales_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
+                                                { data.sales_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}
 
-                                                    <small className="lnk mt-1">{percentages.asr}%</small>
-                                                </CustomTextProgressBar>
-                                            </div>
-                                        </Link>
-                                    </div>
+                                                </small>
+                                            </CustomTextProgressBar>
+                                            </center>
+                                        </div>
+                                    </Link>
+                                </center>
+                            </div>
+                            <div className="dc-2 col-6 "  >
+                                <center className="tc-2" id="sub-header">Predicted Sales Drop</center>
+                                <center>
+                                    <Link to="/salesview" className="lnk" >
+                                    <center className="mt-1 ">
+                                            <CustomTextProgressBar className=""
+                                                outercolor = {params.ps}
+                                                pc="springgreen" percentage={data.perc_skus_pred_sales_dropped_base_indicator} >
+
+                                                <h6 className={data.perc_skus_pred_sales_dropped_base_indicator}>{data.number_pred_skus_sales_dropped} SKUs </h6>
+                                                <small className="text-white" style={{
+                                                    fontSize: '8pt',
+                                                    padding:"1px"
+                                                }}>{data.perc_change_wow_pred_sales} SKUs WoW&nbsp; 
+                                                { data.pred_sales_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
+                                                { data.pred_sales_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}
+                                                </small>
+                                            </CustomTextProgressBar>
+                                            </center>
+                                    </Link>
                                 </center>
                             </div>
                         </div>
                     </div>
+                    </center>
+                </div>
+                
+               
+                {/* Second row */}
 
-                    <div className="middle col-xl-5  mr-0">
-                        <div className="row col-xl-12 mb-5" id="sub1">
-                            <div className="dc-1 col-xl-5 mr-4 ml-4">
-                                <center className="tc-1">Sales Drop</center>
-                                <center>
-                                    <Link to="/salesview" className="lnk">
-                                        <div className="ic col-xl-13 " style={{
-                                            boxShadow: `0px 1px 7px 4px ${params.sales}`
-                                        }}>
-                                            <CustomTextProgressBar className="cc col-xl-13 " pc="orange" percentage={percentages.sales} >
-
-                                                <h4 className="danger">195 SKUs</h4>
-                                                <small className="text-white">+24 SKUs WoW <FaChevronCircleUp></FaChevronCircleUp></small>
-
-                                                <small className="lnk mt-1">{percentages.sales}%</small>
-                                            </CustomTextProgressBar>
-                                        </div>
-                                    </Link>
-                                </center>
-                            </div>
-                            {/*Content Health  */}
-
-                            <div className="dc-2 col-xl-5 ">
-
-                                <center className="tc-2">Predicted Sales Drop</center>
-                                <center>
-                                    <Link to="/salesview" className="lnk">
-                                        <div className="ic col-xl-13 " style={{
-                                            boxShadow: `0px 1px 7px 4px ${params.ps}`
-                                        }}>
-                                            <CustomTextProgressBar className="cc col-xl-13" pc="aqua" percentage={percentages.pred} >
-
-                                                <h4 className="danger">190 SKUs </h4>
-                                                <small className="text-white">-5 SKUs WoW <FaChevronCircleDown></FaChevronCircleDown></small>
-                                                <small className="lnk mt-1">{percentages.pred}%</small>
-                                            </CustomTextProgressBar>
-                                        </div>
-                                    </Link>
-                                </center>
-
-                            </div>
-                        </div>
-
-                        {/* Second row  */}
-                        <div className="row col-xl-12 mb-5" id="sub1">
-                            <div className="dc-3 col-xl-5 mr-4 ml-4">
-                                {/* OOS  */}
-                                <center className="tc-3">OOS in last 7 days</center>
-                                <center>
-                                    <Link to="/inventoryview" className="lnk">
-                                        <div className="ic col-xl-13 " style={{
-                                            boxShadow: `0px 1px 7px 4px ${params.oos}`
-                                        }}>
-                                            <CustomTextProgressBar className="cc col-xl-13" pc="blanchedalmond" percentage={percentages.oos} >
-                                                <h4 className="safe">85 SKUs </h4>
-                                                <small className="text-white">+15 SKUs WoW  <FaChevronCircleUp></FaChevronCircleUp></small>
-                                                <small className="lnk mt-1">{percentages.oos}%</small>
-                                            </CustomTextProgressBar>
-                                        </div>
-                                    </Link>
-                                </center>
-                            </div>
-                            <div className="dc-4 col-xl-5 ">
-                                <center className="tc-4">OOS in next 7 days</center>
-                                {/* conversion rate */}
-                                <center>
-                                    <Link to="/inventoryview" className="lnk">
-                                        <div className="ic col-xl-13 " style={{
-                                            boxShadow: `0px 1px 7px 4px ${params.oosc}`
-                                        }}>
-                                            <CustomTextProgressBar className="cc col-xl-13 " pc="lightpink" percentage={percentages.oosc} >
-
-                                                <h4 className="safe">90 SKUs </h4>
-                                                <small className="text-white">+5 SKUs WoW <FaChevronCircleUp ></FaChevronCircleUp></small>
-                                                <small className="lnk mt-1">{percentages.oosc}%</small>
-                                            </CustomTextProgressBar>
-                                        </div>
-                                    </Link>
-                                </center>
-                            </div>
-                        </div>
-                        {/* third row */}
-                        <div className="row col-xl-12 mb-5" id="sub1">
-                            <div className="dc-5 col-xl-5 mr-4 ml-4">
-                                <center className="tc-5">Content Health Score</center>
+                <div className="mid">
+                <div className="mid-side " style={{
+                   
+                    
+                }}>
+               <center className="tc-3 mid-heading">Search Health</center>
+                <div className=" mid-inner " id="">
+                            <div className=" dc-3 inner-circle ">
+                                <center className="tc-3" id="sub-header">Average Search Rank</center>
                                 {/* Avg rating */}
                                 <center>
                                     <Link to={{
@@ -313,155 +251,379 @@ export default function Landing() {
                                             name: "sku"
                                         } 
                                      }} className="lnk">
-                                        <div className="ic col-xl-13 " style={{
-                                            boxShadow: `0px 1px 7px 4px ${params.chs}`
-                                        }}>
-                                            <CustomTextProgressBar className="cc col-xl-13" pc="skyblue" percentage={percentages.chs} >
+                                        <div >
+                                            <center className="mt-1" >
+                                            <CustomTextProgressBar className="" outercolor={params.asr}
+                                            pc="skyblue" percentage={data.perc_skus_avg_search_rank_dropped_base} >
 
-                                                <h4 className="safe">3.85 </h4>
-                                                <small className="text-white">-0.17 WoW <FaChevronCircleDown></FaChevronCircleDown></small>
-                                                <small className="lnk mt-1">{percentages.chs}%</small>
+                                                <h6 className={data.perc_skus_avg_search_rank_dropped_base_indicator}>{data.l7_avg_sku_search_rank} </h6>
+                                                <small className="text-white" style={{
+                                                    fontSize: '8pt',
+                                                    padding:"1px"
+                                                }}>{data.wow_avg_sku_search_rank} WoW&nbsp;
+                                                { data.search_rank_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
+                                                { data.search_rank_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}
+                                                </small>
+                                                {/* <small className="lnk mt-1">{percentages.chs}%</small> */}
                                             </CustomTextProgressBar>
+                                            </center>
                                         </div>
                                     </Link>
                                 </center>
                             </div>
-                            <div className="dc-6 col-xl-5 "  >
-                                <center className="tc-6">Conversion Rate</center>
+                            <div className=" dc-4  "  >
+                                <center className="tc-4" id="sub-header">Buy Box Lost</center>
                                 <center>
-                                    <Link to="/salesview" className="lnk" >
-                                        <div className="ic col-xl-13" style={{
-                                            borderRadius: "50%",
-                                            boxShadow: `0px 1px 7px 4px ${params.cr}`
-                                        }} >
-                                            <CustomTextProgressBar className="cc col-xl-13 "
+                                    <Link to="/contentview" className="lnk" >
+                                    <center className=" mt-1 ">
+                                            <CustomTextProgressBar className=""
+                                                outercolor={params.bb}
+                                                pc="springgreen" percentage={data.perc_skus_buy_box_status_dropped_base} >
 
-                                                pc="springgreen" percentage={percentages.cr} >
-
-                                                <h4 className="safe">17.5% </h4>
-                                                <small className="text-white">+0.8 pp WoW <FaChevronCircleUp ></FaChevronCircleUp></small>
-                                                <small className="lnk mt-1">{percentages.cr}%</small>
-                                            </CustomTextProgressBar></div>
-                                    </Link>
-                                </center>
-                            </div>
-                        </div>
-                        <div className="row col-xl-12 mb-5" id="sub1">
-                            <div className="dc-7 col-xl-5 mr-4 ml-4">
-                                <center className="tc-7">Average Rating </center>
-                                <center>
-                                    <Link to="/ratingsview" className="lnk">
-                                        <div className="ic col-xl-13 " style={{
-                                            boxShadow: `0px 1px 7px 4px ${params.ar}`
-                                        }}>
-                                            <CustomTextProgressBar className="cc col-xl-13 " pc="plum" percentage={percentages.ar} >
-
-                                                <h4 className="safe">3.98 </h4>
-                                                <small className="text-white">-0.16 WoW <FaChevronCircleDown ></FaChevronCircleDown></small>
-                                                <small className="lnk mt-1">{percentages.ar}%</small>
+                                                <h6 className={data.perc_skus_buy_box_status_dropped_base_indicator}>{data.l7_avg_buy_box_status} SKUs </h6>
+                                                <small className="text-white" style={{
+                                                    fontSize: '8pt'
+                                                }}>{data.wow_buybox} SKUs WoW&nbsp; 
+                                                { data.buy_box_status_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
+                                                { data.buy_box_status_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}</small>
                                             </CustomTextProgressBar>
-                                        </div>
+                                            </center>
                                     </Link>
                                 </center>
-
-                            </div>
-                            <div className="dc-8 col-xl-5">
-                                <center className="tc-8">Price Index</center>
-
-                                <center>
-                                    <Link to="/salesview" className="lnk">
-                                        <div className="ic col-xl-13 " style={{
-                                            boxShadow: `0px 1px 7px 4px ${params.pi}`
-                                        }}>
-                                            <CustomTextProgressBar className="cc col-xl-13" pc="paleturquoise" percentage={percentages.pi} >
-
-                                                <h4 className="warning">0.97 </h4>
-                                                <small className="text-white">+0.07 WoW <FaChevronCircleUp ></FaChevronCircleUp></small>
-                                                <small className="lnk mt-1">{percentages.pi}%</small>
-                                            </CustomTextProgressBar>
-                                        </div>
-                                    </Link>
-                                </center>
-
                             </div>
                         </div>
                     </div>
-
-                    <div className="first col-xl-3 mr-0 ml-0" style={{
-                        padding: "0px"
+                    {/* center div */}
+                    <div className=" ctr ">
+                        <div className="mid-row" >
+                    <div className=" col-6" style={{
+                       
                     }}>
-                        <center className="sc ml-0"><strong>SALES FORECAST</strong> </center>
-                        <div className="col-xl-14 mt-3" onMouseOut={
+                        <center className="sc ml-0 mt-0"><strong>CURRENT SALES</strong> </center>
+                        <div className="col-12 " onMouseOut={
+                            allParameters
+                        } onMouseOver={
+                            laggingParameters
+                        } >
+                            <hr style={{
+                                border: "1px solid palegoldenrod",
+                                boxShadow: `0px 1px 10px 1px ${params.lag}`
+                            }}></hr>
+                            <div className="row " style={{
+                                color: "palegoldenrod",
+                                margin: "0px",
+                            }}>
+                                <div className="" style={{
+                                    width: "50%"
+                                }} >
+                                    <center className="" style={{
+                                    fontSize: '9pt'
+                                }} >LW Sales</center>
+                                    <center><strong>$300K</strong></center>
+                                </div>
+                                <div className="" style={{
+                                    borderLeft: "0.5px solid palegoldenrod",
+                                    width: "50%"
+                                }}>
+                                    <center className="" style={{
+                                    fontSize: '9pt'
+                                }}>Sales WoW</center>
+                                    <center><strong>+4% WoW</strong></center>
+                                </div>
+
+                            </div>
+                            <div className="">
+                                <center style={{
+                                    paddingTop: "20px"
+                                }}>
+                                <ReactSpeedometer id="spdm"
+                                    textColor="palegoldenrod"
+                                    maxValue={10}
+                                    value={4}
+                                    needleColor="silver"
+                                    startColor="rgba(255, 0, 0, 0.562)"
+                                    width={200}
+                                    height={200}
+                                    labelFontSize={12}
+                                    valueTextFontSize={14}
+                                    // fontSize="8pt"
+                                    maxSegmentLabels={4}
+                                    customSegmentStops={[0, 4, 6, 10]}
+                                    segmentColors={["navy", "blue", "aqua"]}
+                                    // segments = {1000}
+                                    currentValueText="QTD Sales in Million"
+                                    
+                                    endColor="green"
+                                    ringWidth={20}
+                                />
+                               </center>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div className=" col-6 ml-0" style={{
+                       
+                    }}>
+                        <center className="tc ml-0 mt-0"><strong>SALES FORECAST</strong> </center>
+                        <div className="col-12 " onMouseOut={
                             allParameters
                         } onMouseOver={
                             leadingParameters
                         } >
                             <hr style={{
-                                border: "1px solid aquamarine"
+                                border: "1px solid aquamarine",
+                                boxShadow: `0px 1px 10px 1px ${params.lead}`
                             }}></hr>
-                            <div className="row col-xl-14 ml-0 mb-1 " style={{
+                            <div className="row" style={{
                                 padding: "0px",
-                                color: "palegoldenrod"
+                                margin: "0px",
+                                color: "aquamarine"
                             }}>
-                                <div className="col-6  ml-0">
-                                    <center className="mini-header">Target Remaining</center>
+                                <div className="" style={{
+                                    width: "50%"
+                                }}>
+                                <center className="" style={{
+                                    fontSize: '9pt'
+                                }} >Target Remaining</center>
                                     <center><strong>$6M</strong></center>
                                 </div>
-                                <div className="col-6  ml-0" style={{
-                                    borderLeft: "0.5px solid palegoldenrod"
+                                <div className="" style={{
+                                    borderLeft: "0.5px solid aqua",
+                                    width: "50%"                                    
                                 }}>
-                                    <center className="mini-header">Predicted Sales</center>
+                                    <center className="" style={{
+                                    fontSize: '9pt'
+                                }}>Predicted Sales</center>
                                     <center><strong>$5M</strong></center>
                                 </div>
 
                             </div>
-                            <div className="second col-xl-12">
-                                <center><ReactSpeedometer
-                                    textColor="palegoldenrod"
+                            <div className="">
+                                <center style={{
+                                    paddingTop: "20px"
+                                }}>
+                                <ReactSpeedometer id="spdm"
+                                    textColor="aquamarine"
                                     maxValue={6}
-                                    value={val}
+                                    value={5}
                                     needleColor="silver"
                                     startColor="rgba(255, 0, 0, 0.562)"
-                                    // maxSegmentLabels={4}
-                                    // customSegmentStops={[0, 4, val, 6]}
-                                    // segmentColors={["rgba(255, 0, 0, 0.562)", "orange", "limegreen"]}
+                                    width={200}
+                                    height={200}
+                                    labelFontSize={12}
+                                    valueTextFontSize={14}
+                                    maxSegmentLabels={4}
+                                    customSegmentStops={[0, 4, 5, 6]}
+                                    segmentColors={["navy", "blue", "aquamarine"]}
                                     // segments = {1000}
+                                    fontSize={6}
                                     currentValueText="Sales for Remaining Quarter"
                                     endColor="green"
-                                    ringWidth={40}
+                                    ringWidth={20}
                                 />
+                               </center>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    </div>
+                    </div>
+                    {/* right div  */}
+                    <div className="mid-side" style={{
+                    
+                }}>
+               <center className="tc-5 mid-heading">Inventory Health</center>
+                <div className="mid-inner " id="">
+                            <div className="  dc-5 inner-circle ">
+                                <center className="tc-5" id="sub-header" >OOS in Last 7 days</center>
+                                {/* Avg rating */}
+                                <center>
+                                    <Link to={{
+                                        pathname: "/inventoryview",
+                                        state: {
+                                            name: "sku"
+                                        } 
+                                     }} className="lnk">
+                                        <div >
+                                            <center className="mt-1" >
+                                            
+                                            <CustomTextProgressBar className="" outercolor={params.oos} pc="skyblue" style={{
+                                            padding: "0px",
+                                            boxShadow: `0px 1px 7px 4px red`
+                                        }} percentage={data.perc_skus_oos_dropped_base} >
+
+                                                <h6 className={data.perc_skus_oos_dropped_base_indicator}>{data.l7_sku_oos} SKUs </h6>
+                                                <small className="text-white" style={{
+                                                    fontSize: '8pt',
+                                                    padding: "1px"
+                                                }}>{data.wow_sku_oos} SKUs WoW&nbsp; 
+                                                { data.oos_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
+                                                { data.oos_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}</small>
+                                                {/* <small className="lnk mt-1">{percentages.chs}%</small> */}
+                                            </CustomTextProgressBar>
+                                            </center>
+                                        </div>
+                                    </Link>
+                                </center>
+                            </div>
+                            <div className=" dc-6  "  >
+                                <center className="tc-6" id="sub-header">OOS in next 7 days</center>
+                                <center>
+                                    <Link to="/inventoryview" className="lnk" >
+                                    <center className="mt-1">
+                                            <CustomTextProgressBar className="" outercolor={params.oosc}
+
+                                                pc="springgreen" percentage={data.perc_skus_pred_oos_dropped_base} >
+
+                                                <h6 className={data.perc_skus_prd_oos_dropped_base_indicator}>{data.l7_sku_pred_oos} SKUs </h6>
+                                                <small className="text-white" style={{
+                                                    fontSize: '8pt',
+                                                    padding:"1px"
+                                                }}>{data.wow_skus_pred_oos} SKUs WoW&nbsp; 
+                                                { data.oos_pred_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
+                                                { data.oos_pred_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>} </small>
+                                            </CustomTextProgressBar>
+                                            </center>
+                                    </Link>
                                 </center>
                             </div>
                         </div>
-                        <div className=" col-xl-13 mt-5 " id="sub1">
-                            <center>
-                                <div className="dc-8 col-xl-8 ml-0">
-                                    <center className="tc-8">Buy Box Lost</center>
-                                    {/* <center> */}
-                                    <Link to="/contentview" className="lnk">
-                                        <div className="ic col-xl-13" style={{
-                                            boxShadow: `0px 1px 7px 4px ${params.bb}`
-                                        }}>
-                                            <CustomTextProgressBar className="cc col-xl-13" pc="orange" percentage={percentages.bb} >
+                    </div>
+                </div>
+                {/* third row  */}
+                <div className="row col-12 ml-0 " style={{
+                    
+                }}>
+                <div className="col-5 mb-1 mr-2 bottom-box  " style={{
+                   
+                    boxShadow: "0px 0px 12px 3px #f8f9fa57",
+                    marginLeft: "80px",
+                   
+                }}>
+               <center className="tc-7 mid-heading">External Indicators</center>
+               <center>
+                <div className="row col-14  mt-1 mr-0" id="">
+                            <div className="ml-5  dc-7 col-5">
+                                <center className="tc-7" id="sub-header">Average Rating</center>
+                                {/* Avg rating */}
+                                <center>
+                                    <Link to={{
+                                        pathname: "/ratingsview",
+                                        state: {
+                                            name: "sku"
+                                        } 
+                                     }} className="lnk">
+                                        <div >
+                                            <center className="mt-1" >
+                                            <CustomTextProgressBar className="" outercolor={params.ar} pc="skyblue"
+                                             percentage={data.perc_skus_avg_rating_dropped_base_indicator} >
 
-                                                <h4 className="warning">46 SKUs</h4>
-                                                <small className="text-white">+5 SKUs WoW <FaChevronCircleUp></FaChevronCircleUp></small>
-
-                                                <small className="lnk mt-1">{percentages.bb}%</small>
+                                                <h6 className={data.perc_skus_avg_rating_dropped_base_indicator}>{data.l7_avg_rating} </h6>
+                                                <small className="text-white" style={{
+                                                    fontSize: '8pt',
+                                                    padding:"1px"
+                                                }}>{data.wow_avg_rating} WoW&nbsp;  
+                                                { data.avg_rating_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
+                                                { data.avg_rating_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}</small>
                                             </CustomTextProgressBar>
+                                            </center>
                                         </div>
                                     </Link>
-                                    {/* </center> */}
-                                </div>
-                            </center>
-                        </div>
-                    </div>
+                                </center>
+                            </div>
+                            <div className="  dc-6 col-5 "  >
+                                <center className="tc-6" id="sub-header">Price Index</center>
+                                <center>
+                                    <Link to="/salesview" className="lnk" >
+                                    <center className="mt-1" >
+                                            <CustomTextProgressBar className="" outercolor={params.pi}
 
+                                                pc="springgreen" percentage={data.perc_skus_cpi_dropped_base} >
+
+                                                <h6 className={data.perc_skus_cpi_dropped_base_indicator}>{data.l7_avg_price_index} </h6>
+                                                <small className="text-white" style={{
+                                                    fontSize: '8pt',
+                                                    padding:"1px"
+                                                }}>{data.wow_pi} WoW&nbsp; 
+                                                { data.cpi_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
+                                                { data.cpi_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}</small>
+                                            </CustomTextProgressBar>
+                                            </center>
+                                    </Link>
+                                </center>
+                            </div>
+                        </div>
+                        </center>
+                    </div>
+                <div className="ml-2 col-5 mb-1 " style={{
+                   
+                    boxShadow: "0px 0px 12px 3px #f8f9fa57",
+                    padding: "-1px",
+                    paddingRight: "0px",
+                    marginRight:"0px",
+                }}>
+               <center className="tc-8 mb-1 mr-4 mid-heading" >Content Health</center>
+               <center>
+                <div className="row col-14 mt-1 mr-0 ml-0 p-0" id="sub1">
+                            <div className=" dc-8 col-6 ml-2 ">
+                                <center className="tc-8" id="sub-header">Content Health Score</center>
+                                {/* Avg rating */}
+                                <center>
+                                    <Link to={{
+                                        pathname: "/contentview",
+                                        state: {
+                                            name: "sku"
+                                        } 
+                                     }} className="lnk">
+                                        <div >
+                                            <center className="mt-1"  >
+                                            <CustomTextProgressBar className="" outercolor={params.chs}  pc="skyblue"
+                                             percentage={data.perc_skus_chs_dropped_base} >
+
+                                                <h6 className={data.perc_skus_chs_dropped_base_indicator}>{data.l7_avg_content_health_score} </h6>
+                                                <small className="text-white" style={{
+                                                    fontSize: '8pt',
+                                                    padding:"1px"
+                                                }}>{data.wow_chs} WoW&nbsp;  
+                                                { data.content_health_score_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
+                                                { data.content_health_score_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}</small>
+                                                {/* <small className="lnk mt-1">{percentages.chs}%</small> */}
+                                            </CustomTextProgressBar>
+                                            </center>
+                                        </div>
+                                    </Link>
+                                </center>
+                            </div>
+                            <div className="dc-5 col-5"  >
+                                <center className="tc-5" id="sub-header">Conversion Rate</center>
+                                <center>
+                                    <Link to="/salesview" className="lnk" >
+                                    <center className="mt-1" >
+                                            <CustomTextProgressBar className=""
+                                                outercolor={params.cr}
+                                                pc="springgreen" percentage={data.perc_skus_conversion_rate_dropped_base} >
+
+                                                <h6 className={data.perc_skus_conversion_rate_dropped_base_indicator}>{data.l7_avg_conversion_rate} </h6>
+                                                <small className="text-white" style={{
+                                                    fontSize: '8pt',
+                                                    padding:"1px"
+                                                }}>{data.wow_conversion_rate} pp WoW&nbsp;
+                                                 { data.conversion_rate_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
+                                                 { data.conversion_rate_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}</small>
+                                            </CustomTextProgressBar>
+                                            </center>
+                                    </Link>
+                                </center>
+                            </div>
+                        </div>
+                    </center>
+                    </div>
                 </div>
             </div>
         )
     }
-    else {
+    else if(loading === true && error === false) {
+
         return (
             <div className="mr-auto ml-auto d-flex justify-content-center">
                 <Spinner className="spinner-grow spinner-grow-sm text-primary" role="status"></Spinner>
@@ -470,5 +632,17 @@ export default function Landing() {
             </div>
         )
     }
-
+    else {
+        return(
+        <div className="mr-auto ml-5 mt-auto justify-content-center align-items-center">
+                <FaExclamation style={{
+                    fontSize: '50px',
+                    color: 'aqua',
+                }}></FaExclamation> <h4 className="text-muted"> Oops! Something went wrong! &nbsp;  </h4>
+               
+                    <h6 className="text-muted">Pssst! Check your internet connection... <FaWifi></FaWifi></h6>
+                
+        </div>
+        )
+    }
 }

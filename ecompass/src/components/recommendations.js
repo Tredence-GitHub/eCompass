@@ -10,7 +10,7 @@ import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
 import { render } from '@testing-library/react';
 import Iframe from 'react-iframe';
 import './Landing.css';
-import { FaFilter, FaRedo } from 'react-icons/fa';
+import { FaFilter, FaRedo, FaExclamation, FaDatabase } from 'react-icons/fa';
 import styled from 'styled-components';
 
 class Recommendations extends Component {
@@ -26,7 +26,9 @@ class Recommendations extends Component {
         originaldata: null,
         local: 'http://localhost:4000',
         deploy: 'https://ecompass-app-development.azurewebsites.net',
-        product: ''
+        product: '',
+        merchant: '',
+        error: false
     }
 
 
@@ -34,6 +36,7 @@ class Recommendations extends Component {
         return (
 
             <div className="">
+               
                 {cell.map((item, index) => {
                         if(item === 'No Recommendation'){
                             return <span className="text-muted"><i>{item}</i></span>
@@ -49,7 +52,7 @@ class Recommendations extends Component {
                                     url="https://app.powerbi.com/reportEmbed?reportId=6edd203c-2a69-4613-95b4-c6f983f01e0b&autoAuth=true&ctid=927e65b8-7ad7-48db-a3c6-c42a67c100d6&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D&filterPaneEnabled=false&navContentPaneEnabled=false"
                                     frameBorder="0"
                                     width="100%"
-                                    height="98%"
+                                    height="100%"
                                     allowFullScreen="false">
 
                                 </Iframe>
@@ -208,9 +211,9 @@ class Recommendations extends Component {
             </div>
         );
     }
-
-    componentDidMount() {
-        Axios.get(`${this.state.deploy}/api/getRecommendations/${localStorage.getItem('global_vendor')}`).then((response) => {
+    
+    makeApiCall(){
+        Axios.get(`https://ecompass-app-development.azurewebsites.net/api/getRecommendations/${localStorage.getItem('global_vendor')}`).then((response) => {
             let fetched = response.data.data;
 
             fetched.forEach(element => {
@@ -226,11 +229,17 @@ class Recommendations extends Component {
             this.setState({ loading: false })
         }).catch((err) => {
             console.log(err);
-            window.alert(err);
+            this.setState({error: true})
         })
 
     }
    
+    
+    componentDidMount() {
+        this.setState({merchant: localStorage.getItem('global_vendor')})
+        this.makeApiCall()
+    }
+
     handleSelected(e){
         const newtabledata = []
         if(e.target.value == 'all'){
@@ -249,6 +258,11 @@ class Recommendations extends Component {
         
     }
 
+    handleDropdown(e){
+        localStorage.setItem('global_vendor', e.target.value);
+        this.setState({merchant: e.target.value});
+        this.makeApiCall()
+    }
     populateCat() {
         let optionItems = []
         let optionUnique = []
@@ -269,7 +283,7 @@ class Recommendations extends Component {
         const tabledata = this.state.tabledata;
         const loading = this.state.loading;
         const { SearchBar } = Search;
-
+        const self =  this;
         const columns = [{
             dataField: 'sku_id',
             text: 'SKU ID',
@@ -350,14 +364,31 @@ class Recommendations extends Component {
             
 
             return (
-                <div className='table-responsive recommendations-table'>
+                <div className='table-responsive recommendations-table landing-main'>
                     <select className="categoryDropDown mb-2" id="deflt" onChange = {(e)=>{ this.handleSelected(e) } } >
                         <option value="select" disabled>Select a Product Category </option>
                         <option value="all">All Categories</option>
                         {this.populateCat()}
 
                     </select>
-                    
+                    <select onChange={(e) => { this.handleDropdown(e)} } style={{
+                    padding:"3px",
+                    height:"30px",
+                    width: "200px",
+                    border: "none",
+                    color: "silver",
+                    backgroundColor:"#162447",
+                    boxShadow: "0px 1px 7px 0.25px navy",
+                    marginRight: "5px",
+                    marginLeft: "auto",
+                }}>
+                    <option value="default" selected disabled>{ this.state.merchant !== null ? 'Selected '+ this.state.merchant : 'Select a Merchant'} </option>
+                    <option value="Walmart">Walmart </option>
+                    <option value="Amazon">Amazon </option>
+                    {/* <option value="merchant3">merchant3 </option> */}
+                    {/* <option value="">merchant4  </option> */}
+                </select>
+                
                     <ToolkitProvider
                         keyField="id"
                         data={tabledata}
@@ -375,7 +406,7 @@ class Recommendations extends Component {
                                         {...props.baseProps}
                                         pagination={paginationFactory(options)}
                                         defaultSorted={defaultSorted}
-                                        noDataIndication={() => (<div>No Data available</div>)}
+                                        noDataIndication={() => (<div>No data available</div>)}
                                         remote={{ pagination: false, filter: true }}
                                     />
                                 </div>
@@ -387,7 +418,7 @@ class Recommendations extends Component {
             )
         }
 
-        else {
+        else if(this.state.loading === true && this.state.error === false) {
             return (
                 <div className="mr-auto ml-auto d-flex justify-content-center">
                     <Spinner className="spinner-grow spinner-grow-sm text-primary" role="status"></Spinner>
@@ -396,7 +427,19 @@ class Recommendations extends Component {
                 </div>
             )
         }
-
+       
+        else {
+            return(
+            <div className="mr-auto ml-5 mt-auto justify-content-center align-items-center">
+                    <FaExclamation style={{
+                        fontSize: '50px',
+                        color: 'aqua'
+                    }}></FaExclamation><h4 className="text-muted"> Oops! Something went wrong! </h4>
+                    <h6 className="text-muted"> There was a problem while connecting to our database... <FaDatabase></FaDatabase></h6>
+            </div>
+            )
+        }
+        
     }
 }
 

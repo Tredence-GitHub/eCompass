@@ -13,7 +13,18 @@ Router.get('/getRecommendations/:vendor', (req, res)=>{
         res.json({data: results[0], message: "Successfull"});
     }).catch((err)=>{
         console.log(err);
-        res.send({data: [], message: "Something went wrong!"});
+        res.send({data: [], message: "Something went wrong!", error: err});
+    })
+})
+
+
+Router.get('/get360/:vendor', (req, res)=>{
+    db.query(`SELECT * from ecom.product_360_view where vendor='${req.params.vendor}' and product_group='Overall'`).then((results)=>{
+        console.log(results);
+        res.json({data: results[0], message: "Successfull"});
+    }).catch((err)=>{
+        console.log(err);
+        res.send({data: [], message: "Something went wrong!", error: err});
     })
 })
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../logo.png';
 import { Link } from 'react-router-dom';
 import { FaHeartbeat, FaSignOutAlt, FaHome, FaChartBar, FaStar, FaBoxOpen, FaPrescription, FaUser, FaBan, FaUserSlash, FaSearch, FaFlask } from 'react-icons/fa';
@@ -14,6 +14,11 @@ export default function Navs(props) {
     function onSubmit(value) {
         props.onDropDownSubmit(value);
     }
+    const [selectedNav, setselectedNav] = useState(props.viewname)
+
+    function handleSearch(e){
+    //    console.log(e.target.value);
+    }
 
     if (localStorage.getItem('loggedIn') === 'true') {
         return (
@@ -21,60 +26,23 @@ export default function Navs(props) {
                 <SideNav className="side"  
                     onSelect={(selected) => {
                         // Add your code here
+                        // alert(selected)
+                        setselectedNav(selected)
+                        // selected.defaultSelected=selected;
                     }}
                 >
                     <SideNav.Toggle />
-                    <SideNav.Nav defaultSelected="home">
-                        <NavItem eventKey="home">
+                    <SideNav.Nav defaultSelected={selectedNav}>
+                        <NavItem eventKey="home" onSelect="home">
                             <NavIcon>
                                 <Link to="/home"><FaHome className="icon-size">
                                 </FaHome> </Link>
                             </NavIcon>
                             <NavText>
                                 Dashboard
-            </NavText>
+                            </NavText>
                         </NavItem>
-                        <NavItem eventKey="sales">
-                            <NavIcon>
-
-                                <Link to="/salesview"> <FaChartBar className="icon-size">
-                                  </FaChartBar></Link>
-
-
-                            </NavIcon>
-                            <NavText>Sales View</NavText>
-                        </NavItem>
-                        <NavItem eventKey="">
-                            <NavIcon>
-
-                                <Link to="/contentview"> <FaHeartbeat className="icon-size">
-                                  </FaHeartbeat></Link>
-
-
-                            </NavIcon>
-                            <NavText>Content Health View</NavText>
-                        </NavItem>
-                        <NavItem eventKey="">
-                            <NavIcon>
-
-                                <Link to="/ratingsview"> <FaStar className="icon-size">
-                                  </FaStar></Link>
-
-
-                            </NavIcon>
-                            <NavText>Ratings & Reviews View</NavText>
-                        </NavItem>
-                        <NavItem eventKey="inventoryview">
-                            <NavIcon>
-
-                                <Link to="/inventoryview"> <FaBoxOpen className="icon-size"> 
-                                 </FaBoxOpen></Link>
-
-
-                            </NavIcon>
-                            <NavText>Inventory View</NavText>
-                        </NavItem>
-                        <NavItem eventKey="recommendationsview">
+                        <NavItem eventKey="recommendations" onSelect="recommendations">
                             <NavIcon>  
                                 <Link to="/recommendations"><FaPrescription className="icon-size">  
                                 </FaPrescription>
@@ -83,7 +51,7 @@ export default function Navs(props) {
                             </NavIcon>
                             <NavText>Recommendations View</NavText>
                         </NavItem>
-                        <NavItem eventKey="simulator">
+                        <NavItem eventKey="simulator" onSelect="simulator">
                             <NavIcon>
 
                                 <Link to="/simulator" > <FaFlask className="icon-size"> 
@@ -93,6 +61,47 @@ export default function Navs(props) {
                             </NavIcon>
                             <NavText>Simulator</NavText>
                         </NavItem>
+                        <NavItem eventKey="salesview" onSelect="salesview">
+                            <NavIcon>
+
+                                <Link to="/salesview"> <FaChartBar className="icon-size">
+                                  </FaChartBar></Link>
+
+
+                            </NavIcon>
+                            <NavText>Sales View</NavText>
+                        </NavItem>
+                        <NavItem eventKey="contentview" onSelect="contentview">
+                            <NavIcon>
+
+                                <Link to="/contentview"> <FaHeartbeat className="icon-size">
+                                  </FaHeartbeat></Link>
+
+
+                            </NavIcon>
+                            <NavText>Content Health View</NavText>
+                        </NavItem>
+                        <NavItem eventKey="ratingsview" onSelect="ratingsview">
+                            <NavIcon>
+
+                                <Link to="/ratingsview"> <FaStar className="icon-size">
+                                  </FaStar></Link>
+
+
+                            </NavIcon>
+                            <NavText>Ratings & Reviews View</NavText>
+                        </NavItem>
+                        <NavItem eventKey="inventoryview" onSelect="inventoryview">
+                            <NavIcon>
+
+                                <Link to="/inventoryview"> <FaBoxOpen className="icon-size"> 
+                                 </FaBoxOpen></Link>
+
+
+                            </NavIcon>
+                            <NavText>Inventory View</NavText>
+                        </NavItem>
+                        
                     
                     </SideNav.Nav>
                 </SideNav>
@@ -111,7 +120,7 @@ export default function Navs(props) {
                             padding: "0px"
                         }}>
                             <Form inline className="flex-right ml-auto mr-2 xs-4 mt-0">
-                                <FormControl type="text" size="sm" placeholder="Search" className="ml-xs-6 " id="searchbar" />
+                                <FormControl type="text" size="sm" placeholder="Search" className="ml-xs-6 " id="searchbar" onChange={handleSearch} />
                                 <Button variant="outline-primary" size="sm" style={{
                                     border: "none"
                                 }} ><FaSearch > </FaSearch></Button>
@@ -167,7 +176,7 @@ export default function Navs(props) {
                             marginRight: "0px",
                             // paddingRight: "20px"
                         }}>
-                            {props.viewname !== '' ? <GlobalDropDown onsubmitprop={onSubmit} view={props.viewname} /> : <></>}
+                            {props.viewname !== 'recommendations' ? <GlobalDropDown onsubmitprop={onSubmit} view={props.viewname} /> : <></>}
                             {/* {props.viewname !== 'home' && props.viewname !== 'recommendations'? <LocalDropDown passview={props.viewname}/>: <></>} */}
                         </Container >
                         {props.content}

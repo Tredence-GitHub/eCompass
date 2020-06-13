@@ -1,16 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Button, Tabs, Tab } from 'react-bootstrap';
-import { FaFilter } from 'react-icons/fa';
+import { Container, Spinner, Button, Tabs, Tab } from 'react-bootstrap';
+import { FaFilter, FaExclamation, FaWifi, FaDatabase } from 'react-icons/fa';
 import Iframe from 'react-iframe';
+import Axios from 'axios';
 
 export default function Contenthealth(props) {
     const [loading, setloading] = useState(true)
+    const [error, seterror] = useState(false)
     useEffect(() => {
         f()
     }, [])
     
-    function f(){
-        setloading(false)
+    let data = [{'productlevel': {
+        'reportId':'934a99b8-47a2-4825-907c-0040b96af643',
+        'groupId': 'a3d38897-e2ce-4cec-9302-e5acafabc87b' 
+        }
+    },
+        {'skulevel': {
+        'reportId': 'ff3ab103-a5a1-4850-b21d-4fec16e9a56c',
+        'groupId': 'a3d38897-e2ce-4cec-9302-e5acafabc87b'
+        }
+    }
+    ]
+
+    async function f(){
+        let response = await Axios.post('http://localhost:4000/powerbi/getEmbedToken',{data}
+         );
+        if(response.status === 200){
+            console.log(response.data.embedToken);
+            setloading(false);
+        }else{
+            seterror(true);
+        }
     }
     if(!loading){
     return (
@@ -50,9 +71,27 @@ export default function Contenthealth(props) {
       </div>
     )
         }
+    else if(loading === true && error === false) {
+
+        return (
+            <div className="mr-auto ml-auto d-flex justify-content-center">
+                <Spinner className="spinner-grow spinner-grow-sm text-primary" role="status"></Spinner>
+                <Spinner className="spinner-grow spinner-grow-sm text-success" role="status"></Spinner>
+                <Spinner className="spinner-grow spinner-grow-sm text-warning" role="status"></Spinner>
+            </div>
+        )
+    }
     else {
         return(
-            <div>Loading...</div>
+        <div className="mr-auto ml-5 mt-auto justify-content-center align-items-center">
+                <FaExclamation style={{
+                    fontSize: '50px',
+                    color: 'aqua',
+                }}></FaExclamation> <h4 className="text-muted"> Oops! Something went wrong! &nbsp;  </h4>
+                
+                    <h6 className="text-muted">Pssst! Check your internet connection... <FaWifi></FaWifi></h6>
+                
+        </div>
         )
     }
 }

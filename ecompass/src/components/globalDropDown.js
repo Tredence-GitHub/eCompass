@@ -19,8 +19,12 @@ export default function GlobalDropDown(props){
     }, [])
 
      function handleDropdown(event){
+         alert('calling this ---')
        localStorage.setItem('global_vendor', event.target.value);
        setMerchant(event.target.value)
+    }
+
+    function onsubmitprop(){
     }
 
      return (
@@ -51,7 +55,6 @@ export default function GlobalDropDown(props){
                     height:"30px",
                 }} onClick={
                     (e) => {
-                        e.preventDefault();
                         {localStorage.setItem('global_vendor', merchant);}
                         window.location.href = "/"+ props.view
                        

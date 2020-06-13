@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Button, Tabs, Tab } from 'react-bootstrap';
-import { FaFilter } from 'react-icons/fa';
+import { Container, Spinner, Button, Tabs, Tab } from 'react-bootstrap';
+import { FaFilter, FaExclamation, FaWifi, FaDatabase } from 'react-icons/fa';
 import Iframe from 'react-iframe';
 
 export default function Ratings() {
