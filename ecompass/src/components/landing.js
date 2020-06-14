@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaChevronCircleUp, FaChevronCircleDown, FaBars, FaRegChartBar, FaChartBar, FaBox, FaHeartbeat, FaArrowRight, FaStar, FaMagic, FaBullseye, FaChartArea, FaChartLine, FaArrowUp, FaArrowDown, FaNetworkWired, FaExclamation, FaWifi } from 'react-icons/fa'
+import { FaChevronCircleUp, FaChevronCircleDown, FaDatabase, FaRegChartBar, FaChartBar, FaBox, FaHeartbeat, FaArrowRight, FaStar, FaMagic, FaBullseye, FaChartArea, FaChartLine, FaArrowUp, FaArrowDown, FaNetworkWired, FaExclamation, FaWifi } from 'react-icons/fa'
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
@@ -25,21 +25,22 @@ export default function Landing() {
 
     useEffect(() => {
         fetchData();
-        // animateShades();
     }, [])
 
     async function fetchData() {
-        let response = await Axios.get(`${local}/api/get360/${localStorage.getItem('global_vendor')}`);
+        let response = await Axios.get(`${deploy}/api/get360/${localStorage.getItem('global_vendor')}`);
         if(response.status === 200 && response.data.data.length > 0 ) {
             console.log(response.data)
             console.log(response.data.data);
             setdata(response.data.data[0]);
+            seterror(false);
             setloading(false);
             animateShades();
         }
         else{
             
             seterror(true)
+            fetchData();
             
         }
     }
@@ -638,9 +639,9 @@ export default function Landing() {
                 <FaExclamation style={{
                     fontSize: '50px',
                     color: 'aqua',
-                }}></FaExclamation> <h4 className="text-muted"> Oops! Something went wrong! &nbsp;  </h4>
+                }}></FaExclamation> <h4 className="text-muted"> Oops! We are reconnecting... ! &nbsp;  </h4>
                
-                    <h6 className="text-muted">Pssst! Check your internet connection... <FaWifi></FaWifi></h6>
+                    <h6 className="text-muted">There was a problem while connecting to our database... <FaDatabase></FaDatabase></h6>
                 
         </div>
         )

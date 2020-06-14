@@ -43,46 +43,22 @@ class Recommendations extends Component {
                         }
                         else if (item.toLowerCase().includes('drop') | item.toLowerCase().includes('without') | 
                         item.toLowerCase().includes('oos') | item.toLowerCase().includes('negative')) {
-                        return <Popup className="bg-dark" trigger={<Button variant="outline-danger" value={item} size="sm" onClick={(e) => {
-                            console.log(e.target.value, cell, " --- ", row)
-
-                        }} >{item}</Button>} modal >
-                            <div className="bg-dark text-white">
-                                <Iframe className=""
-                                    url="https://app.powerbi.com/reportEmbed?reportId=6edd203c-2a69-4613-95b4-c6f983f01e0b&autoAuth=true&ctid=927e65b8-7ad7-48db-a3c6-c42a67c100d6&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D&filterPaneEnabled=false&navContentPaneEnabled=false"
-                                    frameBorder="0"
-                                    width="100%"
-                                    height="100%"
-                                    allowFullScreen="false">
-
-                                </Iframe>
-                            </div>
-                        </Popup>
+                        return <Button variant="outline-danger" value={item} size="sm" >{item}</Button>
 
 
                     }
                     else if (item.toLowerCase().includes('decline') | item.toLowerCase().includes('not') | item.toLowerCase().includes('below')) {
-                        return <Popup className="bg-dark" trigger={<Button variant="outline-warning" value={item} size="sm"  >
-                            {item}</Button>} modal >
-                            <div>
-                                <Iframe>
-
-                                </Iframe>
-                            </div>
-                        </Popup>
+                        return <Button variant="outline-warning" value={item} size="sm"  >
+                        {item}</Button>
                     }
                     else if (item.toLowerCase().includes('high') | item.toLowerCase().includes('positive')) {
-                        return <Popup className="bg-dark" trigger={<Button variant="outline-success" value={item} size="sm" onClick={(e) => {
+                        return <Button variant="outline-success" value={item} size="sm" onClick={(e) => {
                             // console.log(e.target.value,cell, " --- ", row)
-                        }} >{item}</Button>} modal>
-
-                        </Popup>
+                        }} >{item}</Button>
                     }
-                    return <Popup className="bg-dark" trigger={<Button variant="outline-info" value={item} size="sm" onClick={(e) => {
+                    return <Button variant="outline-info" value={item} size="sm" onClick={(e) => {
                         // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>} modal>
-
-                    </Popup>
+                    }} >{item}</Button>
                 })}
             </div>
         );
@@ -99,32 +75,24 @@ class Recommendations extends Component {
                         }
                     else if (item.toLowerCase().includes('drop') | item.toLowerCase().includes('without') | 
                     item.toLowerCase().includes('oos') | item.toLowerCase().includes('negative')) {
-                        return <Popup className="bg-dark" trigger={<Button variant="outline-danger" value={item} size="sm" onClick={(e) => {
+                        return <Button variant="outline-danger" value={item} size="sm" onClick={(e) => {
                             console.log(e.target.value, cell, " --- ", row)
-                        }} >{item}</Button>} modal>
-
-                        </Popup>
+                        }} >{item}</Button>
 
                     }
                     else if (item.toLowerCase().includes('decline') | item.toLowerCase().includes('not') | item.toLowerCase().includes('below')) {
-                        return <Popup className="bg-dark" trigger={<Button variant="outline-warning" value={item} size="sm" onClick={(e) => {
+                        return <Button variant="outline-warning" value={item} size="sm" onClick={(e) => {
                             // console.log(e.target.value,cell, " --- ", row)
-                        }} >{item}</Button>} modal>
-
-                        </Popup>
+                        }} >{item}</Button>
                     }
                     else if (item.toLowerCase().includes('high') | item.toLowerCase().includes('positive')) {
-                        return <Popup className="bg-dark" trigger={<Button variant="outline-success" value={item} size="sm" onClick={(e) => {
+                        return <Button variant="outline-success" value={item} size="sm" onClick={(e) => {
                             // console.log(e.target.value,cell, " --- ", row)
-                        }} >{item}</Button>} modal>
-
-                        </Popup>
+                        }} >{item}</Button>
                     }
-                    return <Popup className="bg-dark" trigger={<Button variant="outline-info" value={item} size="sm" onClick={(e) => {
+                    return <Button variant="outline-info" value={item} size="sm" onClick={(e) => {
                         // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>} modal>
-
-                    </Popup>
+                    }} >{item}</Button>
                 })}
             </div>
         );
@@ -140,32 +108,24 @@ class Recommendations extends Component {
                     }
                     else if ( item.toLowerCase().includes('drop') | item.includes('without') | 
                     item.toLowerCase().includes('oos') | item.toLowerCase().includes('negative')) {
-                        return <Popup className="bg-dark" trigger={<Button variant="outline-danger" value={item} size="sm" onClick={(e) => {
+                        return <Button variant="outline-danger" value={item} size="sm" onClick={(e) => {
                             console.log(e.target.value, cell, " --- ", row)
-                        }} >{item}</Button>} modal>
-
-                        </Popup>
+                        }} >{item}</Button>
 
                     }
                     else if (item.toLowerCase().includes('decline') | item.toLowerCase().includes('not') | item.toLowerCase().includes('below')) {
-                        return <Popup className="bg-dark" trigger={<Button variant="outline-warning" value={item} size="sm" onClick={(e) => {
+                        return <Button variant="outline-warning" value={item} size="sm" onClick={(e) => {
                             // console.log(e.target.value,cell, " --- ", row)
-                        }} >{item}</Button>} modal>
-
-                        </Popup>
+                        }} >{item}</Button>
                     }
                     else if (item.toLowerCase().includes('high') | item.toLowerCase().includes('positive')) {
-                        return <Popup className="bg-dark" trigger={<Button variant="outline-success" value={item} size="sm" onClick={(e) => {
+                        return <Button variant="outline-success" value={item} size="sm" onClick={(e) => {
                             // console.log(e.target.value,cell, " --- ", row)
-                        }} >{item}</Button>} modal>
-
-                        </Popup>
+                        }} >{item}</Button>
                     }
-                    return <Popup className="bg-dark" trigger={<Button variant="outline-info" value={item} size="sm" onClick={(e) => {
+                    return <Button variant="outline-info" value={item} size="sm" onClick={(e) => {
                         // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>} modal>
-
-                    </Popup>
+                    }} >{item}</Button>
                 })}
             </div>
         );
@@ -181,32 +141,24 @@ class Recommendations extends Component {
                     }
                     else if (item.includes('Drop') | item.includes('drop') | item.includes('without') | item.includes
                         ('OOS') | item.includes('Negative')) {
-                        return <Popup className="bg-dark" trigger={<Button variant="outline-danger" value={item} size="sm" onClick={(e) => {
+                        return <Button variant="outline-danger" value={item} size="sm" onClick={(e) => {
                             console.log(e.target.value, cell, " --- ", row)
-                        }} >{item}</Button>} modal>
-
-                        </Popup>
+                        }} >{item}</Button>
 
                     }
                     else if (item.includes('Decline') | item.includes('Low') | item.includes('Not') | item.includes('Below')) {
-                        return <Popup className="bg-dark" trigger={<Button variant="outline-warning" value={item} size="sm" onClick={(e) => {
+                        return <Button variant="outline-warning" value={item} size="sm" onClick={(e) => {
                             // console.log(e.target.value,cell, " --- ", row)
-                        }} >{item}</Button>} modal>
-
-                        </Popup>
+                        }} >{item}</Button>
                     }
                     else if (item.includes('High') | item.includes('Positive')) {
-                        return <Popup className="bg-dark" trigger={<Button variant="outline-success" value={item} size="sm" onClick={(e) => {
+                        return <Button variant="outline-success" value={item} size="sm" onClick={(e) => {
                             // console.log(e.target.value,cell, " --- ", row)
-                        }} >{item}</Button>} modal>
-
-                        </Popup>
+                        }} >{item}</Button>
                     }
-                    return <Popup className="bg-dark" trigger={<Button variant="outline-info" value={item} size="sm" onClick={(e) => {
+                    return <Button variant="outline-info" value={item} size="sm" onClick={(e) => {
                         // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>} modal>
-
-                    </Popup>
+                    }} >{item}</Button>
                 })}
             </div>
         );
@@ -224,12 +176,14 @@ class Recommendations extends Component {
 
             });
             // console.log(fetched);
+            this.setState({error: false})
             this.setState({ tabledata: fetched });
             this.setState({ originaldata: fetched })
             this.setState({ loading: false })
         }).catch((err) => {
-            console.log(err);
+            // console.log(err);
             this.setState({error: true})
+            this.makeApiCall();
         })
 
     }

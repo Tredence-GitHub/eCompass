@@ -19,7 +19,6 @@ export default function GlobalDropDown(props){
     }, [])
 
      function handleDropdown(event){
-         alert('calling this ---')
        localStorage.setItem('global_vendor', event.target.value);
        setMerchant(event.target.value)
     }
