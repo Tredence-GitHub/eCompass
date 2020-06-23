@@ -52,8 +52,9 @@ class Recommendations extends Component {
                                 <Button  
                                 className="recommendations-btn" value={item} size="sm"
                                 >{item} </Button>} modal >
-                                    <RenderPowerBi reportIdPass = '6edd203c-2a69-4613-95b4-c6f983f01e0b' embedPass = {formatExtraData} /> 
-                            </Popup>
+                                    <RenderPowerBi reportIdPass = 'fe0fdd28-faa8-4816-8677-8c730005e1d5' embedPass = {formatExtraData} sku_idpass={row.sku_id} tablepass= {'ecom sales'} /> 
+                                     
+                            </Popup> 
                             )
                       })
                 }          
@@ -74,7 +75,7 @@ class Recommendations extends Component {
                                 <Button  
                                 className="recommendations-btn" value={item} size="sm"
                                 >{item} </Button>} modal >
-                                    <RenderPowerBi reportIdPass = '3e2254df-65b1-4d07-b019-1c28c6811a08' embedPass = {formatExtraData} /> 
+                                    <RenderPowerBi reportIdPass = '3e2254df-65b1-4d07-b019-1c28c6811a08' embedPass = {formatExtraData} sku_idpass={row.sku_id} tablepass= {'ecom content_health_final'}  /> 
                             </Popup>
                             )
                       })
@@ -97,7 +98,7 @@ class Recommendations extends Component {
                                 <Button  
                                 className="recommendations-btn" value={item} size="sm"
                                 >{item} </Button>} modal >
-                                    <RenderPowerBi reportIdPass = '834e0185-88b5-4878-9a66-4e5f1c8e67ee' embedPass = {formatExtraData} /> 
+                                    <RenderPowerBi reportIdPass = '4593d2d5-1ee8-4f57-88ca-d5a8e65b0a59' embedPass = {formatExtraData} sku_idpass={row.sku_id} tablepass= {'ecom sales'} /> 
                             </Popup>
                             )
                       })
@@ -120,7 +121,7 @@ class Recommendations extends Component {
                                 <Button  
                                 className="recommendations-btn" value={item} size="sm"
                                 >{item} </Button>} modal >
-                                    <RenderPowerBi reportIdPass = '85fa92cd-09b6-45df-9660-10cc69eaeaa6' embedPass = {formatExtraData} /> 
+                                    <RenderPowerBi reportIdPass = '85fa92cd-09b6-45df-9660-10cc69eaeaa6' embedPass = {formatExtraData} sku_idpass={row.sku_id} tablepass= {'ecom ratings_and_reviews_final'} /> 
                             </Popup>
                             )
                       })
@@ -141,11 +142,11 @@ class Recommendations extends Component {
                     'groupId': 'a3d38897-e2ce-4cec-9302-e5acafabc87b'
                 },
                 'content': {
-                    'reportId':'fe0fdd28-faa8-4816-8677-8c730005e1d5',
+                    'reportId':'3e2254df-65b1-4d07-b019-1c28c6811a08',
                     'groupId': 'a3d38897-e2ce-4cec-9302-e5acafabc87b'
                 }, 
                 'inventory': {
-                    'reportId': '834e0185-88b5-4878-9a66-4e5f1c8e67ee',
+                    'reportId': '4593d2d5-1ee8-4f57-88ca-d5a8e65b0a59',
                     'groupId': 'a3d38897-e2ce-4cec-9302-e5acafabc87b'
                 },
                 'ratings':{
