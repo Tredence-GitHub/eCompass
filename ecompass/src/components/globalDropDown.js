@@ -41,7 +41,7 @@ export default function GlobalDropDown(props){
                     marginLeft: "auto",
                 }}>
                     <option value="default" selected disabled>{ merchant !== null ? 'Selected '+ merchant : 'Select a Merchant'} </option>
-                    <option value="Walmart">Walmart </option>
+                    {/* <option value="Walmart">Walmart </option> */}
                     <option value="Amazon">Amazon </option>
                     {/* <option value="merchant3">merchant3 </option> */}
                     {/* <option value="">merchant4  </option> */}

@@ -169,7 +169,7 @@ export default function Landing() {
                 <center>
                 <div className="top-box col-12 mb-1" style={{
                    
-                    maxWidth: "546px",
+                    maxWidth: "535px",
                     width: "100%"
                     // boxShadow: "0px 1px 7px 3px navy"
                 }}>
@@ -193,7 +193,7 @@ export default function Landing() {
                                                 <h6 className={data.perc_skus_sales_dropped_base_indicator}>{data.number_skus_sales_dropped} SKUs </h6>
                                                 <small className="text-white" style={{
                                                     fontSize: '8pt',
-                                                    padding: "1px"
+                                                    padding: "2px"
                                                 }}>{data.perc_change_wow_sales} SKUs WoW&nbsp;
                                                 { data.sales_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
                                                 { data.sales_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}
@@ -217,7 +217,7 @@ export default function Landing() {
                                                 <h6 className={data.perc_skus_pred_sales_dropped_base_indicator}>{data.number_pred_skus_sales_dropped} SKUs </h6>
                                                 <small className="text-white" style={{
                                                     fontSize: '8pt',
-                                                    padding:"1px"
+                                                    padding:"2px"
                                                 }}>{data.perc_change_wow_pred_sales} SKUs WoW&nbsp; 
                                                 { data.pred_sales_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
                                                 { data.pred_sales_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}
@@ -260,7 +260,7 @@ export default function Landing() {
                                                 <h6 className={data.perc_skus_avg_search_rank_dropped_base_indicator}>{data.l7_avg_sku_search_rank} </h6>
                                                 <small className="text-white" style={{
                                                     fontSize: '8pt',
-                                                    padding:"1px"
+                                                    padding:"2px"
                                                 }}>{data.wow_avg_sku_search_rank} WoW&nbsp;
                                                 { data.search_rank_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
                                                 { data.search_rank_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}
@@ -283,7 +283,8 @@ export default function Landing() {
 
                                                 <h6 className={data.perc_skus_buy_box_status_dropped_base_indicator}>{data.l7_avg_buy_box_status} SKUs </h6>
                                                 <small className="text-white" style={{
-                                                    fontSize: '8pt'
+                                                    fontSize: '8pt',
+                                                    padding: "2px"
                                                 }}>{data.wow_buybox} SKUs WoW&nbsp; 
                                                 { data.buy_box_status_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
                                                 { data.buy_box_status_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}</small>
@@ -320,7 +321,7 @@ export default function Landing() {
                                     <center className="" style={{
                                     fontSize: '9pt'
                                 }} >LW Sales</center>
-                                    <center><strong>$300K</strong></center>
+                                    { localStorage.getItem('global_vendor') === 'Walmart' ? <center><strong>$300K</strong></center>: <center><strong>$2.2M</strong></center> }
                                 </div>
                                 <div className="" style={{
                                     borderLeft: "0.5px solid palegoldenrod",
@@ -329,7 +330,9 @@ export default function Landing() {
                                     <center className="" style={{
                                     fontSize: '9pt'
                                 }}>Sales WoW</center>
-                                    <center><strong>+4% WoW</strong></center>
+                                   { localStorage.getItem('global_vendor') === 'Walmart' ? <center><strong>+4% WoW</strong></center>: <center><strong style={{
+                                       fontSize: '10pt'
+                                   }}>+0.85% WoW</strong></center> }
                                 </div>
 
                             </div>
@@ -337,10 +340,31 @@ export default function Landing() {
                                 <center style={{
                                     paddingTop: "20px"
                                 }}>
-                                <ReactSpeedometer id="spdm"
+                                {  localStorage.getItem('global_vendor') === 'Walmart' ? 
+                                 <ReactSpeedometer id="spdm"
+                                 textColor="palegoldenrod"
+                                 maxValue={10}
+                                 value={4}
+                                 needleColor="silver"
+                                 startColor="rgba(255, 0, 0, 0.562)"
+                                 width={200}
+                                 height={200}
+                                 labelFontSize={12}
+                                 valueTextFontSize={14}
+                                 // fontSize="8pt"
+                                 maxSegmentLabels={4}
+                                 customSegmentStops={[0, 4, 10]}
+                                 segmentColors={["navy", "aqua"]}
+                                 // segments = {1000}
+                                 currentValueText="QTD Sales in Million"
+                                 
+                                 endColor="green"
+                                 ringWidth={20}
+                             />
+                                : <ReactSpeedometer id="spdm"
                                     textColor="palegoldenrod"
-                                    maxValue={10}
-                                    value={4}
+                                    maxValue={33}
+                                    value={30}
                                     needleColor="silver"
                                     startColor="rgba(255, 0, 0, 0.562)"
                                     width={200}
@@ -349,14 +373,15 @@ export default function Landing() {
                                     valueTextFontSize={14}
                                     // fontSize="8pt"
                                     maxSegmentLabels={4}
-                                    customSegmentStops={[0, 4, 6, 10]}
-                                    segmentColors={["navy", "blue", "aqua"]}
+                                    customSegmentStops={[0, 30, 33]}
+                                    segmentColors={["navy", "aqua"]}
                                     // segments = {1000}
                                     currentValueText="QTD Sales in Million"
                                     
                                     endColor="green"
                                     ringWidth={20}
                                 />
+                            }
                                </center>
                             </div>
                         </div>
@@ -386,7 +411,7 @@ export default function Landing() {
                                 <center className="" style={{
                                     fontSize: '9pt'
                                 }} >Target Remaining</center>
-                                    <center><strong>$6M</strong></center>
+                                   {  localStorage.getItem('global_vendor') === 'Walmart' ? <center><strong>$6M</strong></center>: <center><strong>$3M</strong></center> } 
                                 </div>
                                 <div className="" style={{
                                     borderLeft: "0.5px solid aqua",
@@ -395,7 +420,7 @@ export default function Landing() {
                                     <center className="" style={{
                                     fontSize: '9pt'
                                 }}>Predicted Sales</center>
-                                    <center><strong>$5M</strong></center>
+                                    {  localStorage.getItem('global_vendor') === 'Walmart' ? <center><strong>$5M</strong></center>: <center><strong>$2.27M</strong></center> }
                                 </div>
 
                             </div>
@@ -403,7 +428,7 @@ export default function Landing() {
                                 <center style={{
                                     paddingTop: "20px"
                                 }}>
-                                <ReactSpeedometer id="spdm"
+                               {  localStorage.getItem('global_vendor') === 'Walmart' ? <ReactSpeedometer id="spdm"
                                     textColor="aquamarine"
                                     maxValue={6}
                                     value={5}
@@ -414,14 +439,33 @@ export default function Landing() {
                                     labelFontSize={12}
                                     valueTextFontSize={14}
                                     maxSegmentLabels={4}
-                                    customSegmentStops={[0, 4, 5, 6]}
-                                    segmentColors={["navy", "blue", "aquamarine"]}
+                                    customSegmentStops={[0, 5, 6]}
+                                    segmentColors={["navy", "aquamarine"]}
                                     // segments = {1000}
                                     fontSize={6}
                                     currentValueText="Sales for Remaining Quarter"
                                     endColor="green"
                                     ringWidth={20}
-                                />
+                                /> : <ReactSpeedometer id="spdm"
+                                textColor="aquamarine"
+                                maxValue={3}
+                                value={2.27}
+                                needleColor="silver"
+                                startColor="rgba(255, 0, 0, 0.562)"
+                                width={200}
+                                height={200}
+                                labelFontSize={12}
+                                valueTextFontSize={14}
+                                maxSegmentLabels={4}
+                                customSegmentStops={[0, 2.27 , 3]}
+                                segmentColors={["navy", "aquamarine"]}
+                                // segments = {1000}
+                                fontSize={6}
+                                currentValueText="Sales for Remaining Quarter"
+                                endColor="green"
+                                ringWidth={20}
+                            />
+                            }
                                </center>
                             </div>
                         </div>
@@ -456,7 +500,7 @@ export default function Landing() {
                                                 <h6 className={data.perc_skus_oos_dropped_base_indicator}>{data.l7_sku_oos} SKUs </h6>
                                                 <small className="text-white" style={{
                                                     fontSize: '8pt',
-                                                    padding: "1px"
+                                                    padding: "2px"
                                                 }}>{data.wow_sku_oos} SKUs WoW&nbsp; 
                                                 { data.oos_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
                                                 { data.oos_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}</small>
@@ -479,7 +523,7 @@ export default function Landing() {
                                                 <h6 className={data.perc_skus_prd_oos_dropped_base_indicator}>{data.l7_sku_pred_oos} SKUs </h6>
                                                 <small className="text-white" style={{
                                                     fontSize: '8pt',
-                                                    padding:"1px"
+                                                    padding:"2px"
                                                 }}>{data.wow_skus_pred_oos} SKUs WoW&nbsp; 
                                                 { data.oos_pred_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
                                                 { data.oos_pred_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>} </small>
@@ -522,7 +566,7 @@ export default function Landing() {
                                                 <h6 className={data.perc_skus_avg_rating_dropped_base_indicator}>{data.l7_avg_rating} </h6>
                                                 <small className="text-white" style={{
                                                     fontSize: '8pt',
-                                                    padding:"1px"
+                                                    padding:"2px"
                                                 }}>{data.wow_avg_rating} WoW&nbsp;  
                                                 { data.avg_rating_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
                                                 { data.avg_rating_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}</small>
@@ -544,7 +588,7 @@ export default function Landing() {
                                                 <h6 className={data.perc_skus_cpi_dropped_base_indicator}>{data.l7_avg_price_index} </h6>
                                                 <small className="text-white" style={{
                                                     fontSize: '8pt',
-                                                    padding:"1px"
+                                                    padding:"2px"
                                                 }}>{data.wow_pi} WoW&nbsp; 
                                                 { data.cpi_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
                                                 { data.cpi_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}</small>
@@ -584,7 +628,7 @@ export default function Landing() {
                                                 <h6 className={data.perc_skus_chs_dropped_base_indicator}>{data.l7_avg_content_health_score} </h6>
                                                 <small className="text-white" style={{
                                                     fontSize: '8pt',
-                                                    padding:"1px"
+                                                    padding:"2px"
                                                 }}>{data.wow_chs} WoW&nbsp;  
                                                 { data.content_health_score_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
                                                 { data.content_health_score_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}</small>
@@ -607,7 +651,7 @@ export default function Landing() {
                                                 <h6 className={data.perc_skus_conversion_rate_dropped_base_indicator}>{data.l7_avg_conversion_rate} </h6>
                                                 <small className="text-white" style={{
                                                     fontSize: '8pt',
-                                                    padding:"1px"
+                                                    padding:"2px"
                                                 }}>{data.wow_conversion_rate} pp WoW&nbsp;
                                                  { data.conversion_rate_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
                                                  { data.conversion_rate_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}</small>

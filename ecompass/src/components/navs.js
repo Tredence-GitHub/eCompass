@@ -176,7 +176,7 @@ export default function Navs(props) {
                             marginRight: "0px",
                             // paddingRight: "20px"
                         }}>
-                            {props.viewname !== 'recommendations' ? <GlobalDropDown onsubmitprop={onSubmit} view={props.viewname} /> : <></>}
+                            {props.viewname === 'home' ? <GlobalDropDown onsubmitprop={onSubmit} view={props.viewname} /> : <></>}
                             {/* {props.viewname !== 'home' && props.viewname !== 'recommendations'? <LocalDropDown passview={props.viewname}/>: <></>} */}
                         </Container >
                         {props.content}

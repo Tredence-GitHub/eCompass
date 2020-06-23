@@ -12,6 +12,9 @@ import Iframe from 'react-iframe';
 import './Landing.css';
 import { FaFilter, FaRedo, FaExclamation, FaDatabase } from 'react-icons/fa';
 import styled from 'styled-components';
+import {Report} from 'powerbi-report-component';
+import RenderPowerBi from './renderPowerBi';
+
 
 class Recommendations extends Component {
 
@@ -28,145 +31,138 @@ class Recommendations extends Component {
         deploy: 'https://ecompass-app-development.azurewebsites.net',
         product: '',
         merchant: '',
-        error: false
+        error: false,
+        salesEmbed: '',
+        inventoryEmbed: '',
+        contentEmbed: '',
+        ratingsEmbed: '',
     }
 
-
-    salesFormatter(cell, row, rowIndex, formatExtraData) {
+    
+     
+    salesFormatter(cell, row, rowIndex, formatExtraData) {        
         return (
-
             <div className="">
-               
                 {cell.map((item, index) => {
                         if(item === 'No Recommendation'){
                             return <span className="text-muted"><i>{item}</i></span>
                         }
-                        else if (item.toLowerCase().includes('drop') | item.toLowerCase().includes('without') | 
-                        item.toLowerCase().includes('oos') | item.toLowerCase().includes('negative')) {
-                        return <Button variant="outline-danger" value={item} size="sm" >{item}</Button>
-
-
-                    }
-                    else if (item.toLowerCase().includes('decline') | item.toLowerCase().includes('not') | item.toLowerCase().includes('below')) {
-                        return <Button variant="outline-warning" value={item} size="sm"  >
-                        {item}</Button>
-                    }
-                    else if (item.toLowerCase().includes('high') | item.toLowerCase().includes('positive')) {
-                        return <Button variant="outline-success" value={item} size="sm" onClick={(e) => {
-                            // console.log(e.target.value,cell, " --- ", row)
-                        }} >{item}</Button>
-                    }
-                    return <Button variant="outline-info" value={item} size="sm" onClick={(e) => {
-                        // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
-                })}
+                       
+                            return (<Popup className="bg-dark" trigger={
+                                <Button  
+                                className="recommendations-btn" value={item} size="sm"
+                                >{item} </Button>} modal >
+                                    <RenderPowerBi reportIdPass = '6edd203c-2a69-4613-95b4-c6f983f01e0b' embedPass = {formatExtraData} /> 
+                            </Popup>
+                            )
+                      })
+                }          
+                    
             </div>
         );
+        
     }
-
-    contentFormatter(cell, row, rowIndex, formatExtraData) {
+    contentFormatter(cell, row, rowIndex, formatExtraData) {        
         return (
-
             <div className="">
                 {cell.map((item, index) => {
-
-                    if(item === 'No Recommendation'){
+                        if(item === 'No Recommendation'){
                             return <span className="text-muted"><i>{item}</i></span>
                         }
-                    else if (item.toLowerCase().includes('drop') | item.toLowerCase().includes('without') | 
-                    item.toLowerCase().includes('oos') | item.toLowerCase().includes('negative')) {
-                        return <Button variant="outline-danger" value={item} size="sm" onClick={(e) => {
-                            console.log(e.target.value, cell, " --- ", row)
-                        }} >{item}</Button>
-
-                    }
-                    else if (item.toLowerCase().includes('decline') | item.toLowerCase().includes('not') | item.toLowerCase().includes('below')) {
-                        return <Button variant="outline-warning" value={item} size="sm" onClick={(e) => {
-                            // console.log(e.target.value,cell, " --- ", row)
-                        }} >{item}</Button>
-                    }
-                    else if (item.toLowerCase().includes('high') | item.toLowerCase().includes('positive')) {
-                        return <Button variant="outline-success" value={item} size="sm" onClick={(e) => {
-                            // console.log(e.target.value,cell, " --- ", row)
-                        }} >{item}</Button>
-                    }
-                    return <Button variant="outline-info" value={item} size="sm" onClick={(e) => {
-                        // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
-                })}
+                       
+                            return (<Popup className="bg-dark" trigger={
+                                <Button  
+                                className="recommendations-btn" value={item} size="sm"
+                                >{item} </Button>} modal >
+                                    <RenderPowerBi reportIdPass = '3e2254df-65b1-4d07-b019-1c28c6811a08' embedPass = {formatExtraData} /> 
+                            </Popup>
+                            )
+                      })
+                }          
+                    
             </div>
         );
+        
     }
 
-    ratingsFormatter(cell, row, rowIndex, formatExtraData) {
+    inventoryFormatter(cell, row, rowIndex, formatExtraData) {        
         return (
-
             <div className="">
                 {cell.map((item, index) => {
-                    if(item === 'No Recommendation'){
-                        return <span className="text-muted"><i>{item}</i></span>
-                    }
-                    else if ( item.toLowerCase().includes('drop') | item.includes('without') | 
-                    item.toLowerCase().includes('oos') | item.toLowerCase().includes('negative')) {
-                        return <Button variant="outline-danger" value={item} size="sm" onClick={(e) => {
-                            console.log(e.target.value, cell, " --- ", row)
-                        }} >{item}</Button>
-
-                    }
-                    else if (item.toLowerCase().includes('decline') | item.toLowerCase().includes('not') | item.toLowerCase().includes('below')) {
-                        return <Button variant="outline-warning" value={item} size="sm" onClick={(e) => {
-                            // console.log(e.target.value,cell, " --- ", row)
-                        }} >{item}</Button>
-                    }
-                    else if (item.toLowerCase().includes('high') | item.toLowerCase().includes('positive')) {
-                        return <Button variant="outline-success" value={item} size="sm" onClick={(e) => {
-                            // console.log(e.target.value,cell, " --- ", row)
-                        }} >{item}</Button>
-                    }
-                    return <Button variant="outline-info" value={item} size="sm" onClick={(e) => {
-                        // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
-                })}
+                        if(item === 'No Recommendation'){
+                            return <span className="text-muted"><i>{item}</i></span>
+                        }
+                       
+                            return (<Popup className="bg-dark" trigger={
+                                <Button  
+                                className="recommendations-btn" value={item} size="sm"
+                                >{item} </Button>} modal >
+                                    <RenderPowerBi reportIdPass = '834e0185-88b5-4878-9a66-4e5f1c8e67ee' embedPass = {formatExtraData} /> 
+                            </Popup>
+                            )
+                      })
+                }          
+                    
             </div>
         );
+        
     }
 
-    inventoryFormatter(cell, row, rowIndex, formatExtraData) {
+    ratingsFormatter(cell, row, rowIndex, formatExtraData) {        
         return (
-
             <div className="">
                 {cell.map((item, index) => {
-                    if(item === 'No Recommendation'){
-                        return <span className="text-muted"><i>{item}</i></span>
-                    }
-                    else if (item.includes('Drop') | item.includes('drop') | item.includes('without') | item.includes
-                        ('OOS') | item.includes('Negative')) {
-                        return <Button variant="outline-danger" value={item} size="sm" onClick={(e) => {
-                            console.log(e.target.value, cell, " --- ", row)
-                        }} >{item}</Button>
-
-                    }
-                    else if (item.includes('Decline') | item.includes('Low') | item.includes('Not') | item.includes('Below')) {
-                        return <Button variant="outline-warning" value={item} size="sm" onClick={(e) => {
-                            // console.log(e.target.value,cell, " --- ", row)
-                        }} >{item}</Button>
-                    }
-                    else if (item.includes('High') | item.includes('Positive')) {
-                        return <Button variant="outline-success" value={item} size="sm" onClick={(e) => {
-                            // console.log(e.target.value,cell, " --- ", row)
-                        }} >{item}</Button>
-                    }
-                    return <Button variant="outline-info" value={item} size="sm" onClick={(e) => {
-                        // console.log(e.target.value,cell, " --- ", row)
-                    }} >{item}</Button>
-                })}
+                        if(item === 'No Recommendation'){
+                            return <span className="text-muted"><i>{item}</i></span>
+                        }
+                       
+                            return (<Popup className="bg-dark" trigger={
+                                <Button  
+                                className="recommendations-btn" value={item} size="sm"
+                                >{item} </Button>} modal >
+                                    <RenderPowerBi reportIdPass = '85fa92cd-09b6-45df-9660-10cc69eaeaa6' embedPass = {formatExtraData} /> 
+                            </Popup>
+                            )
+                      })
+                }          
+                    
             </div>
         );
+        
     }
     
+    
     makeApiCall(){
-        Axios.get(`https://ecompass-app-development.azurewebsites.net/api/getRecommendations/${localStorage.getItem('global_vendor')}`).then((response) => {
-            let fetched = response.data.data;
+        Promise.all( 
+           [ Axios.get(`${this.state.deploy}/api/getRecommendations/${localStorage.getItem('global_vendor')}`), 
+            Axios.post(`${this.state.deploy}/powerbi/getEmbedToken`, {data: [{
+                'sales': {
+                    'reportId':'fe0fdd28-faa8-4816-8677-8c730005e1d5',
+                    'groupId': 'a3d38897-e2ce-4cec-9302-e5acafabc87b'
+                },
+                'content': {
+                    'reportId':'fe0fdd28-faa8-4816-8677-8c730005e1d5',
+                    'groupId': 'a3d38897-e2ce-4cec-9302-e5acafabc87b'
+                }, 
+                'inventory': {
+                    'reportId': '834e0185-88b5-4878-9a66-4e5f1c8e67ee',
+                    'groupId': 'a3d38897-e2ce-4cec-9302-e5acafabc87b'
+                },
+                'ratings':{
+                     'reportId':  '85fa92cd-09b6-45df-9660-10cc69eaeaa6',
+                     'groupId': 'a3d38897-e2ce-4cec-9302-e5acafabc87b'
+                }
+            }] 
+        })] ).then((response) => {
+                console.log(response);
+                 return [response]
+                }
+            )
+            .then(([results]) => {
+            console.log(results);
+            let fetched = results[0].data.data;
+            console.log(results[1].data.embedToken);
+            let tokens = results[1].data.embedToken;
 
             fetched.forEach(element => {
                 element.sales_recommendation = element.sales_recommendation.split(',');
@@ -175,15 +171,29 @@ class Recommendations extends Component {
                 element.ratings_and_reviews_recommendation = element.ratings_and_reviews_recommendation.split(',')
 
             });
-            // console.log(fetched);
+            if(results[1].status === 200) {
+            tokens.map((item, index)=> {
+                console.log(Object.keys(item))
+                console.log(item)
+                this.setState({salesEmbed: item.sales.embeddingToken});
+                this.setState({contentEmbed: item.content.embeddingToken});
+                this.setState({inventoryEmbed: item.inventory.embeddingToken});
+                this.setState({ratingsEmbed: item.ratings.embeddingToken});
+                
+            })
+            this.setState({error: false})
+            }
+            else {
+                this.setState({error: true})
+            }
             this.setState({error: false})
             this.setState({ tabledata: fetched });
-            this.setState({ originaldata: fetched })
-            this.setState({ loading: false })
-        }).catch((err) => {
-            // console.log(err);
-            this.setState({error: true})
-            this.makeApiCall();
+            this.setState({ originaldata: fetched });
+            
+            this.setState({loading: false});
+            
+            
+
         })
 
     }
@@ -191,7 +201,8 @@ class Recommendations extends Component {
     
     componentDidMount() {
         this.setState({merchant: localStorage.getItem('global_vendor')})
-        this.makeApiCall()
+        
+        this.makeApiCall();
     }
 
     handleSelected(e){
@@ -236,42 +247,72 @@ class Recommendations extends Component {
     render() {
         const tabledata = this.state.tabledata;
         const loading = this.state.loading;
+        
+
         const { SearchBar } = Search;
         const self =  this;
         const columns = [{
             dataField: 'sku_id',
             text: 'SKU ID',
-            sort: true
-            
+            sort: true,
+            classes: "rowColor",
+            headerStyle: {
+                width: '110px',
+                backgroundColor:'#f8f9fa26',
+                borderColor: '#f8f9fa60'
+            }
         }, {
             dataField: 'vendor',
             text: 'Vendor',
-        }, {
-            dataField: 'product_group',
-            text: 'Product Group'
+            classes: "rowColor",
+            headerStyle: {
+                width: '110px',
+                backgroundColor:'#f8f9fa26',
+                borderColor: '#f8f9fa60'
+            }
         }, {
             dataField: 'sales_recommendation',
             text: 'Sales Recommendation',
-
-            formatter: this.salesFormatter
+            classes: "rowColor",
+            headerStyle: {
+                backgroundColor:'#f8f9fa26',
+                borderColor: '#f8f9fa60'
+            },
+            formatter: this.salesFormatter,
+            formatExtraData: this.state.salesEmbed
         }, {
             dataField: 'content_health_recommendation',
             text: 'Content Health Recommendation',
-
-            formatter: this.contentFormatter
+            classes: "rowColor",
+            headerStyle: {
+                backgroundColor:'#f8f9fa26',
+                borderColor: '#f8f9fa60'
+            },
+            formatter:this.contentFormatter,
+            formatExtraData: this.state.contentEmbed
         },
         {
             dataField: 'ratings_and_reviews_recommendation',
             text: 'Ratings & Reviews Recommendation',
-
-            formatter: this.ratingsFormatter
+            classes: "rowColor",
+            headerStyle: {
+                backgroundColor:'#f8f9fa26',
+                borderColor: '#f8f9fa60'
+            },
+            formatter: this.ratingsFormatter,
+            formatExtraData: this.state.ratingsEmbed
         },
-            ,
+            
         {
             dataField: 'inventory_recommendation',
             text: 'Inventory Recommendation',
-
-            formatter: this.inventoryFormatter
+            classes: "rowColor",
+            headerStyle: {
+                backgroundColor:'#f8f9fa26',
+                borderColor: '#f8f9fa60'
+            },
+            formatter: this.inventoryFormatter,
+            formatExtraData: this.state.inventoryEmbed
         }]
 
 
@@ -347,6 +388,7 @@ class Recommendations extends Component {
                         keyField="id"
                         data={tabledata}
                         columns={columns}
+                        
                         search
                     >
                         {
@@ -358,6 +400,7 @@ class Recommendations extends Component {
 
                                     <BootstrapTable classes="table-dark table-bordered table-hover table-striped thead-light"
                                         {...props.baseProps}
+                                        condensed = {true}
                                         pagination={paginationFactory(options)}
                                         defaultSorted={defaultSorted}
                                         noDataIndication={() => (<div>No data available</div>)}

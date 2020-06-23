@@ -92,7 +92,7 @@ export default function Contenthealth(props) {
         <div> 
 
         <Tabs defaultActiveKey="home" variant="dark" transition={false} id="noanim-tab-example">
-            <Tab eventKey="home" title="Product Group Level">
+            <Tab eventKey="home" title="Content Health">
             <div className="" style={{
                 marginTop: "10px",
                 height: "90vh",
@@ -101,15 +101,7 @@ export default function Contenthealth(props) {
 
     </div>
             </Tab>
-            <Tab eventKey="profile" title="SKU Level">
-            <div className="" style={{
-                marginTop: "10px",
-                height: "90vh",
-            }}>
-                {Object.keys(results[0])[0] === 'skulevel'?  renderPowerBi(results[0].skulevel.reportId, results[0].skulevel.groupId ,results[0].skulevel.embeddingToken): renderPowerBi(results[1].skulevel.reportId, results[1].skulevel.groupId ,results[1].skulevel.embeddingToken) }
-        
-    </div>
-            </Tab>
+            
       </Tabs>   
       </div>
     )

@@ -10,9 +10,9 @@
 }
 
 .nav-bar {
-    box-shadow: 0px 1px 7px 0.25px navy;
+    box-shadow: 0px 1px 7px 0.25px #f8f9fa57;
     background-color: #191d30;
-    height: 50px;
+    height: 55px;
     width: 100%;
    
 }
@@ -336,4 +336,32 @@
 
 #sub-header {
     font-size: 0.8rem;
+}
+
+.btn.btn-primary.recommendations-btn {
+    padding: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+    line-height: 1.2;
+    margin: 2px;
+    color: #17a2b8;
+    border-color: transparent;
+    outline-color: #17a2b8 ;
+    text-align: left;
+    background: #f2f2f214;
+}
+
+.btn.btn-primary.recommendations-btn:hover, 
+.btn.btn-primary.recommendations-btn:focus {
+    background-color: #17a2b8;
+    color: #ffff;
+} 
+
+.table-dark th, .table-dark td {
+    border-color: #f8f9fa26;
+    vertical-align: middle;
+}
+
+.table-bordered td.rowColor, .table-bordered th.rowColor {
+    border-color: #f8f9fa60;
 }
