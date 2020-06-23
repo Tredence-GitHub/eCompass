@@ -12,11 +12,10 @@ export default function RenderPowerBi(props) {
     
     // }
     let embedUrl = `https://app.powerbi.com/reportEmbed?reportId=${reportId}&groupId=${groupId}`;
-      const embedToken = embeddingToken;
       embedUrl = embedUrl.replace("watch?v=", "v/");
 
       const reportStyle = {
-          height: "18rem"
+          height: "24.2rem"
       };
       const extraSettings = {
           filterPaneEnabled: false, //true
