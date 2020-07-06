@@ -48,16 +48,23 @@ export default function Loginpage(props) {
         
     }
     return (
-        <div className="row col-6 col-md-8 ml-auto mr-auto" style={{
+        <div className="row" style={{
+            maxWidth: '800px',
             marginTop: "200px",
+            width: '750px',
+            marginRight: 'auto',
+            marginLeft: 'auto',
             padding: "5px",
             boxShadow:"0px 0px 15px 1px gray"
            
         }}>
             <div className="col-md-8 bg" style={{
                 // alignItems: "center",
-                margin:"auto",
-                padding: "50px"
+                padding: "2px",
+                marginTop: '60px',
+                paddingLeft: '30px',
+                paddingRight: '0px',
+                marginRight: '0px'
 
             }}>
                 { userflag === true || passwordflag === true ?
@@ -65,15 +72,15 @@ export default function Loginpage(props) {
                     color: "orange",
                     alignItems: "center",
                     margin:"auto",
-                    width: "200px",
-                    height: "200px"
+                    width: "180px",
+                    height: "180px"
                 }}></FaLock> :
                 <FaLock style={{
                     color: "grey",
                     alignItems: "center",
                     margin:"auto",
-                    width: "200px",
-                    height: "200px"
+                    width: "180px",
+                    height: "180px"
                 }}></FaLock> }
 
 
@@ -81,20 +88,20 @@ export default function Loginpage(props) {
                 <FaUnlock style={{
                     alignItems: "center",
                     color: "lightgreen",
-                    marginLeft:"50px",
-                    width: "200px",
-                    height: "200px"
+                    marginLeft:"40px",
+                    width: "180px",
+                    height: "180px"
                 }}></FaUnlock> :
                 <FaUnlock style={{
                     alignItems: "center",
                     color: "grey",
-                    marginLeft:"50px",
-                    width: "200px",
-                    height: "200px"
+                    marginLeft:"40px",
+                    width: "180px",
+                    height: "180px"
                 }}></FaUnlock> }
             </div>
 
-            <Form className="col-md-3 ml-2 mr-auto mb-4" style={{
+            <Form className="col-md-3 mr-auto mb-4" style={{
                 marginTop: "30px",
                 color: "white"               
             }}>
@@ -126,7 +133,7 @@ export default function Loginpage(props) {
                 {/* <Form.Group controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group> */}
-                <Button variant="primary" type="submit" onClick={setlocal}>
+                <Button size="sm" type="submit" onClick={setlocal}>
                     Login <FaSignInAlt></FaSignInAlt>
                 </Button>
             </Form>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Spinner, Button, Tabs, Tab } from 'react-bootstrap';
-import { FaFilter, FaExclamation, FaWifi, FaDatabase } from 'react-icons/fa';
-import Iframe from 'react-iframe';
+import { Spinner, Tabs, Tab } from 'react-bootstrap';
+import { FaExclamation, FaWifi } from 'react-icons/fa';
 import Axios from 'axios';
 import {Report} from 'powerbi-report-component';
 
@@ -14,7 +13,7 @@ export default function Simulator(props) {
     }, [])
     const url = {
         'local': 'http://localhost:4000',
-        'deploy': 'https://ecompass-app-development.azurewebsites.net'
+        'deploy': 'https://cpg-app.azurewebsites.net'
     }
     let data = [{'productlevel': {
         'reportId':'834e0185-88b5-4878-9a66-4e5f1c8e67ee',

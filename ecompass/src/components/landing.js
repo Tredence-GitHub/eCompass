@@ -1,16 +1,12 @@
 import React from 'react';
-import { FaChevronCircleUp, FaChevronCircleDown, FaDatabase, FaRegChartBar, FaChartBar, FaBox, FaHeartbeat, FaArrowRight, FaStar, FaMagic, FaBullseye, FaChartArea, FaChartLine, FaArrowUp, FaArrowDown, FaNetworkWired, FaExclamation, FaWifi } from 'react-icons/fa'
-import axios from 'axios';
+import { FaChevronCircleUp, FaChevronCircleDown, FaDatabase,  FaExclamation, FaWifi } from 'react-icons/fa'
 import { useState, useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
 import './Landing.css';
 import { Link } from 'react-router-dom';
-import GaugeChart from 'react-gauge-chart';
 import ReactSpeedometer from "react-d3-speedometer"
-import DonutChart from 'react-donut-chart';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import autoMergeLevel1 from 'redux-persist/es/stateReconciler/autoMergeLevel1';
 import Axios from 'axios';
 
 
@@ -20,7 +16,7 @@ export default function Landing() {
     const [data, setdata] = useState(null)
     const [error, seterror] = useState(false)
     const local = "http://localhost:4000"
-    const deploy = "https://ecompass-app-development.azurewebsites.net"
+    const deploy = "https://cpg-app.azurewebsites.net"
 
 
     useEffect(() => {
@@ -86,19 +82,6 @@ export default function Landing() {
         'ps': 'transparent'
     }
 
-    const percentages = {
-        sales: 65,
-        pred: 63,
-        oos: 71,
-        oosc: 75,
-        chs: 77,
-        cr: 58,
-        asr: 168,
-        ar: 111,
-        pi: 97,
-        bb: 58
-    }
-
     function CustomTextProgressBar(props) {
         const { children, ...otherProps } = props;
         return (
@@ -162,7 +145,6 @@ export default function Landing() {
     }
 
     if (!loading) {
-        // animateShades()
         return (
             <div class="landing-main">
             <div className=" col-12">
@@ -194,7 +176,7 @@ export default function Landing() {
                                                 <small className="text-white" style={{
                                                     fontSize: '8pt',
                                                     padding: "2px"
-                                                }}>{data.perc_change_wow_sales} SKUs WoW&nbsp;
+                                                }}>{data.change_wow_skus_sales} SKUs WoW&nbsp;
                                                 { data.sales_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
                                                 { data.sales_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}
 
@@ -212,13 +194,13 @@ export default function Landing() {
                                     <center className="mt-1 ">
                                             <CustomTextProgressBar className=""
                                                 outercolor = {params.ps}
-                                                pc="springgreen" percentage={data.perc_skus_pred_sales_dropped_base_indicator} >
+                                                pc="springgreen" percentage={data.perc_skus_pred_sales_dropped_base} >
 
                                                 <h6 className={data.perc_skus_pred_sales_dropped_base_indicator}>{data.number_pred_skus_sales_dropped} SKUs </h6>
                                                 <small className="text-white" style={{
                                                     fontSize: '8pt',
                                                     padding:"2px"
-                                                }}>{data.perc_change_wow_pred_sales} SKUs WoW&nbsp; 
+                                                }}>{data.change_wow_skus_pred_sales} SKUs WoW&nbsp; 
                                                 { data.pred_sales_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
                                                 { data.pred_sales_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}
                                                 </small>
@@ -265,7 +247,6 @@ export default function Landing() {
                                                 { data.search_rank_flag === 'Deteriorate'? <FaChevronCircleDown></FaChevronCircleDown>:<></>}
                                                 { data.search_rank_flag === 'Improve'? <FaChevronCircleUp></FaChevronCircleUp>:<></>}
                                                 </small>
-                                                {/* <small className="lnk mt-1">{percentages.chs}%</small> */}
                                             </CustomTextProgressBar>
                                             </center>
                                         </div>
@@ -321,7 +302,9 @@ export default function Landing() {
                                     <center className="" style={{
                                     fontSize: '9pt'
                                 }} >LW Sales</center>
-                                    { localStorage.getItem('global_vendor') === 'Walmart' ? <center><strong>$300K</strong></center>: <center><strong>$2.2M</strong></center> }
+                                    <center><strong style={{
+                                        fontSize: '10pt'
+                                    }}>${data.LW_sales}M</strong></center>
                                 </div>
                                 <div className="" style={{
                                     borderLeft: "0.5px solid palegoldenrod",
@@ -330,9 +313,9 @@ export default function Landing() {
                                     <center className="" style={{
                                     fontSize: '9pt'
                                 }}>Sales WoW</center>
-                                   { localStorage.getItem('global_vendor') === 'Walmart' ? <center><strong>+4% WoW</strong></center>: <center><strong style={{
-                                       fontSize: '10pt'
-                                   }}>+0.85% WoW</strong></center> }
+                                   <center><strong style={{
+                                        fontSize: '10pt'
+                                    }}>{data.perc_change_wow_sales}</strong></center>
                                 </div>
 
                             </div>
@@ -340,31 +323,11 @@ export default function Landing() {
                                 <center style={{
                                     paddingTop: "20px"
                                 }}>
-                                {  localStorage.getItem('global_vendor') === 'Walmart' ? 
-                                 <ReactSpeedometer id="spdm"
-                                 textColor="palegoldenrod"
-                                 maxValue={10}
-                                 value={4}
-                                 needleColor="silver"
-                                 startColor="rgba(255, 0, 0, 0.562)"
-                                 width={200}
-                                 height={200}
-                                 labelFontSize={12}
-                                 valueTextFontSize={14}
-                                 // fontSize="8pt"
-                                 maxSegmentLabels={4}
-                                 customSegmentStops={[0, 4, 10]}
-                                 segmentColors={["navy", "aqua"]}
-                                 // segments = {1000}
-                                 currentValueText="QTD Sales in Million"
-                                 
-                                 endColor="green"
-                                 ringWidth={20}
-                             />
-                                : <ReactSpeedometer id="spdm"
+                               
+                               <ReactSpeedometer id="spdm"
                                     textColor="palegoldenrod"
-                                    maxValue={33}
-                                    value={30}
+                                    maxValue={`${data.Quarter_sales_target}`}
+                                    value={`${data.Quarter_sales_achieved}`}
                                     needleColor="silver"
                                     startColor="rgba(255, 0, 0, 0.562)"
                                     width={200}
@@ -373,7 +336,7 @@ export default function Landing() {
                                     valueTextFontSize={14}
                                     // fontSize="8pt"
                                     maxSegmentLabels={4}
-                                    customSegmentStops={[0, 30, 33]}
+                                    customSegmentStops={[0, `${data.Quarter_sales_achieved}`, `${data.Quarter_sales_target}` ]}
                                     segmentColors={["navy", "aqua"]}
                                     // segments = {1000}
                                     currentValueText="QTD Sales in Million"
@@ -381,7 +344,7 @@ export default function Landing() {
                                     endColor="green"
                                     ringWidth={20}
                                 />
-                            }
+                            
                                </center>
                             </div>
                         </div>
@@ -411,7 +374,9 @@ export default function Landing() {
                                 <center className="" style={{
                                     fontSize: '9pt'
                                 }} >Target Remaining</center>
-                                   {  localStorage.getItem('global_vendor') === 'Walmart' ? <center><strong>$6M</strong></center>: <center><strong>$3M</strong></center> } 
+                                   <center><strong style={{
+                                        fontSize: '10pt'
+                                    }}>${data.Target_remaining}M</strong></center>
                                 </div>
                                 <div className="" style={{
                                     borderLeft: "0.5px solid aqua",
@@ -420,7 +385,9 @@ export default function Landing() {
                                     <center className="" style={{
                                     fontSize: '9pt'
                                 }}>Predicted Sales</center>
-                                    {  localStorage.getItem('global_vendor') === 'Walmart' ? <center><strong>$5M</strong></center>: <center><strong>$2.27M</strong></center> }
+                                    <center><strong style={{
+                                        fontSize: '10pt'
+                                    }}>${data.predicted_sales}M</strong></center>
                                 </div>
 
                             </div>
@@ -428,28 +395,10 @@ export default function Landing() {
                                 <center style={{
                                     paddingTop: "20px"
                                 }}>
-                               {  localStorage.getItem('global_vendor') === 'Walmart' ? <ReactSpeedometer id="spdm"
-                                    textColor="aquamarine"
-                                    maxValue={6}
-                                    value={5}
-                                    needleColor="silver"
-                                    startColor="rgba(255, 0, 0, 0.562)"
-                                    width={200}
-                                    height={200}
-                                    labelFontSize={12}
-                                    valueTextFontSize={14}
-                                    maxSegmentLabels={4}
-                                    customSegmentStops={[0, 5, 6]}
-                                    segmentColors={["navy", "aquamarine"]}
-                                    // segments = {1000}
-                                    fontSize={6}
-                                    currentValueText="Sales for Remaining Quarter"
-                                    endColor="green"
-                                    ringWidth={20}
-                                /> : <ReactSpeedometer id="spdm"
+                               <ReactSpeedometer id="spdm"
                                 textColor="aquamarine"
-                                maxValue={3}
-                                value={2.27}
+                                maxValue={`${data.Target_remaining}`}
+                                value={`${data.predicted_sales}`}
                                 needleColor="silver"
                                 startColor="rgba(255, 0, 0, 0.562)"
                                 width={200}
@@ -457,7 +406,7 @@ export default function Landing() {
                                 labelFontSize={12}
                                 valueTextFontSize={14}
                                 maxSegmentLabels={4}
-                                customSegmentStops={[0, 2.27 , 3]}
+                                customSegmentStops={[0, `${data.predicted_sales}` , `${data.Target_remaining}`]}
                                 segmentColors={["navy", "aquamarine"]}
                                 // segments = {1000}
                                 fontSize={6}
@@ -465,7 +414,7 @@ export default function Landing() {
                                 endColor="green"
                                 ringWidth={20}
                             />
-                            }
+                            
                                </center>
                             </div>
                         </div>
@@ -561,7 +510,7 @@ export default function Landing() {
                                         <div >
                                             <center className="mt-1" >
                                             <CustomTextProgressBar className="" outercolor={params.ar} pc="skyblue"
-                                             percentage={data.perc_skus_avg_rating_dropped_base_indicator} >
+                                             percentage={data.perc_skus_avg_rating_dropped_base} >
 
                                                 <h6 className={data.perc_skus_avg_rating_dropped_base_indicator}>{data.l7_avg_rating} </h6>
                                                 <small className="text-white" style={{

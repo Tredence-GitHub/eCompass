@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Spinner, Button, Tabs, Tab } from 'react-bootstrap';
-import { FaFilter, FaExclamation, FaWifi, FaDatabase } from 'react-icons/fa';
-import Iframe from 'react-iframe';
+import {  Spinner, Tabs, Tab } from 'react-bootstrap';
+import {  FaExclamation, FaWifi } from 'react-icons/fa';
 import Axios from 'axios';
 import {Report} from 'powerbi-report-component';
 
@@ -14,7 +13,7 @@ export default function Salesview(props) {
     }, [])
     const url = {
         'local': 'http://localhost:4000',
-        'deploy': 'https://ecompass-app-development.azurewebsites.net'
+        'deploy': 'https://cpg-app.azurewebsites.net'
     }
     let data = [{'productlevel': {
         'reportId':'934a99b8-47a2-4825-907c-0040b96af643',

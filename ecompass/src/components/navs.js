@@ -1,24 +1,86 @@
 import React, { useState } from 'react'
 import logo from '../logo.png';
 import { Link } from 'react-router-dom';
-import { FaHeartbeat, FaSignOutAlt, FaHome, FaChartBar, FaStar, FaBoxOpen, FaPrescription, FaUser, FaBan, FaUserSlash, FaSearch, FaFlask } from 'react-icons/fa';
+import { FaHeartbeat, FaSignOutAlt, FaHome, FaChartBar, FaStar, FaBoxOpen, FaPrescription, FaUser, FaBan, FaUserSlash, FaSearch, FaFlask, FaTimes } from 'react-icons/fa';
 
 import { Navbar, Form, FormControl, Button, Container, Row } from 'react-bootstrap';
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import GlobalDropDown from './globalDropDown';
-import LocalDropDown from './localDropDown';
 import './Landing.css';
 
 export default function Navs(props) {
+    const searched = ['sales recommendation', 'sales view', 'recommendation', 'ratings and reviews view', 'ratings recommendation',
+    'content health view', 'content health recommendation', 'inventory view', 'simulator',
+    'buybox', 'average search rank', 'average rating', 
+    'revenue', 'WoW','home', '360 view']
 
+    const [showSearchDiv, setshowSearchDiv] = useState(true)
+    const [searchbtn, setsearchbtn] = useState(true)
+    
     function onSubmit(value) {
         props.onDropDownSubmit(value);
     }
     const [selectedNav, setselectedNav] = useState(props.viewname)
 
-    function handleSearch(e){
-    //    console.log(e.target.value);
+    function populateSearchDiv(val) {
+        let node = document.createElement('li');
+        if (val.includes('revenue') || val.includes('sales view') || val.includes('search rank')){
+            node.setAttribute('onClick', "location.href= 'salesview'")
+        }
+        else if (val.includes('recommendation') || val.includes('recommendations')){
+            node.setAttribute('onClick', "location.href= 'recommendations'")
+        }
+        else if (val.includes('content') || val.includes('health') || val.includes('buybox')){
+            node.setAttribute('onClick', "location.href= 'contentview'")
+        }
+        else if (val.includes('inventory') ){
+            node.setAttribute('onClick', "location.href= 'inventoryview'")
+        }
+        else if (val.includes('simulator') ){
+            node.setAttribute('onClick', "location.href= 'simulator'")
+        }
+        else if (val.includes('ratings') || val.includes('reviews')){
+            node.setAttribute('onClick', "location.href= 'ratingsview'")
+        }
+        else {
+            node.setAttribute('onClick', "location.href= 'home' ")
+        }
+        node.setAttribute('className', 'search-list-item');
+        node.innerHTML = val;
+
+        document.getElementById('search-list').appendChild(node);
+
+        let children = document.getElementById('search-list');
+        children.querySelectorAll('li').forEach((n, idx) => { if(n.innerHTML === val){
+            console.log(n.innerHTML)
+            document.getElementById('search-list').replaceChild(node, n);
+        } 
+        })
     }
+    function handleSearch(e){
+       if(!e.target.value){
+        setshowSearchDiv(true);
+        document.querySelectorAll('li').forEach((n, idx) => { 
+            n.remove()
+        })
+       }
+
+       searched.forEach((item, index) =>{
+           let input_list = e.target.value.split(' ');
+           if(input_list) {
+            input_list.forEach((i)=> {
+                if(item.includes(i) && i.length >= 2 ){
+                    populateSearchDiv(item);
+                    setshowSearchDiv(false);    
+                 }
+            })
+            
+           }
+          
+       })
+      
+    }
+    
 
     if (localStorage.getItem('loggedIn') === 'true') {
         return (
@@ -101,41 +163,66 @@ export default function Navs(props) {
                             </NavIcon>
                             <NavText>Inventory View</NavText>
                         </NavItem>
+                        <NavItem eventKey="signout" onSelect="signout">
+                            <NavIcon>
+
+                                <Link to="/"><FaSignOutAlt className="icon-size">
+                                    </FaSignOutAlt></Link>
+
+
+                            </NavIcon>
+                            <NavText>Sign Out</NavText>
+                        </NavItem>
                         
                     
                     </SideNav.Nav>
                 </SideNav>
-                <Navbar className="nav-bar" bg="ml-10 col-sm-12" variant="" >
-                    <Row className="col-sm-12 ">
-                        <div>
-                            <Navbar.Brand href="/home" ><img src={logo} style={{
+                <Navbar className="nav-bar" bg="" variant="" >
+                    <Row>
+                        <div style={{
+                            // backgroundColor: "red",
+                            padding: "0px",
+                            maxHeight: "50px",
+                            
+                        }}>
+                            <img src={logo} style={{
                                 width: "90px",
                                 height: "40px",
-                                marginLeft: "50px"
-                            }} /></Navbar.Brand>
+                                marginLeft: "70px",
+                            }} />
 
                         </div>
 
-                        <div className=" col-6 d-flex mr-0 ml-auto mt-1" style={{
-                            padding: "0px"
+                        <div className="" style={{
+                            padding: "0px",
+                            
                         }}>
-                            <Form inline className="flex-right ml-auto mr-2 xs-4 mt-0">
-                                <FormControl type="text" size="sm" placeholder="Search" className="ml-xs-6 " id="searchbar" onChange={handleSearch} />
-                                <Button variant="outline-primary" size="sm" style={{
-                                    border: "none"
-                                }} ><FaSearch > </FaSearch></Button>
-                            </Form>
+                            {/* <Button variant="outline-primary"  onClick={(e)=> {
+                                setsearchbtn(true)
+                            }} style={{
+                                    border: "none",
+                                    flex: "end",
+                                    float: "left"
+                                }} hidden={searchbtn} ><FaSearch > </FaSearch></Button> */}
 
-                            <Link to="/"><Button className="mt-2 mr-0" variant="none" size="sm" style={{
-                                marginRight: "0px",
-                                border: "none",
-                                color: "aqua",
-                            }}><FaUser /><FaSignOutAlt style={{
+                            <Form className="search-form">
+                                <FormControl type="text"  placeholder="Search" size="sm" id="searchbar"  onChange={handleSearch} >
+                                </FormControl>
+                               <div className="bg search-div" hidden={showSearchDiv} >
+                                    <FaTimes id="search-close" onClick={(e)=> {
+                                    setshowSearchDiv(true)
+                                }}  ></FaTimes> 
+                                   <ul className="search-list" id="search-list">
 
-                            }} />
+                                   </ul>
+                                   
+                            </div> : <></> }
+                                
+                                </Form>
+                              
+                           
 
-                            </Button>
-                            </Link>
+                            
                         </div>
                     </Row>
                 </Navbar>

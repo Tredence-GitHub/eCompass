@@ -1,34 +1,22 @@
 import React, { Component } from 'react';
-import { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { Spinner, Button } from 'react-bootstrap';
 import BootstrapTable, { TableHeaderColumn } from 'react-bootstrap-table-next';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import Popup from "reactjs-popup";
-import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
-import { render } from '@testing-library/react';
-import Iframe from 'react-iframe';
 import './Landing.css';
-import { FaFilter, FaRedo, FaExclamation, FaDatabase } from 'react-icons/fa';
-import styled from 'styled-components';
-import {Report} from 'powerbi-report-component';
+import { FaExclamation, FaDatabase } from 'react-icons/fa';
 import RenderPowerBi from './renderPowerBi';
 
 
 class Recommendations extends Component {
-
-    constructor(props) {
-        super(props);
-
-    }
-
     state = {
         loading: true,
         tabledata: null,
         originaldata: null,
         local: 'http://localhost:4000',
-        deploy: 'https://ecompass-app-development.azurewebsites.net',
+        deploy: 'https://cpg-app.azurewebsites.net',
         product: '',
         merchant: '',
         error: false,
@@ -37,8 +25,6 @@ class Recommendations extends Component {
         contentEmbed: '',
         ratingsEmbed: '',
     }
-
-    
      
     salesFormatter(cell, row, rowIndex, formatExtraData) {        
         return (
@@ -134,6 +120,7 @@ class Recommendations extends Component {
     
     
     makeApiCall(){
+        this.setState({loading: true});
         Promise.all( 
            [ Axios.get(`${this.state.deploy}/api/getRecommendations/${localStorage.getItem('global_vendor')}`), 
             Axios.post(`${this.state.deploy}/powerbi/getEmbedToken`, {data: [{
@@ -155,12 +142,12 @@ class Recommendations extends Component {
                 }
             }] 
         })] ).then((response) => {
-                console.log(response);
+                // console.log(response);
                  return [response]
                 }
             )
             .then(([results]) => {
-            console.log(results);
+            // console.log(results);
             let fetched = results[0].data.data;
             console.log(results[1].data.embedToken);
             let tokens = results[1].data.embedToken;
@@ -174,8 +161,8 @@ class Recommendations extends Component {
             });
             if(results[1].status === 200) {
             tokens.map((item, index)=> {
-                console.log(Object.keys(item))
-                console.log(item)
+                // console.log(Object.keys(item))
+                // console.log(item)
                 this.setState({salesEmbed: item.sales.embeddingToken});
                 this.setState({contentEmbed: item.content.embeddingToken});
                 this.setState({inventoryEmbed: item.inventory.embeddingToken});
@@ -208,17 +195,17 @@ class Recommendations extends Component {
 
     handleSelected(e){
         const newtabledata = []
-        if(e.target.value == 'all'){
+        if(e.target.value === 'all'){
             this.setState({tabledata: this.state.originaldata})
         }
         else{
         this.state.originaldata.map((item, index)=>{
-            console.log(this.state.product)
+            // console.log(this.state.product)
             if(item.product_group === e.target.value){
                 newtabledata.push(item);
             }
         });
-        console.log(newtabledata)
+        // console.log(newtabledata)
         this.setState({tabledata: newtabledata});
         }
         
@@ -233,7 +220,7 @@ class Recommendations extends Component {
         let optionItems = []
         let optionUnique = []
         this.state.originaldata.map((item, index) => {
-            console.log(item.product_group)
+            // console.log(item.product_group)
            
             if(optionUnique.indexOf(item.product_group) < 0)
             {
@@ -248,10 +235,7 @@ class Recommendations extends Component {
     render() {
         const tabledata = this.state.tabledata;
         const loading = this.state.loading;
-        
-
         const { SearchBar } = Search;
-        const self =  this;
         const columns = [{
             dataField: 'sku_id',
             text: 'SKU ID',
@@ -324,7 +308,7 @@ class Recommendations extends Component {
         }]
 
 
-        if (loading == false) {
+        if (loading === false) {
             const customTotal = (from, to, size) => (
                 <span className="react-bootstrap-table-pagination-total text-white ml-2">
                     Showing { from} to { to} of { size} Results
@@ -363,7 +347,7 @@ class Recommendations extends Component {
                 <div className='table-responsive recommendations-table landing-main'>
                     <select className="categoryDropDown mb-2" id="deflt" onChange = {(e)=>{ this.handleSelected(e) } } >
                         <option value="select" disabled>Select a Product Category </option>
-                        <option value="all">All Categories</option>
+                        <option value="all" >All Categories</option>
                         {this.populateCat()}
 
                     </select>

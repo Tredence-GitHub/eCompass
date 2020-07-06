@@ -18,11 +18,12 @@
 }
 
 #searchbar {
-    
-    background-color: lightgray ;
-    border-radius: 12px ;
+    color: oldlace;
+    background-color: rgba(48, 48, 105, 0.47) ;
     
 }
+
+
 .active {
    border: 1px solid navy ;
    border-bottom: none ;
@@ -344,7 +345,7 @@
     padding-right: 4px;
     line-height: 1.2;
     margin: 2px;
-    color: #17a2b8;
+    color: #0dd0ef;
     border-color: transparent;
     outline-color: #17a2b8 ;
     text-align: left;
@@ -365,3 +366,49 @@
 .table-bordered td.rowColor, .table-bordered th.rowColor {
     border-color: #f8f9fa60;
 }
+
+.search-div {
+    width: 800px;
+    height: auto;
+    margin-top: 0px;
+    margin-left: 0px;
+    z-index: 1000000000;
+    position: relative;
+    padding-left:1%;
+    background-color: rgba(48, 48, 105, 0.47);
+    color: white;
+    border-top: none;
+    border-color: none;
+    border: 1px solid rgba(53, 37, 109, 0.486);
+}
+
+.search-list {
+    list-style: none;
+    padding: 0px;
+    padding-left: 4px;
+}
+
+.search-form {
+    margin-left: 10%;
+    max-width: 800px;
+    margin-top: 2px;
+    width: 100%;
+    margin-right: 10px;
+    position: absolute;
+   
+}
+
+#search-close {
+    float: right;
+}
+
+.search-list-item, .search-list-item :hover {
+    background: navy;
+}
+
+#searchbar, #searchbar :focus, #searchbar :focus-within {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+

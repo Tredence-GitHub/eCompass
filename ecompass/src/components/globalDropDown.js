@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
-import { Button, DropdownButton,  Row } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import 'react-dropdown/style.css';
+import { Button,  Row } from 'react-bootstrap';
 import {useState, useEffect} from 'react';
-import { useSelector, useDispatch, useStore } from 'react-redux';
-import { FaFilter, FaRedo } from 'react-icons/fa';
+import { FaFilter } from 'react-icons/fa';
 
 
 export default function GlobalDropDown(props){
     
-    const [state, setState] = useState()
     const [merchant,  setMerchant] = useState('')
-    const [product, setProduct] = useState('')
-
     
     useEffect(() => {
         setMerchant(localStorage.getItem('global_vendor'))
@@ -21,9 +15,6 @@ export default function GlobalDropDown(props){
      function handleDropdown(event){
        localStorage.setItem('global_vendor', event.target.value);
        setMerchant(event.target.value)
-    }
-
-    function onsubmitprop(){
     }
 
      return (
@@ -41,7 +32,7 @@ export default function GlobalDropDown(props){
                     marginLeft: "auto",
                 }}>
                     <option value="default" selected disabled>{ merchant !== null ? 'Selected '+ merchant : 'Select a Merchant'} </option>
-                    {/* <option value="Walmart">Walmart </option> */}
+                    <option value="Walmart">Walmart </option>
                     <option value="Amazon">Amazon </option>
                     {/* <option value="merchant3">merchant3 </option> */}
                     {/* <option value="">merchant4  </option> */}

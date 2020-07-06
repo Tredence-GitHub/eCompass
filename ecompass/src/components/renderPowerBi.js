@@ -41,30 +41,14 @@ export default function RenderPowerBi(props) {
                 style={reportStyle}
                 extraSettings={extraSettings}
                 onLoad={(report) => {
-                    console.log(filter1,"ABC")
                     report.setFilters([filter1]).then((res, rej) => {
-                        console.log(res,"******")
-                        console.log(rej)
-    
+                        console.log(res)
                        }).catch(function (errors) {
                            console.log(errors)
                          
                        });
-                    // report.getFilters().then(function (filters) {
-                    
-                    // }).catch(function (errors) {
-                     
-                    // })
- 
-                    
-                    
-
-                    
-
                     }
                 }
-
-    
           ></Report>
       )
    
