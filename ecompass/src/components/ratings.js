@@ -13,7 +13,8 @@ export default function Ratings(props) {
     }, [])
     const url = {
         'local': 'http://localhost:4000',
-        'deploy': 'https://cpg-app.azurewebsites.net'
+        'deploy': 'https://cpg-app.azurewebsites.net',
+        'develop': 'https://ecompass-app-development.azurewebsites.net'
     }
     let data = [{'productlevel': {
         'reportId':'57a33c98-6f3b-4c7a-8757-4bb7c1da7552',

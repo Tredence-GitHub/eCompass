@@ -8,9 +8,13 @@ let getAccessToken = function () {
         function(resolve, reject) {
             let bodyObj = null
             const url = 'https://login.microsoftonline.com/927e65b8-7ad7-48db-a3c6-c42a67c100d6/oauth2/token'; // replace common with tenant id  
-
-            const clientId = "3fb71bf0-d833-427e-8b22-9ed954afb5ea" // Applicaton ID of app registered via Azure Active Directory 
-            const clientSecret = "3_207EwEU4klD6-GPZZzvV3AvR_9.SBb~t" // service principal secret
+            // const clientId = "af5980b1-1b1d-481d-907e-f4d65591903d" // works
+            // const clientSecret = "oYlV-eZVW9DTLm9qL3xg-XT96jk.W_6SAP"
+            // Second App reg - MD
+            const clientId = "b92a0386-8d11-4084-a9d9-d45700d08c53" // works
+            const clientSecret = "N6-N9yCNDExf5SW3-TRn-y1f2P38.vD.5L"
+            // const clientId = "3fb71bf0-d833-427e-8b22-9ed954afb5ea" // Applicaton ID of app registered via Azure Active Directory 
+            // const clientSecret = "3_207EwEU4klD6-GPZZzvV3AvR_9.SBb~t" // service principal secret
 
 
             const headers = {
@@ -40,7 +44,7 @@ let getAccessToken = function () {
                         return reject(err);
                     //console.log(body);
                     bodyObj = JSON.parse(body);
-                    console.log("bodyObj first occurrence: ", bodyObj)
+                    // console.log("bodyObj first occurrence: ", bodyObj)
 
                     //console.log("Got body: ", bodyObj)
                     //return bodyObj.access_token;
@@ -86,11 +90,18 @@ let getEmbedToken = function(accessToken, groupId, reportId) {
                     }
 
                     console.log("body:", body)
-                    bodyObj = JSON.parse(body)
+                    if(body !== ''){
 
-                    console.log("second occurrence bodyObj: ", bodyObj)
+                        bodyObj = JSON.parse(body)
+                        console.log("second occurrence bodyObj: ", bodyObj)
 
-                    resolve(bodyObj.token);
+                      resolve(bodyObj.token);
+                    }
+                    else {
+                        reject('Could not get embed Token')
+                    }
+
+                    
                 }
             )
         }
@@ -101,7 +112,7 @@ let getEmbedToken = function(accessToken, groupId, reportId) {
 Router.post('/getEmbedToken', async (req, res) => {
 
         try{
-            // console.log("THIS  --- ", req.body);
+            console.log("THIS  --- ", req.body);
             let dataArray = req.body.data;
             // get reportId and corresponding groupId
             let result = await fetchEmbedTokenForReportIds(dataArray)
@@ -127,10 +138,10 @@ async function fetchEmbedTokenForReportIds( arrayOfReportIds ){
     // const groupId = "a3d38897-e2ce-4cec-9302-e5acafabc87b"
     let arrayOfEmbeddingTokens = []
 
-    // console.log( "Entered here: ", arrayOfReportIds )
+    console.log( "Entered here: ", arrayOfReportIds )
 
     let accessToken = await getAccessToken()
-    // console.log("This is access token: ", accessToken)
+    console.log("This is access token: ", accessToken)
 
     for ( let pair of arrayOfReportIds ){
         for( let value in pair){
@@ -140,9 +151,9 @@ async function fetchEmbedTokenForReportIds( arrayOfReportIds ){
                 pair[value].embeddingToken = ''
                 continue
             }        
-            // console.log( "reportId -> ", element.reportId )
+            console.log( "reportId -> ", element.reportId )
             let embedToken = await getEmbedToken( accessToken, element.groupId, element.reportId )
-            // console.log( "embedToken -> > > ", embedToken )
+            console.log( "embedToken -> > > ", embedToken )
             pair[value].embeddingToken = embedToken
             console.log(pair)
             // arrayOfEmbeddingTokens.push({value: {"reportId": element.reportId, "embedToken": embedToken , "groupId": element.groupId } } )

@@ -13,7 +13,8 @@ export default function Contenthealth(props) {
     }, [])
     const url = {
         'local': 'http://localhost:4000',
-        'deploy': 'https://cpg-app.azurewebsites.net'
+        'deploy': 'https://cpg-app.azurewebsites.net',
+        'develop': 'https://ecompass-app-development.azurewebsites.net'
     }
     let data = [{'productlevel': {
         'reportId':'ff3ab103-a5a1-4850-b21d-4fec16e9a56c',

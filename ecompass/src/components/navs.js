@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import logo from '../logo.png';
 import { Link } from 'react-router-dom';
-import { FaHeartbeat, FaSignOutAlt, FaHome, FaChartBar, FaStar, FaBoxOpen, FaPrescription, FaUser, FaBan, FaUserSlash, FaSearch, FaFlask, FaTimes } from 'react-icons/fa';
+import { FaHeartbeat, FaSignOutAlt, FaHome,FaPenNib, FaChartBar, FaStar, FaBoxOpen, FaPrescription,
+     FaUser, FaBan, FaUserSlash, FaSearch, FaFlask, FaTimes } from 'react-icons/fa';
 
 import { Navbar, Form, FormControl, Button, Container, Row } from 'react-bootstrap';
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
@@ -10,7 +11,7 @@ import './Landing.css';
 
 export default function Navs(props) {
     const searched = ['sales recommendation', 'sales view', 'recommendation', 'ratings and reviews view', 'ratings recommendation',
-    'content health view', 'content health recommendation', 'inventory view', 'simulator',
+    'content health view', 'content health recommendation', 'inventory view', 'simulator','Workbench',
     'buybox', 'average search rank', 'average rating', 
     'revenue', 'WoW','home', '360 view']
 
@@ -42,6 +43,9 @@ export default function Navs(props) {
         else if (val.includes('ratings') || val.includes('reviews')){
             node.setAttribute('onClick', "location.href= 'ratingsview'")
         }
+        else if (val.includes('workbench') || val.includes('Workbench')){
+            node.setAttribute('onClick', "location.href= 'Workbench'")
+        }//Vivek added workbench
         else {
             node.setAttribute('onClick', "location.href= 'home' ")
         }
@@ -115,11 +119,16 @@ export default function Navs(props) {
                         </NavItem>
                         <NavItem eventKey="simulator" onSelect="simulator">
                             <NavIcon>
-
                                 <Link to="/simulator" > <FaFlask className="icon-size"> 
                                  </FaFlask></Link>
-
-
+                            </NavIcon>
+                            <NavText>Simulator</NavText>
+                        </NavItem>
+                        {/* vivek added workbench */}
+                        <NavItem eventKey="Workbench" onSelect="Workbench">
+                            <NavIcon>
+                                <Link to="/Workbench" > <FaPenNib className="icon-size"> 
+                                 </FaPenNib></Link>
                             </NavIcon>
                             <NavText>Simulator</NavText>
                         </NavItem>
@@ -216,7 +225,7 @@ export default function Navs(props) {
 
                                    </ul>
                                    
-                            </div> : <></> }
+                            </div>
                                 
                                 </Form>
                               

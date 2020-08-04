@@ -13,7 +13,8 @@ export default function Salesview(props) {
     }, [])
     const url = {
         'local': 'http://localhost:4000',
-        'deploy': 'https://cpg-app.azurewebsites.net'
+        'deploy': 'https://cpg-app.azurewebsites.net',
+        'develop': 'https://ecompass-app-development.azurewebsites.net'
     }
     let data = [{'productlevel': {
         'reportId':'934a99b8-47a2-4825-907c-0040b96af643',
@@ -25,7 +26,7 @@ export default function Salesview(props) {
     async function f(){
         let resp = await Axios.post(`${url.deploy}/powerbi/getEmbedToken`,{data}
          ).then((response)=> {
-            //  console.log(response)
+             console.log(response)
              setresults(response.data.embedToken);
             if(response.data.embedToken[0].productlevel.embeddingToken){
                 seterror(false);
@@ -48,7 +49,7 @@ export default function Salesview(props) {
         let embedUrl = `https://app.powerbi.com/reportEmbed?reportId=${reportId}&groupId=${groupId}`;
           const embedToken = embeddingToken;
           embedUrl = embedUrl.replace("watch?v=", "v/");
-   
+        console.log("EMBED URL --- ", embedUrl)
           const reportStyle = {
               height: "45rem"
           };

@@ -43,7 +43,6 @@ export default function LocalDropDown(props){
     }
     else{
      return (
-           
          <Row>
          {/* <label>{content1}  {console.log('gob pg ----  ', store.getState())}  </label> */}
                 <select onChange={handleDropdown} style={{

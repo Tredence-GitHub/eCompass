@@ -17,6 +17,7 @@ export default function Landing() {
     const [error, seterror] = useState(false)
     const local = "http://localhost:4000"
     const deploy = "https://cpg-app.azurewebsites.net"
+    const develop = 'https://ecompass-app-development.azurewebsites.net'
 
 
     useEffect(() => {

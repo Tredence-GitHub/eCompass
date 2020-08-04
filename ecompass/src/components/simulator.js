@@ -13,7 +13,8 @@ export default function Simulator(props) {
     }, [])
     const url = {
         'local': 'http://localhost:4000',
-        'deploy': 'https://cpg-app.azurewebsites.net'
+        'deploy': 'https://cpg-app.azurewebsites.net',
+        'develop': 'https://ecompass-app-development.azurewebsites.net'
     }
     let data = [{'productlevel': {
         'reportId':'834e0185-88b5-4878-9a66-4e5f1c8e67ee',

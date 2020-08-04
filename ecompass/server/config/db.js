@@ -30,5 +30,22 @@ const db = new Sequelize('ecompass-acc-db', 'ecompass', 'Gohome@09',{
 }
 
 )
+const RecommendationsModel = require('../models/recommendationDb');
+const WorkbenchModel = require('../models/workbenchDb');
+const SimulatorModel = require('../models/simulatorDb');
+const SaveSimulationModel = require('../models/simulatorSavedDb');
 
-module.exports = db;
+const RecommendationsTable = RecommendationsModel(db, Sequelize);
+const WorkbenchTable = WorkbenchModel(db, Sequelize);
+const SimulatorTable = SimulatorModel(db, Sequelize);
+const SaveSimulationTable = SaveSimulationModel(db, Sequelize);
+
+WorkbenchTable.hasOne(RecommendationsTable, {foreignKey: 'sku_id'});
+
+module.exports = {
+  db,
+  RecommendationsTable,
+  WorkbenchTable,
+  SimulatorTable,
+  SaveSimulationTable
+};
